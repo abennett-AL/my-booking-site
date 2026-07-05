@@ -502,6 +502,8 @@ p { color: var(--ink-soft); }
 .form-success { display:none; text-align:center; padding: 1rem 0; }
 .form-success.show { display:block; }
 .form-success .check { width: 64px; height: 64px; margin: 0 auto 1.2rem; border-radius: 50%; background: var(--evergreen); display: grid; place-items: center; color: var(--paper); }
+.form-submit-error { font-size: .85rem; color: var(--clay); text-align: center; margin-top: .9rem; }
+.form-submit-error a { text-decoration: underline; }
 
 .chip-select { display: flex; flex-wrap: wrap; gap: .6rem; }
 .chip-select input { position: absolute; opacity: 0; pointer-events: none; }

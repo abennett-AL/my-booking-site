@@ -41,7 +41,9 @@
           <!-- Right: form -->
           <div data-reveal>
             <div class="form-wrap">
-              <form data-booking novalidate>
+              <form name="booking" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-booking novalidate>
+                <input type="hidden" name="form-name" value="booking">
+                <p hidden aria-hidden="true"><label>Don't fill this out if you're human: <input name="bot-field"></label></p>
                 <div class="form-row">
                   <div class="field">
                     <label for="fname">First name <span class="req">*</span></label>
@@ -104,6 +106,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-accent btn-lg" style="width:100%;justify-content:center">Request my consultation</button>
+                <p class="form-submit-error" role="alert" hidden>Sorry — something went wrong sending your request. Please try again, or email <a href="mailto:hello@activelabs.health">hello@activelabs.health</a>.</p>
                 <p class="hint center mt-2">By submitting you agree to be contacted about your enquiry. We'll never share your details.</p>
               </form>
 

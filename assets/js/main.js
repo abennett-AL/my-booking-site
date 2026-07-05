@@ -251,14 +251,32 @@
         if (!ok && valid) { valid = false; input.focus(); }
       });
       if (!valid) return;
+
       const btn = form.querySelector('button[type="submit"]');
+      const errEl = form.querySelector('.form-submit-error');
+      if (errEl) errEl.hidden = true;
       if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
-      // Placeholder submit — wire to email/CRM/Cal.com here.
-      setTimeout(() => {
+
+      const showSuccess = () => {
         form.style.display = 'none';
         const success = document.querySelector('.form-success');
         if (success) success.classList.add('show');
-      }, 850);
+      };
+      const showError = () => {
+        if (btn) { btn.disabled = false; btn.textContent = 'Request my consultation'; }
+        if (errEl) errEl.hidden = false;
+      };
+
+      // Encode all fields (incl. form-name + multiple checkboxes) for Netlify Forms.
+      const body = new URLSearchParams(new FormData(form)).toString();
+
+      // On localhost there is no Netlify backend — simulate success so the preview works.
+      const isLocal = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname) || location.protocol === 'file:';
+      if (isLocal) { setTimeout(showSuccess, 700); return; }
+
+      fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body })
+        .then((res) => { if (!res.ok) throw new Error('Bad status ' + res.status); showSuccess(); })
+        .catch(showError);
     });
     form.querySelectorAll('input, select, textarea').forEach(input => {
       input.addEventListener('input', () => {
