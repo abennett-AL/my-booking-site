@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Active Labs — Longevity & Preventive Medicine, Brighton & Hove</title>
+  <meta name="description" content="Comprehensive bloodwork, clinician-led interpretation and personalised protocols. Active Labs is Brighton's preventive and longevity clinic — science-led, transparent, and built around you.">
+  <link rel="icon" type="image/svg+xml" href="assets/img/activelabs-mark.svg">
+  <link rel="apple-touch-icon" href="assets/img/activelabs-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body data-page="index">
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="container container-wide">
+        <div class="hero-grid">
+          <div>
+            <p class="eyebrow hero-fade">Brighton &amp; Hove · Preventive &amp; Longevity Medicine</p>
+            <h1 class="display hero-fade">
+              Know your body<br>before it<br><span class="serif-italic text-green">tells you.</span>
+            </h1>
+            <p class="lead hero-fade">
+              70+ biomarkers. A clinician who reads every one. A protocol built from your
+              physiology — not a PDF and a goodbye. Active Labs turns bloodwork into a
+              lifelong plan to stay well.
+            </p>
+            <div class="hero-actions hero-fade">
+              <a href="book.html" class="btn btn-primary btn-lg">Book a consultation <span class="arrow" aria-hidden="true">→</span></a>
+              <a href="testing.html" class="link-underline">See what we test <span class="arrow" aria-hidden="true">→</span></a>
+            </div>
+            <div class="hero-meta hero-fade">
+              <div class="stat"><div class="num"><span data-count="70" data-suffix="+">70+</span></div><div class="label">Biomarkers tested</div></div>
+              <div class="stat"><div class="num"><span data-count="75">75</span> min</div><div class="label">Average clinician time</div></div>
+              <div class="stat"><div class="num">1&nbsp;of&nbsp;1</div><div class="label">Protocols, personalised</div></div>
+            </div>
+          </div>
+
+          <div class="hero-visual hero-fade">
+            <div class="chart-card" id="progressChart">
+              <div class="chart-head">
+                <div>
+                  <span class="chart-k">Longevity score</span>
+                  <div class="chart-score"><span data-count="86">86</span><span class="chart-unit">/ 100</span></div>
+                </div>
+                <span class="chart-delta"><span class="tri" aria-hidden="true">▲</span> +34% since baseline</span>
+              </div>
+
+              <div class="chart-plot">
+                <svg viewBox="0 0 460 250" preserveAspectRatio="none" aria-hidden="true" class="chart-svg">
+                  <defs>
+                    <linearGradient id="areaGrad" x1="0" x2="0" y1="0" y2="1">
+                      <stop offset="0" stop-color="rgba(51,86,74,.20)"/>
+                      <stop offset="1" stop-color="rgba(51,86,74,0)"/>
+                    </linearGradient>
+                  </defs>
+                  <!-- gridlines -->
+                  <g class="chart-grid" stroke="var(--line)" stroke-width="1">
+                    <line x1="30" y1="55"  x2="440" y2="55"/>
+                    <line x1="30" y1="105" x2="440" y2="105"/>
+                    <line x1="30" y1="155" x2="440" y2="155"/>
+                    <line x1="30" y1="205" x2="440" y2="205"/>
+                  </g>
+                  <!-- area -->
+                  <path class="chart-area" d="M40 174 L137 147 L235 126 L332 93 L430 72 L430 205 L40 205 Z" fill="url(#areaGrad)"/>
+                  <!-- line -->
+                  <path class="chart-line" d="M40 174 L137 147 L235 126 L332 93 L430 72" fill="none" stroke="var(--evergreen)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <!-- points -->
+                  <circle class="chart-pt" style="--d:.2s"  cx="40"  cy="174" r="5"/>
+                  <circle class="chart-pt" style="--d:.7s"  cx="137" cy="147" r="5"/>
+                  <circle class="chart-pt" style="--d:1.1s" cx="235" cy="126" r="5"/>
+                  <circle class="chart-pt" style="--d:1.5s" cx="332" cy="93"  r="5"/>
+                  <circle class="chart-pt chart-pt-now" style="--d:1.9s" cx="430" cy="72" r="6.5"/>
+                </svg>
+                <div class="chart-xaxis">
+                  <span>Baseline</span><span>M3</span><span>M6</span><span>M9</span><span>Now</span>
+                </div>
+              </div>
+
+              <div class="chart-legend">
+                <span><i class="ldot clay"></i> Baseline reading</span>
+                <span><i class="ldot green"></i> With protocol</span>
+              </div>
+
+              <div class="hero-chip c-float" data-parallax="0.05">
+                <span class="dot" style="background:var(--evergreen);box-shadow:0 0 0 4px rgba(51,86,74,.16)"></span>
+                <div><div class="k">ApoB · 12mo</div><div class="v">Optimal ↗</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span class="marquee-item">Full Thyroid Panel</span><span class="marquee-item">ApoB · Lp(a)</span>
+        <span class="marquee-item">Fasting Insulin</span><span class="marquee-item">hs-CRP</span>
+        <span class="marquee-item">Sex &amp; Adrenal Hormones</span><span class="marquee-item">HbA1c</span>
+        <span class="marquee-item">Homocysteine</span><span class="marquee-item">Micronutrient Status</span>
+        <span class="marquee-item">Iron Studies</span><span class="marquee-item">Lipid Sub-fractionation</span>
+        <span class="marquee-item">Full Thyroid Panel</span><span class="marquee-item">ApoB · Lp(a)</span>
+        <span class="marquee-item">Fasting Insulin</span><span class="marquee-item">hs-CRP</span>
+        <span class="marquee-item">Sex &amp; Adrenal Hormones</span><span class="marquee-item">HbA1c</span>
+        <span class="marquee-item">Homocysteine</span><span class="marquee-item">Micronutrient Status</span>
+        <span class="marquee-item">Iron Studies</span><span class="marquee-item">Lipid Sub-fractionation</span>
+      </div>
+    </div>
+
+    <!-- ============ THE PROBLEM ============ -->
+    <section class="section">
+      <div class="container">
+        <div class="split">
+          <div data-reveal>
+            <p class="eyebrow">The gap in care</p>
+            <h2 class="mt-3">The average GP visit lasts eight minutes. Your physiology deserves more.</h2>
+          </div>
+          <div data-reveal>
+            <p class="lead">Conventional medicine is built to react — to name a disease once it has already arrived. A standard physical checks a narrow panel and rarely surfaces the early metabolic, hormonal or inflammatory shifts that precede it by years.</p>
+            <p class="mt-3">Active Labs inverts the model. We give you time, depth, and a clinician who knows your history — so dysfunction is caught and corrected while it's still reversible.</p>
+            <div class="tag-row">
+              <span class="tag">Root-cause, not symptom-chasing</span>
+              <span class="tag">Evidence-led</span>
+              <span class="tag">No pseudoscience</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHAT YOU GET (cards) ============ -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="center mx-auto measure" data-reveal>
+          <p class="eyebrow center">What membership includes</p>
+          <h2 class="mt-3 mb-2">Diagnostics, interpretation, and a plan that keeps up with you</h2>
+          <p class="lead">Four parts, one continuous relationship.</p>
+        </div>
+        <div class="grid cols-4 mt-6" data-reveal-stagger data-stagger="110">
+          <article class="card">
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19V9m5 10V5m5 14v-7m5 7V8" stroke-linecap="round"/></svg></div>
+            <div class="num-tag">01</div>
+            <h3>Advanced panels</h3>
+            <p>Far broader than a GP test — metabolic, thyroid, hormones, inflammation, iron, micronutrients and cardiovascular risk.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3a5 5 0 0 1 5 5c0 2-1 3-1 5H8c0-2-1-3-1-5a5 5 0 0 1 5-5Z"/><path d="M9 18h6m-5 3h4" stroke-linecap="round"/></svg></div>
+            <div class="num-tag">02</div>
+            <h3>Clinician-led reading</h3>
+            <p>Every result reviewed by a prescribing clinician who translates data into a plan — the interpretation is the product.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 8v4l3 2" stroke-linecap="round"/><circle cx="12" cy="12" r="9"/></svg></div>
+            <div class="num-tag">03</div>
+            <h3>Targeted therapies</h3>
+            <p>Where clinically indicated: HRT/TRT, IV micronutrient therapy, injectables, and prescription pathways — under full governance.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5" stroke-linecap="round"/></svg></div>
+            <div class="num-tag">04</div>
+            <h3>Your living record</h3>
+            <p>A secure platform holding results, trends, protocols and clinician messaging — reviewed at every retest.</p>
+          </article>
+        </div>
+        <div class="center mt-6" data-reveal>
+          <a href="membership.html" class="btn btn-ghost">Explore membership <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ STAT BAND (dark) ============ -->
+    <section class="section band-dark">
+      <div class="container">
+        <div class="center mx-auto measure" data-reveal>
+          <p class="eyebrow center">Why longitudinal wins</p>
+          <h2 class="mt-3 measure mx-auto">Physiology is a trajectory, not a single point</h2>
+        </div>
+        <div class="grid cols-3 mt-6" data-reveal-stagger data-stagger="120">
+          <div class="stat-lg">
+            <div class="num"><span data-count="70" data-suffix="+">70+</span></div>
+            <div class="label">Biomarkers per comprehensive panel — versus a handful on a standard NHS physical.</div>
+          </div>
+          <div class="stat-lg">
+            <div class="num"><span data-count="60">60</span>–<span data-count="75">75</span></div>
+            <div class="label">Minutes of clinician time per review. Enough to understand the whole person.</div>
+          </div>
+          <div class="stat-lg">
+            <div class="num">∞</div>
+            <div class="label">Every retest plotted against your own baseline. We track the change, not just the snapshot.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ JOURNEY / STEPS ============ -->
+    <section class="section">
+      <div class="container">
+        <div class="split" style="align-items:start">
+          <div data-reveal style="position:sticky;top:120px">
+            <p class="eyebrow">The patient journey</p>
+            <h2 class="mt-3 mb-3">From first test to lifelong partnership</h2>
+            <p class="lead">Every touchpoint is designed to move from a single question to an ongoing relationship with a clinician who knows you.</p>
+            <a href="book.html" class="btn btn-primary mt-4">Start with a consultation <span class="arrow" aria-hidden="true">→</span></a>
+          </div>
+          <div class="steps" data-reveal>
+            <div class="step"><div class="step-num"></div><div class="step-body"><h3>Consultation &amp; baseline</h3><p>We start with a conversation about your goals, history and concerns — then build a testing baseline that fits, not a fixed menu.</p><span class="step-tag">60–75 minutes</span></div></div>
+            <div class="step"><div class="step-num"></div><div class="step-body"><h3>Comprehensive testing</h3><p>Bloods drawn locally or via our national lab partners. 70+ markers across metabolic, hormonal, inflammatory and cardiovascular systems.</p><span class="step-tag">Results in days</span></div></div>
+            <div class="step"><div class="step-num"></div><div class="step-body"><h3>Clinician interpretation</h3><p>A prescribing clinician reads every marker and walks you through what it means — what's optimal, what to watch, and what needs nothing at all.</p><span class="step-tag">The differentiator</span></div></div>
+            <div class="step"><div class="step-num"></div><div class="step-body"><h3>Your protocol</h3><p>A personalised plan: lifestyle, targeted supplementation, and therapies only where the evidence supports them.</p><span class="step-tag">Built for you</span></div></div>
+            <div class="step"><div class="step-num"></div><div class="step-body"><h3>Retest &amp; refine</h3><p>We plot progress against your baseline and adjust. The relationship — not the one-off test — is what keeps you well.</p><span class="step-tag">Ongoing</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TRANSPARENCY PULLQUOTE ============ -->
+    <section class="section band-dark">
+      <div class="container">
+        <div class="split">
+          <div data-reveal>
+            <p class="eyebrow">Radical transparency</p>
+            <p class="pullquote mt-3">We'll tell you when a test isn't worth doing — and when you <span class="hl">don't need to spend more.</span></p>
+          </div>
+          <div data-reveal>
+            <p class="lead">The sector has a credibility problem built on overpromising. We do the opposite: open pricing, honest interpretation, and the willingness to say a result is normal and no further spend is warranted.</p>
+            <p class="mt-3">Counter-intuitively, telling a client they don't need something is one of the most powerful trust-builders there is — and trust is what the wider sector conspicuously lacks.</p>
+            <a href="science.html" class="link-underline mt-4" style="color:var(--on-ink)">Read our approach <span class="arrow" aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FINAL CTA ============ -->
+    <section class="section">
+      <div class="container">
+        <div class="cta-band" data-reveal>
+          <span class="ring" style="width:340px;height:340px;top:-120px;left:-80px"></span>
+          <span class="ring" style="width:520px;height:520px;bottom:-260px;right:-120px"></span>
+          <div style="position:relative">
+            <p class="eyebrow center" style="color:rgba(244,239,229,.85)">Brighton &amp; Hove</p>
+            <h2 class="mt-3">Your healthiest decades start with one conversation</h2>
+            <p>Book a consultation with an Active Labs clinician. No obligation, no pressure — just an honest look at where your health stands today.</p>
+            <a href="book.html" class="btn btn-primary btn-lg">Book a consultation <span class="arrow" aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

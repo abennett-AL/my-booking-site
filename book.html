@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book a Consultation — Active Labs</title>
+  <meta name="description" content="Book a consultation with an Active Labs clinician in Brighton & Hove. An honest, no-obligation look at where your health stands today.">
+  <link rel="icon" type="image/svg+xml" href="assets/img/activelabs-mark.svg">
+  <link rel="apple-touch-icon" href="assets/img/activelabs-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body data-page="book">
+  <main>
+    <section class="page-hero" style="padding-bottom:0">
+      <div class="container">
+        <p class="breadcrumb hero-fade">Home / Book</p>
+        <h1 class="hero-fade">Book a <span class="serif-italic text-green">consultation.</span></h1>
+      </div>
+    </section>
+
+    <section class="section-tight">
+      <div class="container">
+        <div class="split" style="align-items:start">
+          <!-- Left: reassurance -->
+          <div data-reveal style="position:sticky;top:120px">
+            <p class="lead">A relaxed, 60–75 minute conversation with a clinician about your goals, history and concerns. No obligation, no pressure — and if testing isn't right for you yet, we'll say so.</p>
+            <ul class="ticks mt-4">
+              <li><span class="tk" aria-hidden="true">◆</span><div>We'll respond within one working day to confirm a time.</div></li>
+              <li><span class="tk" aria-hidden="true">◆</span><div>In-clinic in Brighton &amp; Hove, or by secure video.</div></li>
+              <li><span class="tk" aria-hidden="true">◆</span><div>Transparent pricing shared upfront — always.</div></li>
+            </ul>
+            <div class="mt-6" style="padding-top:1.6rem;border-top:1px solid var(--line)">
+              <p style="font-size:.9rem">Prefer to talk first?</p>
+              <p class="mt-1"><a href="mailto:hello@activelabs.health" class="link-underline">hello@activelabs.health</a></p>
+              <p class="mt-1"><a href="tel:+441273000000" class="link-underline">+44 (0)1273 000 000</a></p>
+            </div>
+          </div>
+
+          <!-- Right: form -->
+          <div data-reveal>
+            <div class="form-wrap">
+              <form data-booking novalidate>
+                <div class="form-row">
+                  <div class="field">
+                    <label for="fname">First name <span class="req">*</span></label>
+                    <input id="fname" name="fname" type="text" autocomplete="given-name" required>
+                    <span class="err-msg">Please enter your first name.</span>
+                  </div>
+                  <div class="field">
+                    <label for="lname">Last name <span class="req">*</span></label>
+                    <input id="lname" name="lname" type="text" autocomplete="family-name" required>
+                    <span class="err-msg">Please enter your last name.</span>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="field">
+                    <label for="email">Email <span class="req">*</span></label>
+                    <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required>
+                    <span class="err-msg">Please enter a valid email address.</span>
+                  </div>
+                  <div class="field">
+                    <label for="phone">Phone</label>
+                    <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel">
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label>What are you most interested in?</label>
+                  <div class="chip-select">
+                    <input type="checkbox" id="i1" name="interest" value="baseline"><label for="i1">Baseline testing</label>
+                    <input type="checkbox" id="i2" name="interest" value="optimise"><label for="i2">Ongoing optimisation</label>
+                    <input type="checkbox" id="i3" name="interest" value="hormones"><label for="i3">Hormone health</label>
+                    <input type="checkbox" id="i4" name="interest" value="metabolic"><label for="i4">Metabolic / weight</label>
+                    <input type="checkbox" id="i5" name="interest" value="unsure"><label for="i5">Not sure yet</label>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="field">
+                    <label for="pref">Preferred format</label>
+                    <select id="pref" name="pref">
+                      <option value="clinic">In clinic — Brighton &amp; Hove</option>
+                      <option value="video">Secure video call</option>
+                      <option value="either">Either is fine</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label for="hear">How did you hear about us?</label>
+                    <select id="hear" name="hear">
+                      <option value="">Select…</option>
+                      <option>Search</option><option>Instagram / social</option>
+                      <option>The Active Labs Podcast</option><option>Referral from a friend</option>
+                      <option>Local press</option><option>Other</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label for="msg">Anything you'd like us to know?</label>
+                  <textarea id="msg" name="msg" placeholder="Goals, symptoms, questions, or preferred times…"></textarea>
+                  <span class="hint">Please don't share sensitive medical details here — we'll cover those securely in your consultation.</span>
+                </div>
+
+                <button type="submit" class="btn btn-accent btn-lg" style="width:100%;justify-content:center">Request my consultation</button>
+                <p class="hint center mt-2">By submitting you agree to be contacted about your enquiry. We'll never share your details.</p>
+              </form>
+
+              <div class="form-success">
+                <div class="check" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <h3>Request received</h3>
+                <p class="mt-2 measure-sm mx-auto">Thank you — we'll be in touch within one working day to confirm your consultation. Keep an eye on your inbox.</p>
+                <a href="index.html" class="btn btn-ghost mt-4">Back to home</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
