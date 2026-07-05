@@ -29,6 +29,7 @@
       return `<a href="${href}"${active}>${label}</a>`;
     }).join('');
     const mlinks = NAV.map(([href, label]) => `<a href="${href}">${label}</a>`).join('');
+    // (waitlist CTA appended in mobile menu below)
 
     const header = document.createElement('header');
     header.className = 'site-header';
@@ -40,14 +41,14 @@
           </a>
           <div class="nav-links">${links}</div>
           <div class="nav-cta">
-            <a href="book.html" class="btn btn-primary">Book a consultation <span class="arrow" aria-hidden="true">→</span></a>
+            <a href="book.html" class="btn btn-primary">Join the waitlist <span class="arrow" aria-hidden="true">→</span></a>
             <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
               <span></span><span></span><span></span>
             </button>
           </div>
         </nav>
       </div>
-      <div class="mobile-menu">${mlinks}<a href="book.html" class="btn btn-primary" style="font-family:var(--font-body);font-size:1rem">Book a consultation</a></div>
+      <div class="mobile-menu">${mlinks}<a href="book.html" class="btn btn-primary" style="font-family:var(--font-body);font-size:1rem">Join the waitlist</a></div>
     `;
     document.body.prepend(header);
 
