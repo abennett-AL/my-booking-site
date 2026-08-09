@@ -4,6 +4,46 @@
   publish = "."
   command = ""
 
+# testing.html was renamed to what-we-test.html. Keep the old paths alive so
+# any existing link, bookmark or indexed result lands on the new page.
+[[redirects]]
+  from = "/testing"
+  to = "/what-we-test"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/testing.html"
+  to = "/what-we-test"
+  status = 301
+  force = true
+
+# science.html was renamed to longevity-lab.html.
+[[redirects]]
+  from = "/science"
+  to = "/longevity-lab"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/science.html"
+  to = "/longevity-lab"
+  status = 301
+  force = true
+
+# corporate.html was renamed to for-teams.html.
+[[redirects]]
+  from = "/corporate"
+  to = "/for-teams"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/corporate.html"
+  to = "/for-teams"
+  status = 301
+  force = true
+
 # Long-cache immutable static assets (CSS/JS/images/fonts)
 [[headers]]
   for = "/assets/*"

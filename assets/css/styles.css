@@ -4,7 +4,7 @@
    ============================================================ */
 
 /* ---------- Fonts ---------- */
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
 /* ---------- Design tokens ---------- */
 :root {
@@ -22,8 +22,33 @@
   /* Accents */
   --evergreen:    #33564A;
   --evergreen-2:  #294539;
+  --evergreen-tint: #33564A;      /* large "display" green — equals evergreen in light */
   --clay:         #B65C3C;
   --clay-soft:    #C77E5F;
+
+  /* Hero longevity score — off-white so it lifts off the cream card */
+  --score:        #FFFDF8;
+  --score-shadow: 0 1px 1px rgba(38,37,31,.10);
+
+  /* Accent pills / soft-green chips (delta badge, live-dot ring) */
+  --pill-bg:      rgba(51,86,74,.10);
+  --pill-border:  rgba(51,86,74,.20);
+  --live-ring:    rgba(51,86,74,.16);
+
+  /* Longevity Orbit — light uses the existing brand palette */
+  --orbit-text:   var(--ink);
+  --orbit-muted:  var(--muted);
+  --orbit-in:     var(--evergreen);   /* in range */
+  --orbit-act:    var(--clay);        /* act on */
+  --orbit-hair:   rgba(38,37,31,.16);
+  --orbit-track:  rgba(38,37,31,.10);
+  /* Core glow — light: a golden sun burning through the cream haze —
+     hot amber heart, warm clay bloom, quick falloff so it stays luminous
+     rather than muddy on the pale background */
+  --glow-core:    rgba(228,150,80,.50);
+  --glow-mid:     rgba(199,110,70,.14);
+
+  color-scheme: light;
 
   /* Dark surfaces (footer / feature bands) */
   --ink-bg:       #211F1A;
@@ -32,7 +57,7 @@
   --on-ink-muted: #A9A192;
 
   /* Type */
-  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-display: 'Newsreader', Georgia, 'Times New Roman', serif;
   --font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono:    'JetBrains Mono', ui-monospace, 'SFMono-Regular', monospace;
 
@@ -90,7 +115,7 @@ h1, h2, h3, h4 {
   font-size: clamp(2.9rem, 7.5vw, 6.4rem);
   line-height: 0.98;
   letter-spacing: -0.03em;
-  font-weight: 380;
+  font-weight: 420; /* Newsreader sits a touch light at display sizes */
 }
 h2 { font-size: clamp(2rem, 4.2vw, 3.4rem); }
 h3 { font-size: clamp(1.35rem, 2.2vw, 1.9rem); }
@@ -101,8 +126,8 @@ p { color: var(--ink-soft); }
 
 .eyebrow {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.22em;
+  font-size: 0.86rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--evergreen);
   font-weight: 500;
@@ -201,17 +226,22 @@ p { color: var(--ink-soft); }
 .footer-logo { width: auto; height: 58px; }
 .nav-links { display: flex; align-items: center; gap: 2.1rem; }
 .nav-links a {
-  font-size: 0.92rem; font-weight: 500; color: var(--ink-soft);
+  font-size: 0.92rem; font-weight: 500; color: var(--evergreen);
   position: relative; transition: color .25s var(--ease); padding-block: 4px; white-space: nowrap;
 }
 .nav-links a::after {
   content:""; position:absolute; left:0; bottom:-2px; height:1.5px; width:100%;
-  background: var(--ink); transform: scaleX(0); transform-origin:right; transition: transform .35s var(--ease);
+  background: var(--evergreen); transform: scaleX(0); transform-origin:right; transition: transform .35s var(--ease);
 }
-.nav-links a:hover { color: var(--ink); }
+.nav-links a:hover { color: var(--evergreen-2); }
 .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); transform-origin:left; }
-.nav-links a.active { color: var(--ink); }
+.nav-links a.active { color: var(--evergreen); }
 .nav-cta { display: flex; align-items: center; gap: 1.1rem; }
+.nav-login {
+  font-size: 0.92rem; font-weight: 500; color: var(--evergreen);
+  white-space: nowrap; transition: color .25s var(--ease);
+}
+.nav-login:hover { color: var(--evergreen-2); }
 
 .nav-toggle { display: none; width: 44px; height: 44px; flex-direction: column; justify-content: center; align-items: center; gap: 5px; }
 .nav-toggle span { display:block; width: 22px; height: 1.6px; background: var(--ink); transition: transform .35s var(--ease), opacity .25s var(--ease); }
@@ -220,7 +250,7 @@ p { color: var(--ink-soft); }
 .nav-open .nav-toggle span:nth-child(3) { transform: translateY(-6.6px) rotate(-45deg); }
 
 @media (max-width: 940px) {
-  .nav-links, .nav-cta .btn { display: none; }
+  .nav-links, .nav-cta .btn, .nav-login { display: none; }
   .nav-toggle { display: flex; }
   .mobile-menu { display: flex; }
 }
@@ -278,11 +308,11 @@ p { color: var(--ink-soft); }
 }
 .chart-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.4rem; gap: 1rem; }
 .chart-k { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
-.chart-score { font-family: var(--font-display); font-size: clamp(2.4rem, 4vw, 3.1rem); line-height: 1; letter-spacing: -0.02em; margin-top: 0.4rem; }
+.chart-score { font-family: var(--font-display); font-size: clamp(2.4rem, 4vw, 3.1rem); line-height: 1; letter-spacing: -0.02em; margin-top: 0.4rem; color: var(--score); text-shadow: var(--score-shadow); }
 .chart-score .chart-unit { font-size: 0.95rem; color: var(--muted); margin-left: 0.3rem; letter-spacing: 0; }
 .chart-delta {
   font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.03em; white-space: nowrap;
-  color: var(--evergreen); background: rgba(51,86,74,.10); border: 1px solid rgba(51,86,74,.20);
+  color: var(--evergreen); background: var(--pill-bg); border: 1px solid var(--pill-border);
   padding: 0.4rem 0.7rem; border-radius: 100px; display: inline-flex; align-items: center; gap: 0.35em;
   opacity: 0; transform: translateY(-6px); transition: opacity .6s var(--ease) 1.9s, transform .6s var(--ease) 1.9s;
 }
@@ -349,7 +379,9 @@ p { color: var(--ink-soft); }
    MARQUEE (biomarker ticker)
    ============================================================ */
 .marquee { border-block: 1px solid var(--line); padding-block: 1.15rem; overflow: hidden; background: var(--paper-2); }
-.marquee-track { display: flex; gap: 3.2rem; white-space: nowrap; width: max-content; animation: marquee 42s linear infinite; }
+/* Duration is tied to track width: the 16-category track is 1.59x the old
+   10-item one, so 42s was scrolling it 60% faster. 67s holds ~56px/s. */
+.marquee-track { display: flex; gap: 3.2rem; white-space: nowrap; width: max-content; animation: marquee 67s linear infinite; }
 .marquee:hover .marquee-track { animation-play-state: paused; }
 .marquee-item { font-family: var(--font-mono); font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); display: inline-flex; align-items: center; gap: 3.2rem; }
 .marquee-item::after { content: "✦"; color: var(--clay); font-size: .7rem; }
@@ -420,9 +452,12 @@ p { color: var(--ink-soft); }
 .plan-badge { align-self: flex-start; font-family: var(--font-mono); font-size: .64rem; letter-spacing: .16em; text-transform: uppercase; background: var(--clay); color: var(--paper); padding: .3rem .7rem; border-radius: 100px; margin-bottom: 1.1rem; }
 .plan h3 { font-family: var(--font-display); margin-bottom: .3rem; }
 .plan .plan-sub { font-size: .9rem; margin-bottom: 1.4rem; }
-.plan-price { display: flex; align-items: baseline; gap: .4rem; margin-bottom: 1.5rem; }
+.plan-price { display: flex; align-items: baseline; gap: .4rem; margin-bottom: .5rem; }
 .plan-price .amt { font-family: var(--font-display); font-size: 3rem; letter-spacing: -0.02em; }
 .plan-price .per { font-size: .9rem; color: var(--muted); }
+.plan-bill { font-size: .82rem; color: var(--muted); margin-bottom: 1.4rem; }
+.plan-bill strong { color: inherit; font-weight: 600; }
+.plan.featured .plan-bill { color: var(--on-ink-muted); }
 .plan .ticks { flex: 1; margin-bottom: 1.8rem; }
 .plan .btn { width: 100%; justify-content: center; }
 .plan.featured .btn-primary { background: var(--paper); color: var(--ink); }
@@ -476,6 +511,11 @@ p { color: var(--ink-soft); }
 .cta-band .btn-primary { background: var(--paper); color: var(--ink); }
 .cta-band .btn-primary:hover { background: var(--clay); color: var(--paper); }
 .cta-band .ring { position:absolute; border: 1px solid rgba(244,239,229,.14); border-radius: 50%; }
+/* .btn is nowrap by design, which clips a long CTA label inside the band's
+   overflow:hidden on narrow screens. Let these ones wrap instead. */
+@media (max-width: 600px) {
+  .cta-band .btn { white-space: normal; max-width: 100%; text-align: center; justify-content: center; }
+}
 
 /* ============================================================
    FORM
@@ -555,7 +595,386 @@ p { color: var(--ink-soft); }
 /* utilities */
 .mt-1{margin-top:.5rem}.mt-2{margin-top:1rem}.mt-3{margin-top:1.5rem}.mt-4{margin-top:2rem}.mt-6{margin-top:3rem}
 .mb-2{margin-bottom:1rem}.mb-3{margin-bottom:1.5rem}.mb-4{margin-bottom:2rem}.mb-6{margin-bottom:3rem}
-.text-clay{color:var(--clay)}.text-green{color:var(--evergreen)}
+.text-clay{color:var(--clay)}.text-green{color:var(--evergreen-tint)}
 .divider-line{height:1px;background:var(--line);border:none}
 .tag-row{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.4rem}
 .tag{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.06em;padding:.4rem .8rem;border:1px solid var(--line);border-radius:100px;color:var(--ink-soft)}
+
+/* ============================================================
+   PATIENT DASHBOARD SHOWCASE (scroll-driven sticky slideshow)
+   ============================================================ */
+.dash-showcase { padding-block: clamp(4rem, 9vw, 8rem); overflow: clip; background: linear-gradient(180deg, var(--paper-2), var(--paper)); }
+.dash-grid { display: grid; grid-template-columns: 1.32fr 0.82fr; gap: clamp(2rem, 4vw, 4rem); align-items: start; }
+
+/* LEFT — sticky media column */
+.dash-media { position: sticky; top: 0; align-self: start; height: 100vh; display: flex; align-items: center; }
+.dash-screens { display: grid; width: 100%; }
+.dash-screen {
+  grid-area: 1 / 1; color: var(--ink);
+  background: linear-gradient(165deg, #FFFFFF, var(--card));
+  border: 1px solid var(--line); border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg); overflow: hidden;
+  opacity: 0; transform: translateY(22px) scale(.985); pointer-events: none;
+  transition: opacity .6s var(--ease), transform .7s var(--ease);
+}
+.dash-screen.is-active { opacity: 1; transform: none; pointer-events: auto; }
+.dash-screen p { color: var(--ink-soft); }
+/* Real app captures — width/height attrs reserve space, so no layout shift */
+.ds-shot { display: block; width: 100%; height: auto; }
+
+/* app-window chrome */
+.ds-chrome { display: flex; align-items: center; gap: .5rem; padding: .85rem 1.1rem; border-bottom: 1px solid var(--line); background: rgba(38,37,31,.02); }
+.ds-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--line-strong); }
+.ds-dot:nth-child(1){ background: var(--clay-soft); }
+.ds-tab { margin-left: .6rem; font-family: var(--font-mono); font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.ds-body { padding: clamp(1.3rem, 2.4vw, 1.9rem); }
+.ds-k { font-family: var(--font-mono); font-size: .66rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+
+/* screen 0 — score + chart */
+.ds-scorehead { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 1.3rem; }
+.ds-score { font-family: var(--font-display); font-size: clamp(2.2rem, 3.6vw, 2.9rem); line-height: 1; letter-spacing: -.02em; margin-top: .35rem; }
+.ds-score .ds-unit { font-size: .9rem; color: var(--muted); margin-left: .3rem; }
+.ds-delta { font-family: var(--font-mono); font-size: .68rem; white-space: nowrap; color: var(--evergreen); background: rgba(51,86,74,.10); border: 1px solid rgba(51,86,74,.20); padding: .38rem .65rem; border-radius: 100px; display: inline-flex; align-items: center; gap: .35em; }
+.ds-delta .tri { font-size: .8em; }
+.ds-chart svg { width: 100%; height: clamp(180px, 24vw, 240px); display: block; }
+.ds-xaxis { display: flex; justify-content: space-between; margin-top: .7rem; font-family: var(--font-mono); font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+
+/* screen 1 — biomarker rows */
+.ds-rows { display: flex; flex-direction: column; }
+.ds-row { display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: .9rem; padding: .7rem 0; border-top: 1px solid var(--line); }
+.ds-row:first-child { border-top: none; }
+.ds-name { font-weight: 500; color: var(--ink); }
+.ds-val { font-family: var(--font-mono); font-size: .8rem; color: var(--ink-soft); }
+.ds-flag { font-family: var(--font-mono); font-size: .6rem; letter-spacing: .08em; text-transform: uppercase; padding: .28rem .55rem; border-radius: 100px; border: 1px solid; }
+.ds-flag.ok { color: var(--evergreen); background: rgba(51,86,74,.10); border-color: rgba(51,86,74,.22); }
+.ds-flag.watch { color: #9a6a1e; background: rgba(154,106,30,.10); border-color: rgba(154,106,30,.25); }
+.ds-flag.att { color: var(--clay); background: rgba(182,92,60,.10); border-color: rgba(182,92,60,.25); }
+
+/* screen 2 — protocol tasks */
+.ds-proto-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+.ds-adhere { font-family: var(--font-mono); font-size: .68rem; color: var(--evergreen); background: rgba(51,86,74,.10); border: 1px solid rgba(51,86,74,.20); padding: .32rem .6rem; border-radius: 100px; }
+.ds-tasks { list-style: none; display: flex; flex-direction: column; }
+.ds-tasks li { display: flex; align-items: center; gap: .75rem; padding: .62rem 0; border-top: 1px solid var(--line); color: var(--ink-soft); font-size: .92rem; }
+.ds-tasks li:first-child { border-top: none; }
+.ds-check { flex: none; width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid var(--line-strong); position: relative; }
+.ds-tasks li.done { color: var(--ink); }
+.ds-tasks li.done .ds-check { background: var(--evergreen); border-color: var(--evergreen); }
+.ds-tasks li.done .ds-check::after { content: ""; position: absolute; left: 5px; top: 2px; width: 5px; height: 9px; border: solid var(--card); border-width: 0 2px 2px 0; transform: rotate(45deg); }
+
+/* screen 3 — retest timeline */
+.ds-timeline { list-style: none; display: flex; flex-direction: column; }
+.ds-timeline li { display: grid; grid-template-columns: 92px 1fr; align-items: center; gap: 1rem; padding: .8rem 0; border-top: 1px solid var(--line); }
+.ds-timeline li:first-child { border-top: none; }
+.ds-when { font-family: var(--font-mono); font-size: .7rem; letter-spacing: .04em; color: var(--clay); }
+.ds-what { color: var(--ink); font-size: .94rem; }
+
+/* screen 4 — clinician note */
+.ds-note-head { display: flex; align-items: center; gap: .8rem; margin-bottom: 1rem; }
+.ds-avatar { flex: none; width: 40px; height: 40px; border-radius: 50%; background: var(--evergreen); color: var(--paper); display: grid; place-items: center; font-family: var(--font-mono); font-size: .72rem; letter-spacing: .05em; }
+.ds-note-from { font-weight: 500; color: var(--ink); }
+.ds-note-time { font-family: var(--font-mono); font-size: .64rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-top: .15rem; }
+.ds-note-body { font-size: .98rem; line-height: 1.6; }
+
+/* RIGHT — scrolling rail */
+.dash-intro { margin-bottom: clamp(2rem, 5vh, 3.5rem); }
+.dash-intro h2 { margin-top: .6rem; }
+.dash-intro .lead { margin-top: 1rem; max-width: 42ch; }
+.dash-steps { list-style: none; }
+.dash-step { min-height: 58vh; display: flex; flex-direction: column; justify-content: center; padding-block: 1rem; opacity: .32; transition: opacity .45s var(--ease); }
+.dash-step.is-active { opacity: 1; }
+.dash-step h3 { display: flex; align-items: baseline; gap: .8rem; font-size: clamp(1.4rem, 2.6vw, 2rem); }
+.dash-step p { margin-top: .9rem; max-width: 46ch; }
+.dash-cta { margin-top: 1.5rem; }
+
+/* reduced motion — no slide transform */
+@media (prefers-reduced-motion: reduce) {
+  .dash-screen { transition: opacity .3s linear; transform: none; }
+  .dash-screen.is-active { transform: none; }
+}
+
+/* MOBILE — screens relocated under each step via JS; no sticky/scroll-jack */
+@media (max-width: 899px) {
+  .dash-grid { grid-template-columns: 1fr; gap: 0; }
+  .dash-media { position: static; height: auto; display: block; }
+  .dash-media:empty { display: none; }
+  .dash-steps { display: flex; flex-direction: column; }
+  .dash-step { min-height: 0; opacity: 1; padding-block: 0 3rem; }
+  .dash-step .dash-screen { position: static; opacity: 1; transform: none; pointer-events: auto; margin-top: 1.3rem; }
+}
+
+/* ============================================================
+   THEME TOGGLE (header)
+   ============================================================ */
+.theme-toggle {
+  width: 40px; height: 40px; flex: 0 0 auto;
+  border-radius: 50%; border: 1px solid var(--line-strong);
+  display: grid; place-items: center; color: var(--evergreen);
+  transition: color .25s var(--ease), border-color .25s var(--ease), background .25s var(--ease), transform .35s var(--ease);
+}
+.theme-toggle:hover { border-color: var(--evergreen); transform: translateY(-1px); }
+.theme-toggle:focus-visible { outline: 2px solid var(--evergreen); outline-offset: 3px; }
+.theme-toggle svg { width: 19px; height: 19px; }
+.theme-toggle .icon-moon { display: block; }
+.theme-toggle .icon-sun  { display: none; }
+html[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+html[data-theme="dark"] .theme-toggle .icon-sun  { display: block; }
+
+/* ============================================================
+   DARK THEME
+   Accent · primary action  → #6FAE8B  (buttons, fills, live dot)
+   Tint · large display text → #9DCBAF
+   ============================================================ */
+html[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Paper / ink — surfaces build up from the base #14130F */
+  --paper:        #14130F;
+  --paper-2:      #1B1A15;
+  --paper-3:      #232118;
+  --card:         #1E1C16;
+  --ink:          #ECE6D9;
+  --ink-soft:     #B7B0A0;
+  --muted:        #8A8474;
+  --line:         rgba(236,230,217,0.12);
+  --line-strong:  rgba(236,230,217,0.22);
+
+  /* Greens */
+  --evergreen:      #6FAE8B;   /* accent · primary action */
+  --evergreen-2:    #82C0A0;   /* accent hover (brighter on dark) */
+  --evergreen-tint: #9DCBAF;   /* tint · large display text */
+  --clay:           #CE7B5A;
+  --clay-soft:      #DA967A;
+
+  /* Longevity score — lighter than the (now dark) card so it still stands out */
+  --score:        #F3EEE4;
+  --score-shadow: none;
+
+  /* Accent pills / soft-green chips — lifted so they read on dark */
+  --pill-bg:      rgba(111,174,139,.14);
+  --pill-border:  rgba(111,174,139,.32);
+  --live-ring:    rgba(111,174,139,.22);
+
+  /* Already-dark bands / footer — nudged to sit on the darker base */
+  --ink-bg:       #1B1A15;
+  --ink-bg-2:     #232118;
+  --on-ink:       #ECE6D9;
+  --on-ink-muted: #A9A192;
+
+  /* Longevity Orbit — dark instrument-panel palette */
+  --orbit-text:   #EDE7DA;
+  --orbit-muted:  #8A8474;
+  --orbit-in:     #9FBFA4;            /* sage — in range */
+  --orbit-act:    #C97B4A;            /* clay — act on */
+  --orbit-hair:   rgba(237,231,218,.15);
+  --orbit-track:  rgba(237,231,218,.12);
+  /* Core glow — dark: warm sun at the heart of the orbit */
+  --glow-core:    rgba(237,231,218,.22);
+  --glow-mid:     rgba(159,191,164,.08);
+}
+
+/* Header: condensed bar + logo swap handled in JS */
+html[data-theme="dark"] .site-header.scrolled {
+  background: rgba(20,19,15,0.82);
+  border-bottom-color: var(--line);
+}
+
+/* Primary action buttons carry the accent green in dark */
+html[data-theme="dark"] .btn-primary { background: var(--evergreen); color: #14130F; }
+html[data-theme="dark"] .btn-primary:hover { background: var(--evergreen-2); color: #14130F; }
+
+/* Glass hero chips → dark glass */
+html[data-theme="dark"] .hero-chip { background: rgba(30,28,22,0.72); }
+
+/* Large green initials use the display tint */
+html[data-theme="dark"] .member .portrait .mono-initials { color: var(--evergreen-tint); }
+
+/* CTA band — keep it a deep, calm green rather than a loud accent block */
+html[data-theme="dark"] .cta-band { background: #21463A; }
+html[data-theme="dark"] .cta-band h2 { color: #F4EFE5; }
+html[data-theme="dark"] .cta-band .ring { border-color: rgba(237,231,218,.14); }
+html[data-theme="dark"] .cta-band .btn-primary { background: var(--evergreen); color: #14130F; }
+html[data-theme="dark"] .cta-band .btn-primary:hover { background: var(--evergreen-2); color: #14130F; }
+
+/* Featured pricing plan sits on a dark card — give its CTA the accent */
+html[data-theme="dark"] .plan.featured .btn-primary { background: var(--evergreen); color: #14130F; }
+html[data-theme="dark"] .plan.featured .btn-primary:hover { background: var(--evergreen-2); color: #14130F; }
+
+/* Dashboard-showcase mock screens stay LIGHT (they depict the still-light app).
+   Re-declare light tokens inside them so their internals render as screenshots. */
+html[data-theme="dark"] .dash-screen {
+  --paper:#F4EFE5; --paper-2:#EFE8DA; --paper-3:#E8DFCD; --card:#FBF8F1;
+  --ink:#26251F; --ink-soft:#514E44; --muted:#837D6E;
+  --line:rgba(38,37,31,.12); --line-strong:rgba(38,37,31,.22);
+  --evergreen:#33564A; --evergreen-2:#294539; --clay:#B65C3C; --clay-soft:#C77E5F;
+  --pill-bg:rgba(51,86,74,.10); --pill-border:rgba(51,86,74,.20);
+  color: var(--ink);
+}
+
+/* ============================================================
+   LONGEVITY ORBIT (hero visual)
+   Instrument panel: composite score at the core, nine biomarkers
+   orbiting on three weighted rings. Built by initOrbit() in main.js.
+   ============================================================ */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* Sized so the full disc fits the first screen: width-capped on small
+   viewports, height-capped on laptops (header + heading + copy ≈ 300px). */
+.orbit {
+  position: relative; width: 100%;
+  max-width: min(94vw, 880px, calc(100dvh - 300px));
+  margin-inline: auto; aspect-ratio: 1 / 1;
+}
+
+/* Centered hero variant — compact heading, orbit as the centrepiece */
+.hero-centered { padding-top: clamp(5.5rem, 9vh, 7.5rem); padding-bottom: clamp(2rem, 4vw, 3.5rem); }
+.hero-centered .container { display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; z-index: 1; }
+.hero-intro { max-width: 860px; margin-inline: auto; }
+.hero-intro .eyebrow { margin-bottom: 0.6rem; }
+.hero-centered .display { font-size: clamp(1.9rem, 3.6vw, 3.1rem); line-height: 1.05; margin-bottom: 0; }
+.hero-body { max-width: 54ch; margin-inline: auto; color: var(--ink-soft); font-size: clamp(1rem, 1.4vw, 1.15rem); line-height: 1.55; }
+.hero-outro { margin-top: clamp(0.25rem, 1.5vw, 1rem); }
+.hero-outro .hero-actions { margin-top: 1.6rem; }
+.hero-actions.center { justify-content: center; }
+/* Negative margin eats the SVG's own empty top band (rings stop at r410
+   inside a 520 viewBox), so the disc sits right under the heading. */
+.hero-centered .hero-visual { margin-top: clamp(-4rem, -3.5vw, -1.5rem); width: 100%; }
+
+/* Starfield — the hero band is always a night sky, in both themes */
+.hero-stars {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 0;
+}
+.orbit-svg { width: 100%; height: 100%; display: block; overflow: visible; }
+
+/* Rings — hairline circles, fade in on load */
+.orbit-ring {
+  fill: none; stroke: var(--orbit-hair); stroke-width: 1;
+  opacity: 0; transition: opacity .9s var(--ease);
+}
+.orbit.is-live .orbit-ring { opacity: 1; }
+
+/* Core: progress dial + score */
+.orbit-track { fill: none; stroke: var(--orbit-track); }
+.orbit-prog  { fill: none; stroke: var(--orbit-in); stroke-linecap: round;
+  transition: stroke-dashoffset 1.2s var(--ease-in-out) .3s; }
+.orbit-score {
+  fill: var(--orbit-text); font-family: var(--font-display); font-weight: 420; letter-spacing: -0.02em;
+  /* Lining numerals — serifs with old-style figures drop the 6/8 below
+     the baseline, which reads as an upside-down glyph at this size */
+  font-variant-numeric: lining-nums;
+  font-feature-settings: 'lnum' 1;
+}
+.orbit-eyebrow, .orbit-unit { fill: var(--orbit-muted); font-family: var(--font-mono); text-transform: uppercase; }
+
+/* Spokes + markers */
+.orbit-spoke { stroke: var(--orbit-hair); stroke-width: 1; }
+.orb-marker {
+  opacity: 0; cursor: pointer;
+  transition: opacity .55s var(--ease);
+}
+.orbit.is-live .orb-marker { opacity: 1; }
+.orb-dot { transition: r .25s var(--ease); }
+.orb-label {
+  fill: var(--orbit-text); font-family: var(--font-mono);
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+/* Label carries the status colour (like the reference); value stays text */
+.orb-marker[data-status="in"]  .orb-label { fill: var(--orbit-in); }
+.orb-marker[data-status="act"] .orb-label { fill: var(--orbit-act); }
+.orb-value { fill: var(--orbit-text); font-family: var(--font-display); letter-spacing: -0.01em; }
+.orb-value .orb-unit { fill: var(--orbit-muted); font-family: var(--font-mono); letter-spacing: 0; }
+
+/* Corner caption — instrument-panel legend */
+.orbit-cap {
+  position: absolute; bottom: 0.25rem; z-index: 2;
+  font-family: var(--font-mono); font-size: 0.64rem;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--orbit-muted);
+  display: flex; flex-direction: column; gap: 0.45rem; pointer-events: none;
+}
+.orbit-cap.cap-bl { left: 0.25rem; align-items: flex-start; }
+.orbit-cap .cap-dot {
+  display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+  margin-right: 0.45em; vertical-align: 1px;
+}
+.orbit-cap .cap-dot.in  { background: var(--orbit-in); }
+.orbit-cap .cap-dot.act { background: var(--orbit-act); }
+@media (max-width: 640px) { .orbit-cap { display: none; } }
+/* Dim the rest while one marker is engaged */
+.orbit.is-dim .orb-marker:not(.is-active) { opacity: .35; }
+.orb-marker:focus { outline: none; }
+.orb-marker:focus-visible .orb-hit { stroke: var(--orbit-text); stroke-width: 1.5; }
+
+/* Tooltip breakdown */
+.orbit-tip {
+  position: absolute; z-index: 5; min-width: 220px; max-width: 310px;
+  padding: 0.95rem 1.05rem; border-radius: 14px;
+  background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow-md);
+  transform: translate(-50%, calc(-100% - 14px)); pointer-events: none;
+  transition: opacity .2s var(--ease); font-size: 0.9rem; text-align: left;
+}
+.orbit-tip[hidden] { display: none; }
+.orbit-tip .t-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.6rem; margin-bottom: 0.35rem; }
+.orbit-tip .t-name { font-family: var(--font-display); font-size: 1rem; line-height: 1.25; }
+.orbit-tip .t-status { flex: 0 0 auto; margin-top: 2px; font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.2rem 0.5rem; border-radius: 100px; }
+.orbit-tip .t-status.in  { color: var(--orbit-in);  background: color-mix(in srgb, var(--orbit-in) 14%, transparent); }
+.orbit-tip .t-status.act { color: var(--orbit-act); background: color-mix(in srgb, var(--orbit-act) 16%, transparent); }
+.orbit-tip .t-range { font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); margin-bottom: 0.55rem; }
+.orbit-tip .t-blurb { font-size: 0.82rem; line-height: 1.5; color: var(--ink-soft); }
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit-ring, .orb-marker { opacity: 1 !important; transition: none; }
+  .orbit-prog { transition: none; }
+}
+
+/* ============================================================
+   HERO = ALWAYS THE DARK INSTRUMENT PANEL
+   The hero band carries the dark theme's palette in BOTH themes:
+   a dark island on the light page, seamless in dark mode. Same
+   var-scoping pattern as the dash-screen light islands.
+   ============================================================ */
+.hero-centered {
+  --paper:        #14130F;
+  --paper-2:      #1B1A15;
+  --paper-3:      #232118;
+  --card:         #1E1C16;
+  --ink:          #ECE6D9;
+  --ink-soft:     #B7B0A0;
+  --muted:        #8A8474;
+  --line:         rgba(236,230,217,0.12);
+  --line-strong:  rgba(236,230,217,0.22);
+  --evergreen:      #6FAE8B;
+  --evergreen-2:    #82C0A0;
+  --evergreen-tint: #9DCBAF;
+  --clay:           #CE7B5A;
+  --clay-soft:      #DA967A;
+  --score:        #F3EEE4;
+  --score-shadow: none;
+  --orbit-text:   #EDE7DA;
+  --orbit-muted:  #8A8474;
+  --orbit-in:     #9FBFA4;
+  --orbit-act:    #C97B4A;
+  --orbit-hair:   rgba(237,231,218,.15);
+  --orbit-track:  rgba(237,231,218,.12);
+  --glow-core:    rgba(237,231,218,.22);
+  --glow-mid:     rgba(159,191,164,.08);
+  background: var(--paper);
+  color: var(--ink);
+}
+/* Primary CTA carries the accent green in the hero, matching dark mode */
+.hero-centered .btn-primary { background: var(--evergreen); color: #14130F; }
+.hero-centered .btn-primary:hover { background: var(--evergreen-2); color: #14130F; }
+
+/* Header floats over the dark hero — light-on-dark until it condenses.
+   JS toggles .on-dark (home page, unscrolled). */
+.site-header.on-dark {
+  --evergreen:   #9FBFA4;
+  --evergreen-2: #C9DBCE;
+  --ink:         #EDE7DA;
+  --line-strong: rgba(237,231,218,.28);
+}
+.site-header.on-dark .btn-primary { background: #6FAE8B; color: #14130F; }
+.site-header.on-dark .btn-primary:hover { background: #82C0A0; color: #14130F; }
+
