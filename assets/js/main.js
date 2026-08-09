@@ -69,11 +69,11 @@
 
   /* ---------- Nav links (single source of truth) ---------- */
   const NAV = [
-    ['index.html', 'How it Works'],
-    ['what-we-test.html', 'What We Test'],
-    ['longevity-lab.html', 'Longevity Lab'],
-    ['membership.html', 'Membership'],
-    ['for-teams.html', 'For Teams'],
+    ['/', 'How it Works'],
+    ['/what-we-test', 'What We Test'],
+    ['/longevity-lab', 'Longevity Lab'],
+    ['/membership', 'Membership'],
+    ['/for-teams', 'For Teams'],
   ];
 
   const page = (document.body.getAttribute('data-page') || 'index').toLowerCase();
@@ -81,7 +81,9 @@
   /* ---------- Build header ---------- */
   function buildHeader() {
     const links = NAV.map(([href, label]) => {
-      const active = href.replace('.html', '') === page ? ' class="active"' : '';
+      // Clean URLs: '/' is the home page (data-page "index"), '/x' matches data-page "x".
+      const slug = href === '/' ? 'index' : href.slice(1);
+      const active = slug === page ? ' class="active"' : '';
       return `<a href="${href}"${active}>${label}</a>`;
     }).join('');
     const mlinks = NAV.map(([href, label]) => `<a href="${href}">${label}</a>`).join('');
@@ -92,21 +94,21 @@
     header.innerHTML = `
       <div class="container container-wide">
         <nav class="nav">
-          <a href="index.html" class="brand" aria-label="Active Labs home">
+          <a href="/" class="brand" aria-label="Active Labs home">
             <img class="brand-logo" src="${currentTheme() === 'dark' ? LOGO_LIGHT : LOGO_DARK}" alt="Active Labs" width="150" height="48">
           </a>
           <div class="nav-links">${links}</div>
           <div class="nav-cta">
             <button class="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false" title="Toggle theme">${themeToggleIcons}</button>
             <a href="${PORTAL_URL}" class="nav-login">Log in</a>
-            <a href="book.html" class="btn btn-primary">Join the waitlist <span class="arrow" aria-hidden="true">→</span></a>
+            <a href="/book" class="btn btn-primary">Join the waitlist <span class="arrow" aria-hidden="true">→</span></a>
             <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
               <span></span><span></span><span></span>
             </button>
           </div>
         </nav>
       </div>
-      <div class="mobile-menu">${mlinks}<a href="${PORTAL_URL}" class="btn btn-ghost" style="font-family:var(--font-body);font-size:1rem">Log in</a><a href="book.html" class="btn btn-primary" style="font-family:var(--font-body);font-size:1rem">Join the waitlist</a></div>
+      <div class="mobile-menu">${mlinks}<a href="${PORTAL_URL}" class="btn btn-ghost" style="font-family:var(--font-body);font-size:1rem">Log in</a><a href="/book" class="btn btn-primary" style="font-family:var(--font-body);font-size:1rem">Join the waitlist</a></div>
     `;
     document.body.prepend(header);
 
@@ -149,7 +151,7 @@
       <div class="container container-wide">
         <div class="footer-top">
           <div class="footer-brand">
-            <a href="index.html" class="brand" aria-label="Active Labs home">
+            <a href="/" class="brand" aria-label="Active Labs home">
               <img class="footer-logo" src="${LOGO_LIGHT}" alt="Active Labs" width="188" height="60">
             </a>
             <p>Preventive &amp; longevity medicine for Brighton &amp; Hove. Comprehensive bloodwork, clinician-led protocols, and a partnership in your long-term health.</p>
@@ -157,11 +159,11 @@
           <div class="footer-col">
             <h4>Explore</h4>
             <ul>
-              <li><a href="longevity-lab.html">Longevity Lab</a></li>
-              <li><a href="what-we-test.html">What We Test</a></li>
-              <li><a href="membership.html">Membership</a></li>
-              <li><a href="for-teams.html">For Teams</a></li>
-              <li><a href="about.html">About</a></li>
+              <li><a href="/longevity-lab">Longevity Lab</a></li>
+              <li><a href="/what-we-test">What We Test</a></li>
+              <li><a href="/membership">Membership</a></li>
+              <li><a href="/for-teams">For Teams</a></li>
+              <li><a href="/about">About</a></li>
             </ul>
           </div>
           <div class="footer-col">
