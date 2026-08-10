@@ -554,6 +554,50 @@ p { color: var(--ink-soft); }
 .chip-select input:checked + label { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 .chip-select label:hover { border-color: var(--ink); }
 
+/* Consent rows — explicit, unticked-by-default opt-ins.
+   UK GDPR Art. 9(2)(a) explicit consent + PECR reg. 22 marketing consent.
+   Each carries .field too, so the existing .err validation styling applies. */
+.consent { margin-bottom: 1rem; }
+.consent label {
+  display: grid; grid-template-columns: auto 1fr; gap: .7rem; align-items: start;
+  font-size: .84rem; font-weight: 400; line-height: 1.55; color: var(--ink-soft);
+  cursor: pointer; margin: 0;
+}
+.consent input[type="checkbox"] {
+  width: 1.1rem; height: 1.1rem; margin: .15rem 0 0; padding: 0;
+  accent-color: var(--evergreen); cursor: pointer;
+}
+.consent input[type="checkbox"]:focus-visible { outline: 2px solid var(--evergreen); outline-offset: 2px; }
+.consent.err input[type="checkbox"] { outline: 2px solid var(--clay); outline-offset: 2px; }
+.consent a { text-decoration: underline; }
+
+/* ============================================================
+   LEGAL / LONG-FORM PROSE (privacy notice)
+   ============================================================ */
+.legal { max-width: 74ch; margin-inline: auto; }
+.legal h2 { font-size: clamp(1.3rem, 2.4vw, 1.7rem); margin: 2.8rem 0 .9rem; }
+.legal h2:first-of-type { margin-top: 0; }
+.legal h3 { font-size: 1.02rem; margin: 1.6rem 0 .5rem; }
+.legal p, .legal li { color: var(--ink-soft); line-height: 1.75; }
+.legal p { margin-bottom: 1rem; }
+.legal ul { margin: 0 0 1.2rem 1.1rem; }
+.legal li { margin-bottom: .5rem; }
+.legal a { text-decoration: underline; }
+/* --ink-soft, not --muted: --muted only reaches 3.58:1 on paper, and this line
+   carries the notice's version and date, which has to stay legible. */
+.legal .legal-meta { font-family: var(--font-mono); font-size: .76rem; letter-spacing: .05em;
+  text-transform: uppercase; color: var(--ink-soft); }
+.legal table { width: 100%; border-collapse: collapse; margin: 0 0 1.4rem; font-size: .9rem; }
+.legal th, .legal td { text-align: left; padding: .7rem .8rem; border-bottom: 1px solid var(--line);
+  vertical-align: top; color: var(--ink-soft); }
+.legal th { font-weight: 600; color: var(--ink); }
+.legal .todo { background: rgba(193,106,74,.10); border-left: 3px solid var(--clay);
+  padding: .9rem 1.1rem; margin: 0 0 1.2rem; border-radius: 0 var(--radius) var(--radius) 0; }
+.legal .todo p { margin: 0; font-size: .88rem; color: var(--ink); }
+/* Unresolved facts awaiting sign-off — deliberately loud so they can't ship unnoticed. */
+.legal .fill { background: rgba(193,106,74,.18); color: var(--clay); font-weight: 500;
+  padding: .05em .4em; border-radius: 3px; }
+
 /* ============================================================
    FOOTER
    ============================================================ */

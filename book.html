@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <script>(function(){try{if(localStorage.getItem("al-theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}})();</script>
-  <link rel="stylesheet" href="assets/css/styles.css?v=30">
+  <link rel="stylesheet" href="assets/css/styles.css?v=31">
 </head>
 <body data-page="book">
   <main>
@@ -78,6 +78,7 @@
                     <input type="checkbox" id="i4" name="interest" value="metabolic"><label for="i4">Metabolic / weight</label>
                     <input type="checkbox" id="i5" name="interest" value="unsure"><label for="i5">Not sure yet</label>
                   </div>
+                  <span class="hint">Optional — leave blank if you'd rather not say. Some of these describe a health interest, which UK data protection law treats as health information about you, so we ask for your explicit consent below before storing it.</span>
                 </div>
 
                 <div class="form-row">
@@ -101,13 +102,29 @@
 
                 <div class="field">
                   <label for="msg">Anything you'd like us to know?</label>
-                  <textarea id="msg" name="msg" placeholder="Goals, symptoms, questions, or preferred times…"></textarea>
-                  <span class="hint">Please don't share sensitive medical details here — we'll cover those securely in your consultation.</span>
+                  <textarea id="msg" name="msg" placeholder="Questions, or preferred times…"></textarea>
+                  <span class="hint">Please don't share symptoms or medical details here — we'll cover those securely in your consultation once we open.</span>
+                </div>
+
+                <div class="field consent">
+                  <label for="consent-data">
+                    <input type="checkbox" id="consent-data" name="consent-data" value="yes" required>
+                    <span>I consent to Active Labs storing the details I've given above — including any health interests I've ticked, which are health information about me — so you can contact me about opening. I've read the <a href="/privacy">Privacy Notice</a>. <span class="req">*</span></span>
+                  </label>
+                  <span class="err-msg">Please confirm your consent so we can store your details.</span>
+                </div>
+
+                <div class="field consent">
+                  <label for="consent-marketing">
+                    <input type="checkbox" id="consent-marketing" name="consent-marketing" value="yes" required>
+                    <span>Email me occasional updates about the Active Labs launch. I can unsubscribe at any time, from any email. <span class="req">*</span></span>
+                  </label>
+                  <span class="err-msg">The waitlist works by email, so we need this to add you to it.</span>
                 </div>
 
                 <button type="submit" class="btn btn-accent btn-lg" style="width:100%;justify-content:center">Join the waitlist</button>
                 <p class="form-submit-error" role="alert" hidden>Sorry — something went wrong adding you to the waitlist. Please try again, or email <a href="mailto:hello@activelabs.health">hello@activelabs.health</a>.</p>
-                <p class="hint center mt-2">By joining you agree to be contacted about the Active Labs launch. We'll never share your details.</p>
+                <p class="hint center mt-2">We'll never share or sell your details. You can withdraw consent, or ask us to delete everything we hold about you, at any time by emailing <a href="mailto:hello@activelabs.health">hello@activelabs.health</a>. See our <a href="/privacy">Privacy Notice</a>.</p>
               </form>
 
               <div class="form-success">
@@ -122,6 +139,6 @@
       </div>
     </section>
   </main>
-  <script src="assets/js/main.js?v=30"></script>
+  <script src="assets/js/main.js?v=31"></script>
 </body>
 </html>

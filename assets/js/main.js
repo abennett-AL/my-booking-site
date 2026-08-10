@@ -185,14 +185,17 @@
           </div>
         </div>
         <p class="footer-disclaimer">
-          Active Labs provides private preventive-health and optimisation services and is not a substitute for NHS emergency or acute care.
-          Diagnostic testing is provided under clinical governance by GMC-registered clinicians and appropriate prescribers.
+          Active Labs is preparing to open a private preventive-health and optimisation service in Brighton &amp; Hove. It will not be a substitute for NHS emergency or acute care.
+          All clinical services will be delivered by GMC-registered clinicians under a documented governance framework.
+          Our CQC registration application is in progress; we will not provide regulated services before it is granted, and we will not open until our Medical Director is appointed.
           All pricing shown is indicative and for illustration only. Nothing on this site constitutes medical advice.
         </p>
         <div class="footer-bottom">
-          <span>© <span data-year></span> Active Labs Ltd · Brighton &amp; Hove, UK</span>
+          <!-- No "Ltd" until Companies House registration completes: using it before
+               incorporation is an offence under Companies Act 2006 s.1194. -->
+          <span>© <span data-year></span> Active Labs · Brighton &amp; Hove, UK</span>
           <span style="display:flex;gap:1.5rem;flex-wrap:wrap">
-            <a href="#">Privacy</a><a href="#">Terms</a><a href="#">Clinical governance</a><a href="#">CQC</a>
+            <a href="/privacy">Privacy</a><a href="#">Terms</a><a href="#">Clinical governance</a>
           </span>
         </div>
       </div>
@@ -378,9 +381,13 @@
       let valid = true;
       form.querySelectorAll('[required]').forEach(input => {
         const field = input.closest('.field');
-        const ok = input.type === 'email'
-          ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim())
-          : input.value.trim() !== '';
+        // Checkboxes must be tested with .checked — an unticked box still
+        // reports value "on", so the text test below would wrongly pass it.
+        const ok = input.type === 'checkbox'
+          ? input.checked
+          : input.type === 'email'
+            ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim())
+            : input.value.trim() !== '';
         if (field) field.classList.toggle('err', !ok);
         if (!ok && valid) { valid = false; input.focus(); }
       });
@@ -414,10 +421,12 @@
         .catch(showError);
     });
     form.querySelectorAll('input, select, textarea').forEach(input => {
-      input.addEventListener('input', () => {
+      const clear = () => {
         const field = input.closest('.field');
         if (field && field.classList.contains('err')) field.classList.remove('err');
-      });
+      };
+      input.addEventListener('input', clear);
+      input.addEventListener('change', clear); // checkboxes / selects
     });
   }
 
