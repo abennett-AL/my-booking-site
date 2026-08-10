@@ -269,10 +269,14 @@ p { color: var(--ink-soft); }
   opacity: 0; transform: translateY(14px); transition: opacity .5s var(--ease), transform .5s var(--ease);
 }
 .nav-open .mobile-menu a { opacity: 1; transform: translateY(0); }
-.nav-open .mobile-menu a:nth-child(1){ transition-delay:.08s } .nav-open .mobile-menu a:nth-child(2){ transition-delay:.14s }
-.nav-open .mobile-menu a:nth-child(3){ transition-delay:.20s } .nav-open .mobile-menu a:nth-child(4){ transition-delay:.26s }
-.nav-open .mobile-menu a:nth-child(5){ transition-delay:.32s } .nav-open .mobile-menu a:nth-child(6){ transition-delay:.38s }
-.mobile-menu .btn { margin-top: 1.5rem; align-self: flex-start; color: var(--paper); font-family: var(--font-body); font-size: 1rem; opacity:0; transform: translateY(14px); transition: opacity .5s var(--ease) .42s, transform .5s var(--ease) .42s; }
+/* Stagger delays are set per-item in buildHeader() rather than with nth-child
+   rules, which silently stopped staggering when the nav grew past six links. */
+/* Scope the cream text to .btn-primary only. Applied to every .btn it also hit
+   .btn-ghost, which has a transparent fill — cream on the cream menu made the
+   "Log in" button render as an empty outline with no readable label. */
+.mobile-menu .btn { margin-top: 1.5rem; align-self: flex-start; font-family: var(--font-body); font-size: 1rem; opacity:0; transform: translateY(14px); transition: opacity .5s var(--ease) .42s, transform .5s var(--ease) .42s; }
+.mobile-menu .btn-primary { color: var(--paper); }
+.mobile-menu .btn-ghost { color: var(--ink); border-color: var(--line-strong); }
 .nav-open .mobile-menu .btn { opacity:1; transform: translateY(0); }
 
 /* ============================================================
@@ -546,7 +550,11 @@ p { color: var(--ink-soft); }
 .form-submit-error a { text-decoration: underline; }
 
 .chip-select { display: flex; flex-wrap: wrap; gap: .6rem; }
-.chip-select input { position: absolute; opacity: 0; pointer-events: none; }
+/* Visually hidden, but MUST also be size-constrained: without an explicit
+   width these inherit `.field input { width: 100% }`, and although invisible
+   they still occupy layout, pushing the page ~7px wider than the viewport and
+   giving every page with a chip-select a horizontal scroll on mobile. */
+.chip-select input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
 .chip-select label {
   display: inline-flex; padding: .6rem 1rem; border: 1px solid var(--line-strong); border-radius: 100px;
   font-size: .88rem; cursor: pointer; margin: 0; transition: all .2s var(--ease); color: var(--ink-soft);
@@ -877,6 +885,14 @@ html[data-theme="dark"] .dash-screen {
 .hero-centered .container { display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; z-index: 1; }
 .hero-intro { max-width: 860px; margin-inline: auto; }
 .hero-intro .eyebrow { margin-bottom: 0.6rem; }
+/* The hero eyebrow only: at the default 0.86rem the 0.2em tracking makes this
+   line overpower the headline beneath it on a phone. Scoped to .hero-intro so
+   section eyebrows elsewhere keep their size. 0.66rem/0.14em is the largest
+   pairing that still holds "…and pro-active" on one line at 375px — above that
+   it wraps at the hyphen and breaks the word across two lines. */
+@media (max-width: 620px) {
+  .hero-intro .eyebrow { font-size: 0.66rem; letter-spacing: 0.14em; }
+}
 .hero-centered .display { font-size: clamp(1.9rem, 3.6vw, 3.1rem); line-height: 1.05; margin-bottom: 0; }
 .hero-body { max-width: 54ch; margin-inline: auto; color: var(--ink-soft); font-size: clamp(1rem, 1.4vw, 1.15rem); line-height: 1.55; }
 .hero-outro { margin-top: clamp(0.25rem, 1.5vw, 1rem); }
@@ -1022,22 +1038,54 @@ html[data-theme="dark"] .dash-screen {
 .site-header.on-dark .btn-primary { background: #6FAE8B; color: #14130F; }
 .site-header.on-dark .btn-primary:hover { background: #82C0A0; color: #14130F; }
 
+/* The .on-dark re-tint above is for the header BAR floating over the always-dark
+   hero. Two of its children — the mobile menu and the dropdown panel — paint
+   their own surfaces from --paper / --card, which stay light, so inheriting the
+   re-tint rendered cream text on a cream sheet (contrast 1.08:1: an effectively
+   invisible menu on the homepage). Re-scope the tokens back to the page theme
+   inside those panels, the same "light island" trick used for .dash-screen. */
+.site-header.on-dark .mobile-menu,
+.site-header.on-dark .nav-drop-panel {
+  --ink:         #26251F;
+  --ink-soft:    #514E44;
+  --evergreen:   #33564A;
+  --evergreen-2: #294539;
+  --line-strong: rgba(38,37,31,.22);
+}
+html[data-theme="dark"] .site-header.on-dark .mobile-menu,
+html[data-theme="dark"] .site-header.on-dark .nav-drop-panel {
+  --ink:         #ECE6D9;
+  --ink-soft:    #B7B0A0;
+  --evergreen:   #6FAE8B;
+  --evergreen-2: #82C0A0;
+  --line-strong: rgba(237,231,218,.28);
+}
+
 /* ============================================================
    NAV DROPDOWN (Community)
    Opens on hover / keyboard focus (focus-within); the button is
    also click-toggled in JS for touch devices.
    ============================================================ */
 .nav-drop { position: relative; display: flex; align-items: center; }
+/* The trigger mirrors .nav-links a exactly — same evergreen, hover shade and
+   underline animation — so "Community" reads as one of the nav links. Using
+   var(--evergreen) also means the on-dark hero state re-tints it for free. */
 .nav-drop > button {
   display: inline-flex; align-items: center; gap: .35rem;
-  background: none; border: 0; padding: 0; cursor: pointer;
-  font: inherit; font-size: .92rem; font-weight: 500; color: inherit;
+  background: none; border: 0; cursor: pointer;
+  font: inherit; font-size: .92rem; font-weight: 500; color: var(--evergreen);
+  position: relative; transition: color .25s var(--ease); padding: 4px 0; white-space: nowrap;
 }
+.nav-drop > button::after {
+  content:""; position:absolute; left:0; bottom:-2px; height:1.5px; width:100%;
+  background: var(--evergreen); transform: scaleX(0); transform-origin:right; transition: transform .35s var(--ease);
+}
+.nav-drop > button:hover { color: var(--evergreen-2); }
+.nav-drop > button:hover::after, .nav-drop > button.active::after { transform: scaleX(1); transform-origin:left; }
+.nav-drop > button.active { color: var(--evergreen); }
 .nav-drop > button .chev { transition: transform .25s var(--ease); }
 .nav-drop:hover > button .chev,
 .nav-drop:focus-within > button .chev { transform: rotate(180deg); }
-.nav-drop > button.active { color: var(--evergreen); }
-.site-header.on-dark .nav-drop > button.active { color: inherit; }
 .nav-drop-panel {
   position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(6px);
   min-width: 190px; padding: .5rem;

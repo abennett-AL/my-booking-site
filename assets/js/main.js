@@ -126,6 +126,12 @@
     `;
     document.body.prepend(header);
 
+    // Stagger the mobile menu in. Done here, not in CSS, so the sequence keeps
+    // working however many nav links there are.
+    header.querySelectorAll('.mobile-menu > *').forEach((el, i) => {
+      el.style.transitionDelay = (0.08 + i * 0.06).toFixed(2) + 's';
+    });
+
     // Dropdown: click toggles (touch devices have no hover); outside click closes.
     header.querySelectorAll('.nav-drop').forEach(drop => {
       const btn = drop.querySelector('button');
