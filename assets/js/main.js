@@ -68,25 +68,39 @@
     : `https://app.${host.replace(/^www\./, '')}`;
 
   /* ---------- Nav links (single source of truth) ---------- */
+  // A plain [href, label] pair renders as a link; an entry with `children`
+  // renders as a dropdown (desktop) and as flat links in the mobile menu.
   const NAV = [
     ['/', 'How it Works'],
     ['/what-we-test', 'What We Test'],
     ['/longevity-lab', 'Longevity Lab'],
     ['/membership', 'Membership'],
     ['/for-teams', 'For Teams'],
+    { label: 'Community', children: [['/recipes', 'Recipes'], ['/active-updates', 'Active Updates']] },
   ];
 
   const page = (document.body.getAttribute('data-page') || 'index').toLowerCase();
 
   /* ---------- Build header ---------- */
   function buildHeader() {
-    const links = NAV.map(([href, label]) => {
-      // Clean URLs: '/' is the home page (data-page "index"), '/x' matches data-page "x".
-      const slug = href === '/' ? 'index' : href.slice(1);
-      const active = slug === page ? ' class="active"' : '';
-      return `<a href="${href}"${active}>${label}</a>`;
+    // Clean URLs: '/' is the home page (data-page "index"), '/x' matches data-page "x".
+    const slugOf = (href) => href === '/' ? 'index' : href.slice(1);
+    const link = ([href, label]) =>
+      `<a href="${href}"${slugOf(href) === page ? ' class="active"' : ''}>${label}</a>`;
+    const links = NAV.map((item) => {
+      if (Array.isArray(item)) return link(item);
+      // Dropdown entry. The trigger is a real <button> (keyboard + touch);
+      // CSS opens the panel on hover/focus-within, JS toggles .open on click.
+      const parentActive = item.children.some(([href]) => slugOf(href) === page);
+      return `<div class="nav-drop">
+        <button type="button"${parentActive ? ' class="active"' : ''} aria-expanded="false" aria-haspopup="true">${item.label}
+          <svg class="chev" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="nav-drop-panel">${item.children.map(link).join('')}</div>
+      </div>`;
     }).join('');
-    const mlinks = NAV.map(([href, label]) => `<a href="${href}">${label}</a>`).join('');
+    const mlinks = NAV.flatMap((item) => Array.isArray(item) ? [item] : item.children)
+      .map(([href, label]) => `<a href="${href}">${label}</a>`).join('');
     // (waitlist CTA appended in mobile menu below)
 
     const header = document.createElement('header');
@@ -111,6 +125,23 @@
       <div class="mobile-menu">${mlinks}<a href="${PORTAL_URL}" class="btn btn-ghost" style="font-family:var(--font-body);font-size:1rem">Log in</a><a href="/book" class="btn btn-primary" style="font-family:var(--font-body);font-size:1rem">Join the waitlist</a></div>
     `;
     document.body.prepend(header);
+
+    // Dropdown: click toggles (touch devices have no hover); outside click closes.
+    header.querySelectorAll('.nav-drop').forEach(drop => {
+      const btn = drop.querySelector('button');
+      btn.addEventListener('click', () => {
+        const open = drop.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    });
+    document.addEventListener('click', (e) => {
+      header.querySelectorAll('.nav-drop.open').forEach(drop => {
+        if (!drop.contains(e.target)) {
+          drop.classList.remove('open');
+          drop.querySelector('button').setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
 
     const toggle = header.querySelector('.nav-toggle');
     toggle.addEventListener('click', () => {
@@ -163,6 +194,8 @@
               <li><a href="/what-we-test">What We Test</a></li>
               <li><a href="/membership">Membership</a></li>
               <li><a href="/for-teams">For Teams</a></li>
+              <li><a href="/recipes">Recipes</a></li>
+              <li><a href="/active-updates">Active Updates</a></li>
               <li><a href="/about">About</a></li>
             </ul>
           </div>
@@ -689,6 +722,69 @@
     }
   }
 
+  /* ---------- Community (recipes + active updates) ---------- */
+  // One system for both pages: cards carry data-tags (space-separated),
+  // filter chips carry data-filter, unlocked cards carry data-detail pointing
+  // at a hidden detail block rendered into the shared <dialog>.
+  function initCommunity() {
+    const grid = document.querySelector('[data-comm-grid]');
+    if (!grid) return;
+    const cards = [...grid.querySelectorAll('[data-tags]')];
+    const chips = [...document.querySelectorAll('.filter-chip')];
+    const count = document.querySelector('.comm-count');
+    const noun = grid.getAttribute('data-comm-grid') || 'items';
+
+    const apply = (filter) => {
+      let shown = 0;
+      cards.forEach(card => {
+        const hit = filter === 'all' || card.getAttribute('data-tags').split(' ').includes(filter);
+        card.hidden = !hit;
+        if (hit) shown++;
+      });
+      if (count) count.textContent = `${shown} ${noun}`;
+    };
+    chips.forEach(chip => chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      apply(chip.getAttribute('data-filter'));
+    }));
+    apply('all');
+
+    // Detail dialog. <dialog> gives us Esc-to-close and a focus trap for free.
+    const dialog = document.getElementById('commModal');
+    if (dialog) {
+      const inner = dialog.querySelector('.comm-modal-inner');
+      const open = (id) => {
+        const tpl = document.getElementById(id);
+        if (!tpl) return;
+        inner.innerHTML = tpl.innerHTML;
+        dialog.showModal();
+        // Deep-linkable: /recipes#chilli-con-carne reopens the same detail.
+        history.replaceState(null, '', '#' + id);
+      };
+      const close = () => {
+        dialog.close();
+      };
+      dialog.addEventListener('close', () => {
+        history.replaceState(null, '', location.pathname);
+        inner.innerHTML = '';
+      });
+      // Click on the backdrop (the dialog element itself) closes.
+      dialog.addEventListener('click', (e) => { if (e.target === dialog) close(); });
+      dialog.querySelector('.modal-close').addEventListener('click', close);
+      grid.querySelectorAll('[data-detail]').forEach(card =>
+        card.addEventListener('click', () => open(card.getAttribute('data-detail'))));
+      const openFromHash = () => {
+        const id = location.hash.slice(1);
+        if (id && document.getElementById(id) && !dialog.open) open(id);
+      };
+      openFromHash();
+      // Covers same-document hash navigation (a shared link pasted over the
+      // current page) — scripts don't re-run in that case.
+      window.addEventListener('hashchange', openFromHash);
+    }
+  }
+
   /* ---------- Init ---------- */
   function init() {
     buildHeader();
@@ -703,6 +799,7 @@
     initParallax();
     initDashboard();
     initForm();
+    initCommunity();
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

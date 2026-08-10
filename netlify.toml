@@ -95,6 +95,18 @@
   status = 301
   force = true
 
+[[redirects]]
+  from = "/recipes.html"
+  to = "/recipes"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/active-updates.html"
+  to = "/active-updates"
+  status = 301
+  force = true
+
 # Long-cache immutable static assets (CSS/JS/images/fonts)
 [[headers]]
   for = "/assets/*"
