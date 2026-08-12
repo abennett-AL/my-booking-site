@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Activewear — Active Labs Lifestyle</title>
+  <meta name="description" content="Active Labs activewear — tees, shorts and training accessories in cream, black and black/blue. Browse the launch range and register interest; the shop opens with the clinic.">
+  <link rel="icon" type="image/svg+xml" href="/assets/img/activelabs-mark.svg">
+  <link rel="apple-touch-icon" href="/assets/img/activelabs-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script>(function(){try{if(localStorage.getItem("al-theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}})();</script>
+  <link rel="stylesheet" href="/assets/css/styles.css?v=37">
+</head>
+<body data-page="activewear">
+  <main>
+    <!-- PAGE HERO -->
+    <section class="page-hero" style="padding-bottom:0">
+      <div class="container">
+        <p class="breadcrumb hero-fade">Lifestyle / Activewear</p>
+        <h1 class="hero-fade">Active<span class="serif-italic text-green">wear.</span></h1>
+        <p class="lead measure hero-fade mt-3">Clothing and training kit in the Active Labs palette — cream, black, and black with blue. Built for the work between tests.</p>
+        <p class="comm-disclaimer hero-fade mt-3">The range below is a sample of the launch collection — final products, colours and pricing are confirmed at launch. Nothing is on sale yet: <a href="#interest" class="link-underline">register interest</a> and you'll be first to know when the shop opens.</p>
+      </div>
+    </section>
+
+    <!-- GRID -->
+    <section class="section-tight">
+      <div class="container container-wide">
+        <div class="comm-grid" data-comm-grid="products">
+
+          <!-- Detail pages exist for these two -->
+          <a class="recipe-card" href="/activewear/classic-tee" data-tags="apparel">
+            <span class="recipe-thumb rc-main">
+              <span class="recipe-tags"><span class="rtag">Cream · Black · Black/Blue</span></span>
+            </span>
+            <span class="recipe-body">
+              <h3>Classic tee</h3>
+              <span class="recipe-meta">Indicative £28 · S–XL</span>
+            </span>
+          </a>
+
+          <a class="recipe-card" href="/activewear/resistance-bands" data-tags="kit">
+            <span class="recipe-thumb rc-snack">
+              <span class="recipe-tags"><span class="rtag">Set of three</span></span>
+            </span>
+            <span class="recipe-body">
+              <h3>Resistance bands</h3>
+              <span class="recipe-meta">Indicative £18 · Light / Med / Heavy</span>
+            </span>
+          </a>
+
+          <!-- Confirmed at launch -->
+          <span class="recipe-card soon" aria-label="Running shorts — coming at launch">
+            <span class="recipe-thumb rc-main"><span class="coming-badge">Coming at launch</span></span>
+            <span class="recipe-body"><h3>Running shorts</h3><span class="recipe-meta">Cream · Black</span></span>
+          </span>
+          <span class="recipe-card soon" aria-label="Zip hoodie — coming at launch">
+            <span class="recipe-thumb rc-sweet"><span class="coming-badge">Coming at launch</span></span>
+            <span class="recipe-body"><h3>Zip hoodie</h3><span class="recipe-meta">Black · Black/Blue</span></span>
+          </span>
+          <span class="recipe-card soon" aria-label="Performance cap — coming at launch">
+            <span class="recipe-thumb rc-brk"><span class="coming-badge">Coming at launch</span></span>
+            <span class="recipe-body"><h3>Performance cap</h3><span class="recipe-meta">Cream · Black</span></span>
+          </span>
+          <span class="recipe-card soon" aria-label="Steel bottle — coming at launch">
+            <span class="recipe-thumb rc-snack"><span class="coming-badge">Coming at launch</span></span>
+            <span class="recipe-body"><h3>Steel bottle</h3><span class="recipe-meta">Cream · Black</span></span>
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- REGISTER INTEREST -->
+    <section class="section-tight" id="interest">
+      <div class="container">
+        <div class="split" style="align-items:start">
+          <div data-reveal>
+            <p class="eyebrow">First in line</p>
+            <h2 class="mt-3 mb-3">The shop opens with the clinic</h2>
+            <p class="lead">Leave your email and we'll tell you when the range goes on sale — launch pricing, sizes and all.</p>
+          </div>
+          <div data-reveal>
+            <div class="form-wrap">
+              <form name="activewear-interest" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-booking novalidate>
+                <input type="hidden" name="form-name" value="activewear-interest">
+                <p hidden aria-hidden="true"><label>Don't fill this out if you're human: <input name="bot-field"></label></p>
+                <div class="form-row">
+                  <div class="field">
+                    <label for="fname">First name <span class="req">*</span></label>
+                    <input id="fname" name="fname" type="text" autocomplete="given-name" required>
+                    <span class="err-msg">Please enter your first name.</span>
+                  </div>
+                  <div class="field">
+                    <label for="email">Email <span class="req">*</span></label>
+                    <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required>
+                    <span class="err-msg">Please enter a valid email address.</span>
+                  </div>
+                </div>
+                <div class="field consent">
+                  <label for="consent-aw">
+                    <input type="checkbox" id="consent-aw" name="consent-marketing" value="yes" required>
+                    <span>Email me when the Active Labs shop opens. I can unsubscribe at any time. See the <a href="/privacy">Privacy Notice</a>. <span class="req">*</span></span>
+                  </label>
+                  <span class="err-msg">This list works by email, so we need this to add you.</span>
+                </div>
+                <button type="submit" class="btn btn-accent btn-lg" style="width:100%;justify-content:center">Register interest</button>
+                <p class="form-submit-error" role="alert" hidden>Sorry — something went wrong. Please try again, or email <a href="mailto:hello@activelabs.health">hello@activelabs.health</a>.</p>
+              </form>
+              <div class="form-success">
+                <div class="check" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <h3>You're on the list</h3>
+                <p class="mt-2 measure-sm mx-auto">We'll email you the moment the shop opens.</p>
+                <a href="/" class="btn btn-ghost mt-4">Back to home</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="/assets/js/main.js?v=37"></script>
+</body>
+</html>

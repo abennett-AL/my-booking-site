@@ -10,8 +10,10 @@
   /* ---------- Logo assets (real brand SVG) ---------- */
   // LOGO_DARK = dark ink wordmark (for light backgrounds)
   // LOGO_LIGHT = cream wordmark (for dark backgrounds)
-  const LOGO_DARK = 'assets/img/activelabs-logo.svg';
-  const LOGO_LIGHT = 'assets/img/activelabs-logo-light.svg';
+  // Absolute paths: header/footer are injected on nested pages too
+  // (/activewear/classic-tee), where a relative "assets/…" would 404.
+  const LOGO_DARK = '/assets/img/activelabs-logo.svg';
+  const LOGO_LIGHT = '/assets/img/activelabs-logo-light.svg';
 
   /* ---------- Theme ---------- */
   // Default light; only "dark" is persisted. The <head> inline script applies
@@ -77,6 +79,7 @@
     ['/membership', 'Membership'],
     ['/for-teams', 'For Teams'],
     { label: 'Community', children: [['/recipes', 'Recipes'], ['/active-updates', 'Active Updates']] },
+    { label: 'Lifestyle', children: [['/activewear', 'Activewear'], ['/active-events', 'Active Events']] },
   ];
 
   const page = (document.body.getAttribute('data-page') || 'index').toLowerCase();
@@ -202,6 +205,8 @@
               <li><a href="/for-teams">For Teams</a></li>
               <li><a href="/recipes">Recipes</a></li>
               <li><a href="/active-updates">Active Updates</a></li>
+              <li><a href="/activewear">Activewear</a></li>
+              <li><a href="/active-events">Active Events</a></li>
               <li><a href="/about">About</a></li>
             </ul>
           </div>
