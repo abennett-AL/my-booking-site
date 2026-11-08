@@ -12,7 +12,7 @@
 </head>
 <body data-page="what-we-test">
   <main>
-    <section class="page-hero">
+    <section class="page-hero page-hero-tight">
       <div class="container">
         <p class="breadcrumb hero-fade">Home / What We Test</p>
         <h1 class="hero-fade">Our panel options<br><span class="serif-italic text-green">explained</span></h1>
@@ -33,7 +33,7 @@
          Every marker is a card with its drawer copy in a hidden .mx-detail block; initMarkers()
          in main.js filters the cards and opens the drawer. Comprehensive (78 markers, marketed
          as "70+") includes all 22 Foundation markers. Only list markers that are in a panel. -->
-    <section class="section-tight" id="panels">
+    <section class="section-tight mx-section" id="panels">
       <div class="container">
         <div class="mx" data-mx data-panel="comprehensive">
           <svg class="mx-sprite" aria-hidden="true" focusable="false">
@@ -83,6 +83,7 @@
               <span class="mx-panel-desc">Optional add-on tests, grouped by category, are coming soon. We'll list them here as soon as they're available.</span>
             </div>
           </div>
+          <p class="mx-compare"><a href="/membership" class="link-underline">Compare memberships <span class="arrow" aria-hidden="true">→</span></a></p>
 
           <div class="mx-tools">
             <div class="mx-search">
@@ -115,7 +116,6 @@
               <ul class="mx-grid">
                 <li class="mx-item" id="total-cholesterol" data-cat="heart" data-panels="foundation comprehensive" data-search="total cholesterol heart and lipids cholesterol lipids fats lipid profile">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-heart"/></svg>Heart and lipids</span>
                     <span class="mx-card-name">Total cholesterol</span>
                     <span class="mx-card-desc">The overall amount of cholesterol carried in your blood.</span>
                     <span class="mx-tag">Foundation</span>
@@ -139,7 +139,6 @@
                 </li>
                 <li class="mx-item" id="hdl-cholesterol" data-cat="heart" data-panels="foundation comprehensive" data-search="hdl cholesterol high density lipoprotein cholesterol heart and lipids cholesterol lipids good cholesterol">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-heart"/></svg>Heart and lipids</span>
                     <span class="mx-card-name">HDL cholesterol</span>
                     <span class="mx-card-full">High-density lipoprotein cholesterol</span>
                     <span class="mx-card-desc">Cholesterol carried by HDL, which moves cholesterol back to the liver.</span>
@@ -165,7 +164,6 @@
                 </li>
                 <li class="mx-item" id="hdl-percentage" data-cat="heart" data-panels="foundation comprehensive" data-search="hdl percentage heart and lipids cholesterol lipids hdl ratio">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-heart"/></svg>Heart and lipids</span>
                     <span class="mx-card-name">HDL percentage</span>
                     <span class="mx-card-desc">The share of your total cholesterol that is HDL.</span>
                     <span class="mx-tag">Foundation</span>
@@ -189,7 +187,6 @@
                 </li>
                 <li class="mx-item" id="ldl-cholesterol" data-cat="heart" data-panels="foundation comprehensive" data-search="ldl cholesterol low density lipoprotein cholesterol heart and lipids cholesterol lipids">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-heart"/></svg>Heart and lipids</span>
                     <span class="mx-card-name">LDL cholesterol</span>
                     <span class="mx-card-full">Low-density lipoprotein cholesterol</span>
                     <span class="mx-card-desc">Cholesterol carried by LDL, the main carrier out to your tissues.</span>
@@ -215,7 +212,6 @@
                 </li>
                 <li class="mx-item" id="non-hdl-cholesterol" data-cat="heart" data-panels="foundation comprehensive" data-search="non hdl cholesterol heart and lipids cholesterol lipids">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-heart"/></svg>Heart and lipids</span>
                     <span class="mx-card-name">Non-HDL cholesterol</span>
                     <span class="mx-card-desc">All the cholesterol in your blood that isn't carried by HDL.</span>
                     <span class="mx-tag">Foundation</span>
@@ -239,7 +235,6 @@
                 </li>
                 <li class="mx-item" id="cholesterol-hdl-ratio" data-cat="heart" data-panels="foundation comprehensive" data-search="total cholesterol to hdl ratio heart and lipids cholesterol lipids ratio">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-heart"/></svg>Heart and lipids</span>
                     <span class="mx-card-name">Total cholesterol to HDL ratio</span>
                     <span class="mx-card-desc">Your total cholesterol divided by your HDL cholesterol.</span>
                     <span class="mx-tag">Foundation</span>
@@ -263,7 +258,6 @@
                 </li>
                 <li class="mx-item" id="triglycerides" data-cat="heart" data-panels="foundation comprehensive" data-search="triglycerides heart and lipids fats lipids trigs">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-heart"/></svg>Heart and lipids</span>
                     <span class="mx-card-name">Triglycerides</span>
                     <span class="mx-card-desc">The main type of fat circulating in your blood.</span>
                     <span class="mx-tag">Foundation</span>
@@ -287,7 +281,6 @@
                 </li>
                 <li class="mx-item" id="apoa1" data-cat="heart" data-panels="comprehensive" data-search="apoa1 apolipoprotein a1 heart and lipids apolipoprotein apo a1 hdl">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-heart"/></svg>Heart and lipids</span>
                     <span class="mx-card-name">ApoA1</span>
                     <span class="mx-card-full">Apolipoprotein A1</span>
                     <span class="mx-card-desc">The main protein found in HDL particles.</span>
@@ -311,7 +304,6 @@
                 </li>
                 <li class="mx-item" id="apob" data-cat="heart" data-panels="comprehensive" data-search="apob apolipoprotein b heart and lipids apolipoprotein apo b particles cholesterol">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-heart"/></svg>Heart and lipids</span>
                     <span class="mx-card-name">ApoB</span>
                     <span class="mx-card-full">Apolipoprotein B</span>
                     <span class="mx-card-desc">Counts the particles that carry cholesterol out to your tissues.</span>
@@ -335,7 +327,6 @@
                 </li>
                 <li class="mx-item" id="lipoprotein-a" data-cat="heart" data-panels="comprehensive" data-search="lipoprotein a lp a heart and lipids lp a lpa lipoprotein little a cholesterol">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-heart"/></svg>Heart and lipids</span>
                     <span class="mx-card-name">Lipoprotein(a)</span>
                     <span class="mx-card-full">Lp(a)</span>
                     <span class="mx-card-desc">A cholesterol-carrying particle whose level is largely inherited.</span>
@@ -359,7 +350,6 @@
                 </li>
                 <li class="mx-item" id="nt-probnp" data-cat="heart" data-panels="comprehensive" data-search="nt probnp n terminal pro b type natriuretic peptide heart and lipids bnp natriuretic peptide heart">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-heart"/></svg>Heart and lipids</span>
                     <span class="mx-card-name">NT-proBNP</span>
                     <span class="mx-card-full">N-terminal pro B-type natriuretic peptide</span>
                     <span class="mx-card-desc">A protein fragment released by the heart muscle.</span>
@@ -388,7 +378,6 @@
               <ul class="mx-grid">
                 <li class="mx-item" id="glucose" data-cat="metabolic" data-panels="comprehensive" data-search="glucose blood glucose metabolic and inflammation blood sugar sugar energy">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-metabolic"/></svg>Metabolic and inflammation</span>
                     <span class="mx-card-name">Glucose</span>
                     <span class="mx-card-full">Blood glucose</span>
                     <span class="mx-card-desc">The amount of sugar in your blood at the time of your test.</span>
@@ -412,7 +401,6 @@
                 </li>
                 <li class="mx-item" id="hba1c" data-cat="metabolic" data-panels="comprehensive" data-search="hba1c glycated haemoglobin metabolic and inflammation a1c blood sugar sugar glycated hemoglobin">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-metabolic"/></svg>Metabolic and inflammation</span>
                     <span class="mx-card-name">HbA1c</span>
                     <span class="mx-card-full">Glycated haemoglobin</span>
                     <span class="mx-card-desc">Your average blood sugar over roughly the last two to three months.</span>
@@ -436,7 +424,6 @@
                 </li>
                 <li class="mx-item" id="uric-acid" data-cat="metabolic" data-panels="comprehensive" data-search="uric acid metabolic and inflammation urate purines">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-metabolic"/></svg>Metabolic and inflammation</span>
                     <span class="mx-card-name">Uric acid</span>
                     <span class="mx-card-desc">A waste product made when your body breaks down purines.</span>
                     <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
@@ -458,7 +445,6 @@
                 </li>
                 <li class="mx-item" id="hs-crp" data-cat="metabolic" data-panels="comprehensive" data-search="hs crp high sensitivity c reactive protein metabolic and inflammation crp c reactive protein inflammation">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-metabolic"/></svg>Metabolic and inflammation</span>
                     <span class="mx-card-name">hs-CRP</span>
                     <span class="mx-card-full">High-sensitivity C-reactive protein</span>
                     <span class="mx-card-desc">A sensitive measure of general inflammation in the body.</span>
@@ -487,7 +473,6 @@
               <ul class="mx-grid">
                 <li class="mx-item" id="alt" data-cat="liver" data-panels="foundation comprehensive" data-search="alt alanine aminotransferase liver alanine aminotransferase liver enzyme">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-liver"/></svg>Liver</span>
                     <span class="mx-card-name">ALT</span>
                     <span class="mx-card-full">Alanine aminotransferase</span>
                     <span class="mx-card-desc">An enzyme found mainly in the liver.</span>
@@ -513,7 +498,6 @@
                 </li>
                 <li class="mx-item" id="ast" data-cat="liver" data-panels="comprehensive" data-search="ast aspartate aminotransferase liver aspartate aminotransferase liver enzyme muscle">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-liver"/></svg>Liver</span>
                     <span class="mx-card-name">AST</span>
                     <span class="mx-card-full">Aspartate aminotransferase</span>
                     <span class="mx-card-desc">An enzyme found in the liver, heart and muscles.</span>
@@ -537,7 +521,6 @@
                 </li>
                 <li class="mx-item" id="alp" data-cat="liver" data-panels="foundation comprehensive" data-search="alp alkaline phosphatase liver alkaline phosphatase liver bone enzyme">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-liver"/></svg>Liver</span>
                     <span class="mx-card-name">ALP</span>
                     <span class="mx-card-full">Alkaline phosphatase</span>
                     <span class="mx-card-desc">An enzyme found mainly in the liver and bones.</span>
@@ -563,7 +546,6 @@
                 </li>
                 <li class="mx-item" id="ggt" data-cat="liver" data-panels="foundation comprehensive" data-search="ggt gamma glutamyl transferase liver gamma gt glutamyl liver enzyme alcohol">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-liver"/></svg>Liver</span>
                     <span class="mx-card-name">GGT</span>
                     <span class="mx-card-full">Gamma-glutamyl transferase</span>
                     <span class="mx-card-desc">An enzyme found mainly in the liver and bile ducts.</span>
@@ -589,7 +571,6 @@
                 </li>
                 <li class="mx-item" id="bilirubin" data-cat="liver" data-panels="comprehensive" data-search="bilirubin total total bilirubin liver bilirubin pigment liver">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-liver"/></svg>Liver</span>
                     <span class="mx-card-name">Bilirubin (total)</span>
                     <span class="mx-card-full">Total bilirubin</span>
                     <span class="mx-card-desc">A yellow pigment made when old red blood cells are broken down.</span>
@@ -613,7 +594,6 @@
                 </li>
                 <li class="mx-item" id="albumin" data-cat="liver" data-panels="foundation comprehensive" data-search="albumin liver protein liver">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-liver"/></svg>Liver</span>
                     <span class="mx-card-name">Albumin</span>
                     <span class="mx-card-desc">The main protein in your blood, made by the liver.</span>
                     <span class="mx-tag">Foundation</span>
@@ -637,7 +617,6 @@
                 </li>
                 <li class="mx-item" id="globulins" data-cat="liver" data-panels="comprehensive" data-search="globulins liver globulin protein antibodies">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-liver"/></svg>Liver</span>
                     <span class="mx-card-name">Globulins</span>
                     <span class="mx-card-desc">A group of blood proteins that includes antibodies.</span>
                     <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
@@ -659,7 +638,6 @@
                 </li>
                 <li class="mx-item" id="total-protein" data-cat="liver" data-panels="comprehensive" data-search="total protein liver protein albumin globulin">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-liver"/></svg>Liver</span>
                     <span class="mx-card-name">Total protein</span>
                     <span class="mx-card-desc">All the protein in your blood, mainly albumin and globulins.</span>
                     <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
@@ -681,7 +659,6 @@
                 </li>
                 <li class="mx-item" id="ldh" data-cat="liver" data-panels="comprehensive" data-search="ldh lactate dehydrogenase liver lactate dehydrogenase enzyme">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-liver"/></svg>Liver</span>
                     <span class="mx-card-name">LDH</span>
                     <span class="mx-card-full">Lactate dehydrogenase</span>
                     <span class="mx-card-desc">An enzyme found in almost every tissue in the body.</span>
@@ -710,7 +687,6 @@
               <ul class="mx-grid">
                 <li class="mx-item" id="creatinine" data-cat="kidney" data-panels="foundation comprehensive" data-search="creatinine kidney and electrolytes kidney muscle">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-kidney"/></svg>Kidney and electrolytes</span>
                     <span class="mx-card-name">Creatinine</span>
                     <span class="mx-card-desc">A waste product from muscle that the kidneys filter out.</span>
                     <span class="mx-tag">Foundation</span>
@@ -734,7 +710,6 @@
                 </li>
                 <li class="mx-item" id="egfr" data-cat="kidney" data-panels="foundation comprehensive" data-search="egfr estimated glomerular filtration rate kidney and electrolytes gfr kidney filtration glomerular">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-kidney"/></svg>Kidney and electrolytes</span>
                     <span class="mx-card-name">eGFR</span>
                     <span class="mx-card-full">Estimated glomerular filtration rate</span>
                     <span class="mx-card-desc">An estimate of how much blood your kidneys filter each minute.</span>
@@ -760,7 +735,6 @@
                 </li>
                 <li class="mx-item" id="urea" data-cat="kidney" data-panels="comprehensive" data-search="urea kidney and electrolytes bun kidney protein">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-kidney"/></svg>Kidney and electrolytes</span>
                     <span class="mx-card-name">Urea</span>
                     <span class="mx-card-desc">A waste product made when your body breaks down protein.</span>
                     <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
@@ -782,7 +756,6 @@
                 </li>
                 <li class="mx-item" id="sodium" data-cat="kidney" data-panels="comprehensive" data-search="sodium kidney and electrolytes salt electrolyte na hydration">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-kidney"/></svg>Kidney and electrolytes</span>
                     <span class="mx-card-name">Sodium</span>
                     <span class="mx-card-desc">A key electrolyte for fluid balance, nerves and muscles.</span>
                     <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
@@ -804,7 +777,6 @@
                 </li>
                 <li class="mx-item" id="potassium" data-cat="kidney" data-panels="comprehensive" data-search="potassium kidney and electrolytes electrolyte k">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-kidney"/></svg>Kidney and electrolytes</span>
                     <span class="mx-card-name">Potassium</span>
                     <span class="mx-card-desc">An electrolyte your muscles and nerves rely on.</span>
                     <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
@@ -826,7 +798,6 @@
                 </li>
                 <li class="mx-item" id="chloride" data-cat="kidney" data-panels="comprehensive" data-search="chloride kidney and electrolytes electrolyte salt cl">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-kidney"/></svg>Kidney and electrolytes</span>
                     <span class="mx-card-name">Chloride</span>
                     <span class="mx-card-desc">An electrolyte that works with sodium to balance your fluids.</span>
                     <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
@@ -853,7 +824,6 @@
               <ul class="mx-grid">
                 <li class="mx-item" id="iron" data-cat="iron" data-panels="foundation comprehensive" data-search="iron serum iron iron fe serum iron">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-iron"/></svg>Iron</span>
                     <span class="mx-card-name">Iron</span>
                     <span class="mx-card-full">Serum iron</span>
                     <span class="mx-card-desc">The amount of iron circulating in your blood.</span>
@@ -879,7 +849,6 @@
                 </li>
                 <li class="mx-item" id="ferritin" data-cat="iron" data-panels="comprehensive" data-search="ferritin serum ferritin iron iron stores">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-iron"/></svg>Iron</span>
                     <span class="mx-card-name">Ferritin</span>
                     <span class="mx-card-full">Serum ferritin</span>
                     <span class="mx-card-desc">A protein that reflects how much iron your body has stored.</span>
@@ -903,7 +872,6 @@
                 </li>
                 <li class="mx-item" id="tibc" data-cat="iron" data-panels="foundation comprehensive" data-search="tibc total iron binding capacity iron total iron binding capacity transferrin">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-iron"/></svg>Iron</span>
                     <span class="mx-card-name">TIBC</span>
                     <span class="mx-card-full">Total iron-binding capacity</span>
                     <span class="mx-card-desc">How much iron your blood proteins are able to carry.</span>
@@ -929,7 +897,6 @@
                 </li>
                 <li class="mx-item" id="uibc" data-cat="iron" data-panels="comprehensive" data-search="uibc unsaturated iron binding capacity iron unsaturated iron binding capacity transferrin">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-iron"/></svg>Iron</span>
                     <span class="mx-card-name">UIBC</span>
                     <span class="mx-card-full">Unsaturated iron-binding capacity</span>
                     <span class="mx-card-desc">The spare iron-carrying capacity in your blood.</span>
@@ -953,7 +920,6 @@
                 </li>
                 <li class="mx-item" id="transferrin-saturation" data-cat="iron" data-panels="foundation comprehensive" data-search="transferrin saturation iron tsat iron saturation">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-iron"/></svg>Iron</span>
                     <span class="mx-card-name">Transferrin saturation</span>
                     <span class="mx-card-desc">The share of your iron-carrying protein that is holding iron.</span>
                     <span class="mx-tag">Foundation</span>
@@ -982,7 +948,6 @@
               <ul class="mx-grid">
                 <li class="mx-item" id="vitamin-d" data-cat="vitamins" data-panels="foundation comprehensive" data-search="vitamin d 25 hydroxy vitamin d vitamins vit d 25 oh sunshine">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-vitamins"/></svg>Vitamins</span>
                     <span class="mx-card-name">Vitamin D</span>
                     <span class="mx-card-full">25-hydroxy vitamin D</span>
                     <span class="mx-card-desc">The main form of vitamin D circulating in your blood.</span>
@@ -1008,7 +973,6 @@
                 </li>
                 <li class="mx-item" id="vitamin-b12" data-cat="vitamins" data-panels="foundation comprehensive" data-search="vitamin b12 total vitamin b12 vitamins b12 cobalamin total">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-vitamins"/></svg>Vitamins</span>
                     <span class="mx-card-name">Vitamin B12</span>
                     <span class="mx-card-full">Total vitamin B12</span>
                     <span class="mx-card-desc">The total amount of vitamin B12 in your blood.</span>
@@ -1034,7 +998,6 @@
                 </li>
                 <li class="mx-item" id="active-b12" data-cat="vitamins" data-panels="comprehensive" data-search="active vitamin b12 holotranscobalamin vitamins b12 active holotc holotranscobalamin">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-vitamins"/></svg>Vitamins</span>
                     <span class="mx-card-name">Active vitamin B12</span>
                     <span class="mx-card-full">Holotranscobalamin</span>
                     <span class="mx-card-desc">The share of vitamin B12 that your cells can take up and use.</span>
@@ -1058,7 +1021,6 @@
                 </li>
                 <li class="mx-item" id="folate" data-cat="vitamins" data-panels="comprehensive" data-search="folate serum folate vitamins folic acid b9 vitamin b9">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-vitamins"/></svg>Vitamins</span>
                     <span class="mx-card-name">Folate</span>
                     <span class="mx-card-full">Serum folate</span>
                     <span class="mx-card-desc">A B vitamin your body needs to make new cells.</span>
@@ -1087,7 +1049,6 @@
               <ul class="mx-grid">
                 <li class="mx-item" id="calcium" data-cat="muscle" data-panels="comprehensive" data-search="calcium muscle bone and minerals bone mineral">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-muscle"/></svg>Muscle, bone and minerals</span>
                     <span class="mx-card-name">Calcium</span>
                     <span class="mx-card-desc">The mineral your bones, muscles and nerves rely on.</span>
                     <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
@@ -1109,7 +1070,6 @@
                 </li>
                 <li class="mx-item" id="adjusted-calcium" data-cat="muscle" data-panels="comprehensive" data-search="adjusted calcium muscle bone and minerals corrected calcium bone mineral">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-muscle"/></svg>Muscle, bone and minerals</span>
                     <span class="mx-card-name">Adjusted calcium</span>
                     <span class="mx-card-desc">Your calcium result corrected for your albumin level.</span>
                     <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
@@ -1131,7 +1091,6 @@
                 </li>
                 <li class="mx-item" id="magnesium" data-cat="muscle" data-panels="comprehensive" data-search="magnesium muscle bone and minerals mineral mg">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-muscle"/></svg>Muscle, bone and minerals</span>
                     <span class="mx-card-name">Magnesium</span>
                     <span class="mx-card-desc">A mineral involved in muscle, nerve and energy processes.</span>
                     <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
@@ -1153,7 +1112,6 @@
                 </li>
                 <li class="mx-item" id="creatine-kinase" data-cat="muscle" data-panels="foundation comprehensive" data-search="creatine kinase ck muscle bone and minerals ck cpk muscle training">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-muscle"/></svg>Muscle, bone and minerals</span>
                     <span class="mx-card-name">Creatine kinase</span>
                     <span class="mx-card-full">CK</span>
                     <span class="mx-card-desc">An enzyme released from muscle, which rises after hard training.</span>
@@ -1184,7 +1142,6 @@
               <ul class="mx-grid">
                 <li class="mx-item" id="tsh" data-cat="thyroid" data-panels="foundation comprehensive" data-search="tsh thyroid stimulating hormone thyroid thyroid stimulating hormone">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-thyroid"/></svg>Thyroid</span>
                     <span class="mx-card-name">TSH</span>
                     <span class="mx-card-full">Thyroid-stimulating hormone</span>
                     <span class="mx-card-desc">The signal from your pituitary gland that tells your thyroid to work.</span>
@@ -1210,7 +1167,6 @@
                 </li>
                 <li class="mx-item" id="free-t4" data-cat="thyroid" data-panels="foundation comprehensive" data-search="free t4 free thyroxine thyroid thyroxine ft4 thyroid">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-thyroid"/></svg>Thyroid</span>
                     <span class="mx-card-name">Free T4</span>
                     <span class="mx-card-full">Free thyroxine</span>
                     <span class="mx-card-desc">The main hormone your thyroid gland releases.</span>
@@ -1236,7 +1192,6 @@
                 </li>
                 <li class="mx-item" id="total-t4" data-cat="thyroid" data-panels="comprehensive" data-search="total t4 total thyroxine thyroid thyroxine thyroid">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-thyroid"/></svg>Thyroid</span>
                     <span class="mx-card-name">Total T4</span>
                     <span class="mx-card-full">Total thyroxine</span>
                     <span class="mx-card-desc">All the thyroxine in your blood, bound and free.</span>
@@ -1260,7 +1215,6 @@
                 </li>
                 <li class="mx-item" id="free-t3" data-cat="thyroid" data-panels="foundation comprehensive" data-search="free t3 free triiodothyronine thyroid triiodothyronine ft3 thyroid">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-thyroid"/></svg>Thyroid</span>
                     <span class="mx-card-name">Free T3</span>
                     <span class="mx-card-full">Free triiodothyronine</span>
                     <span class="mx-card-desc">The active thyroid hormone your cells use.</span>
@@ -1286,7 +1240,6 @@
                 </li>
                 <li class="mx-item" id="tpo-antibodies" data-cat="thyroid" data-panels="comprehensive" data-search="thyroid peroxidase antibodies tpo antibodies thyroid tpo anti tpo antibodies thyroid">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-thyroid"/></svg>Thyroid</span>
                     <span class="mx-card-name">Thyroid peroxidase antibodies</span>
                     <span class="mx-card-full">TPO antibodies</span>
                     <span class="mx-card-desc">Antibodies directed at an enzyme the thyroid uses to make hormones.</span>
@@ -1310,7 +1263,6 @@
                 </li>
                 <li class="mx-item" id="thyroglobulin-antibodies" data-cat="thyroid" data-panels="comprehensive" data-search="thyroglobulin antibodies tgab thyroid tg tgab anti thyroglobulin antibodies thyroid">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-thyroid"/></svg>Thyroid</span>
                     <span class="mx-card-name">Thyroglobulin antibodies</span>
                     <span class="mx-card-full">TgAb</span>
                     <span class="mx-card-desc">Antibodies directed at a protein the thyroid uses to store hormone.</span>
@@ -1340,7 +1292,6 @@
               <ul class="mx-grid">
                 <li class="mx-item" id="testosterone" data-cat="hormones" data-panels="comprehensive" data-search="testosterone total testosterone hormones androgen total testosterone">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</span>
                     <span class="mx-card-name">Testosterone</span>
                     <span class="mx-card-full">Total testosterone</span>
                     <span class="mx-card-desc">The main androgen hormone, measured in both men and women.</span>
@@ -1364,7 +1315,6 @@
                 </li>
                 <li class="mx-item" id="free-testosterone" data-cat="hormones" data-panels="comprehensive" data-search="free testosterone hormones calculated free testosterone androgen">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</span>
                     <span class="mx-card-name">Free testosterone</span>
                     <span class="mx-card-desc">The testosterone not bound to proteins and available to your tissues.</span>
                     <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
@@ -1386,7 +1336,6 @@
                 </li>
                 <li class="mx-item" id="free-androgen-index" data-cat="hormones" data-panels="comprehensive" data-search="free androgen index fai hormones fai testosterone androgen">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</span>
                     <span class="mx-card-name">Free androgen index</span>
                     <span class="mx-card-full">FAI</span>
                     <span class="mx-card-desc">A ratio of total testosterone to SHBG.</span>
@@ -1410,7 +1359,6 @@
                 </li>
                 <li class="mx-item" id="shbg" data-cat="hormones" data-panels="comprehensive" data-search="shbg sex hormone binding globulin hormones sex hormone binding globulin">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</span>
                     <span class="mx-card-name">SHBG</span>
                     <span class="mx-card-full">Sex hormone-binding globulin</span>
                     <span class="mx-card-desc">A protein that binds sex hormones and controls how much is available.</span>
@@ -1434,7 +1382,6 @@
                 </li>
                 <li class="mx-item" id="oestradiol" data-cat="hormones" data-panels="comprehensive" data-search="oestradiol hormones estradiol oestrogen estrogen e2">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</span>
                     <span class="mx-card-name">Oestradiol</span>
                     <span class="mx-card-desc">The main form of oestrogen, measured in both men and women.</span>
                     <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
@@ -1456,7 +1403,6 @@
                 </li>
                 <li class="mx-item" id="progesterone" data-cat="hormones" data-panels="comprehensive" data-search="progesterone hormones menstrual cycle ovulation">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</span>
                     <span class="mx-card-name">Progesterone</span>
                     <span class="mx-card-desc">A hormone that rises after ovulation in the menstrual cycle.</span>
                     <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
@@ -1478,7 +1424,6 @@
                 </li>
                 <li class="mx-item" id="lh" data-cat="hormones" data-panels="comprehensive" data-search="lh luteinising hormone hormones luteinising luteinizing hormone pituitary">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</span>
                     <span class="mx-card-name">LH</span>
                     <span class="mx-card-full">Luteinising hormone</span>
                     <span class="mx-card-desc">A pituitary hormone that signals to the ovaries or testes.</span>
@@ -1502,7 +1447,6 @@
                 </li>
                 <li class="mx-item" id="fsh" data-cat="hormones" data-panels="comprehensive" data-search="fsh follicle stimulating hormone hormones follicle stimulating hormone pituitary">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</span>
                     <span class="mx-card-name">FSH</span>
                     <span class="mx-card-full">Follicle-stimulating hormone</span>
                     <span class="mx-card-desc">A pituitary hormone involved in egg and sperm production.</span>
@@ -1526,7 +1470,6 @@
                 </li>
                 <li class="mx-item" id="prolactin" data-cat="hormones" data-panels="comprehensive" data-search="prolactin hormones pituitary">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</span>
                     <span class="mx-card-name">Prolactin</span>
                     <span class="mx-card-desc">A pituitary hormone best known for its role in milk production.</span>
                     <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
@@ -1548,7 +1491,6 @@
                 </li>
                 <li class="mx-item" id="dhea-s" data-cat="hormones" data-panels="comprehensive" data-search="dhea s dehydroepiandrosterone sulphate hormones dhea dheas adrenal">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</span>
                     <span class="mx-card-name">DHEA-S</span>
                     <span class="mx-card-full">Dehydroepiandrosterone sulphate</span>
                     <span class="mx-card-desc">An adrenal hormone that the body can turn into sex hormones.</span>
@@ -1572,7 +1514,6 @@
                 </li>
                 <li class="mx-item" id="cortisol" data-cat="hormones" data-panels="comprehensive" data-search="cortisol morning cortisol hormones stress hormone adrenal">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</span>
                     <span class="mx-card-name">Cortisol</span>
                     <span class="mx-card-full">Morning cortisol</span>
                     <span class="mx-card-desc">The main stress hormone, which follows a daily rhythm.</span>
@@ -1596,7 +1537,6 @@
                 </li>
                 <li class="mx-item" id="amh" data-cat="hormones" data-panels="comprehensive" data-search="amh anti mullerian hormone hormones anti mullerian hormone ovarian reserve ovaries">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</span>
                     <span class="mx-card-name">AMH</span>
                     <span class="mx-card-full">Anti-Müllerian hormone</span>
                     <span class="mx-card-desc">A hormone made by the ovaries, measured in women.</span>
@@ -1620,7 +1560,6 @@
                 </li>
                 <li class="mx-item" id="psa" data-cat="hormones" data-panels="comprehensive" data-search="psa prostate specific antigen hormones prostate specific antigen">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</span>
                     <span class="mx-card-name">PSA</span>
                     <span class="mx-card-full">Prostate-specific antigen</span>
                     <span class="mx-card-desc">A protein made by the prostate gland, measured in men.</span>
@@ -1649,7 +1588,6 @@
               <ul class="mx-grid">
                 <li class="mx-item" id="haemoglobin" data-cat="blood" data-panels="comprehensive" data-search="haemoglobin hb full blood count hemoglobin hb red cells oxygen">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</span>
                     <span class="mx-card-name">Haemoglobin</span>
                     <span class="mx-card-full">Hb</span>
                     <span class="mx-card-desc">The protein in red blood cells that carries oxygen.</span>
@@ -1673,7 +1611,6 @@
                 </li>
                 <li class="mx-item" id="haematocrit" data-cat="blood" data-panels="comprehensive" data-search="haematocrit hct full blood count hematocrit hct pcv packed cell volume">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</span>
                     <span class="mx-card-name">Haematocrit</span>
                     <span class="mx-card-full">Hct</span>
                     <span class="mx-card-desc">The share of your blood made up of red blood cells.</span>
@@ -1697,7 +1634,6 @@
                 </li>
                 <li class="mx-item" id="red-blood-cells" data-cat="blood" data-panels="comprehensive" data-search="red blood cells rbc full blood count rbc erythrocytes red cell count">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</span>
                     <span class="mx-card-name">Red blood cells</span>
                     <span class="mx-card-full">RBC</span>
                     <span class="mx-card-desc">The number of oxygen-carrying cells in your blood.</span>
@@ -1721,7 +1657,6 @@
                 </li>
                 <li class="mx-item" id="mcv" data-cat="blood" data-panels="comprehensive" data-search="mcv mean corpuscular volume full blood count mean corpuscular volume red cell size">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</span>
                     <span class="mx-card-name">MCV</span>
                     <span class="mx-card-full">Mean corpuscular volume</span>
                     <span class="mx-card-desc">The average size of your red blood cells.</span>
@@ -1745,7 +1680,6 @@
                 </li>
                 <li class="mx-item" id="mch" data-cat="blood" data-panels="comprehensive" data-search="mch mean corpuscular haemoglobin full blood count mean corpuscular haemoglobin hemoglobin">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</span>
                     <span class="mx-card-name">MCH</span>
                     <span class="mx-card-full">Mean corpuscular haemoglobin</span>
                     <span class="mx-card-desc">The average amount of haemoglobin in each red blood cell.</span>
@@ -1769,7 +1703,6 @@
                 </li>
                 <li class="mx-item" id="mchc" data-cat="blood" data-panels="comprehensive" data-search="mchc mean corpuscular haemoglobin concentration full blood count mean corpuscular haemoglobin concentration hemoglobin">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</span>
                     <span class="mx-card-name">MCHC</span>
                     <span class="mx-card-full">Mean corpuscular haemoglobin concentration</span>
                     <span class="mx-card-desc">How concentrated the haemoglobin is inside your red blood cells.</span>
@@ -1793,7 +1726,6 @@
                 </li>
                 <li class="mx-item" id="rdw-cv" data-cat="blood" data-panels="comprehensive" data-search="rdw cv red cell distribution width full blood count rdw red cell distribution width">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</span>
                     <span class="mx-card-name">RDW-CV</span>
                     <span class="mx-card-full">Red cell distribution width</span>
                     <span class="mx-card-desc">How much your red blood cells vary in size.</span>
@@ -1817,7 +1749,6 @@
                 </li>
                 <li class="mx-item" id="white-blood-cells" data-cat="blood" data-panels="comprehensive" data-search="white blood cells wbc full blood count wbc leukocytes leucocytes immune">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</span>
                     <span class="mx-card-name">White blood cells</span>
                     <span class="mx-card-full">WBC</span>
                     <span class="mx-card-desc">The total number of immune cells in your blood.</span>
@@ -1841,7 +1772,6 @@
                 </li>
                 <li class="mx-item" id="neutrophils" data-cat="blood" data-panels="comprehensive" data-search="neutrophils full blood count white cells immune">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</span>
                     <span class="mx-card-name">Neutrophils</span>
                     <span class="mx-card-desc">The most common white blood cell, quick to respond to infection.</span>
                     <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
@@ -1863,7 +1793,6 @@
                 </li>
                 <li class="mx-item" id="lymphocytes" data-cat="blood" data-panels="comprehensive" data-search="lymphocytes full blood count white cells immune t cells b cells">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</span>
                     <span class="mx-card-name">Lymphocytes</span>
                     <span class="mx-card-desc">White blood cells that include T cells and B cells.</span>
                     <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
@@ -1885,7 +1814,6 @@
                 </li>
                 <li class="mx-item" id="monocytes" data-cat="blood" data-panels="comprehensive" data-search="monocytes full blood count white cells immune">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</span>
                     <span class="mx-card-name">Monocytes</span>
                     <span class="mx-card-desc">White blood cells that clear debris and help with repair.</span>
                     <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
@@ -1907,7 +1835,6 @@
                 </li>
                 <li class="mx-item" id="eosinophils" data-cat="blood" data-panels="comprehensive" data-search="eosinophils full blood count white cells immune allergy">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</span>
                     <span class="mx-card-name">Eosinophils</span>
                     <span class="mx-card-desc">White blood cells involved in allergic responses.</span>
                     <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
@@ -1929,7 +1856,6 @@
                 </li>
                 <li class="mx-item" id="basophils" data-cat="blood" data-panels="comprehensive" data-search="basophils full blood count white cells immune allergy histamine">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</span>
                     <span class="mx-card-name">Basophils</span>
                     <span class="mx-card-desc">The least common white blood cell, involved in allergic responses.</span>
                     <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
@@ -1951,7 +1877,6 @@
                 </li>
                 <li class="mx-item" id="platelets" data-cat="blood" data-panels="comprehensive" data-search="platelets plt full blood count plt thrombocytes clotting">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</span>
                     <span class="mx-card-name">Platelets</span>
                     <span class="mx-card-full">PLT</span>
                     <span class="mx-card-desc">Small cell fragments that help your blood to clot.</span>
@@ -1975,7 +1900,6 @@
                 </li>
                 <li class="mx-item" id="mpv" data-cat="blood" data-panels="comprehensive" data-search="mpv mean platelet volume full blood count mean platelet volume platelets">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</span>
                     <span class="mx-card-name">MPV</span>
                     <span class="mx-card-full">Mean platelet volume</span>
                     <span class="mx-card-desc">The average size of your platelets.</span>
@@ -1999,7 +1923,6 @@
                 </li>
                 <li class="mx-item" id="pdw" data-cat="blood" data-panels="comprehensive" data-search="pdw platelet distribution width full blood count platelet distribution width platelets">
                   <button class="mx-card" type="button" aria-haspopup="dialog">
-                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</span>
                     <span class="mx-card-name">PDW</span>
                     <span class="mx-card-full">Platelet distribution width</span>
                     <span class="mx-card-desc">How much your platelets vary in size.</span>
