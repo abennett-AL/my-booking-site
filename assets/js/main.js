@@ -500,39 +500,136 @@
   ];
 
   /* ---------- Starfield behind the hero (always-dark band) ---------- */
-  // Static, "real"-looking night sky: many faint stars, a few bright ones
-  // with a soft halo, clustered irregularly rather than evenly spread.
+  // A static night sky in three depth layers: a haze of faint far stars, a
+  // scatter of mid stars and a few bright near ones, over a faint Milky Way
+  // band. Seeded, so it is the same sky on every visit. Star counts scale with
+  // the hero's area; mid and near stars keep clear of the headline, copy and
+  // buttons, and near stars keep off the orbit. Redrawn when the hero changes
+  // size (rotation, resize, late font swap). No motion.
   function initStars() {
     const hero = document.querySelector('.hero-centered');
     if (!hero) return;
+
     const NS = 'http://www.w3.org/2000/svg';
-    const svg = document.createElementNS(NS, 'svg');
-    svg.setAttribute('class', 'hero-stars');
-    svg.setAttribute('aria-hidden', 'true');
-    const frag = document.createDocumentFragment();
-    const star = (x, y, r, o) => {
-      const c = document.createElementNS(NS, 'circle');
-      c.setAttribute('cx', x + '%'); c.setAttribute('cy', y + '%');
-      c.setAttribute('r', r); c.setAttribute('fill', '#EDE7DA');
-      c.setAttribute('opacity', o.toFixed(2));
-      return c;
+    const el = (tag, attrs) => {
+      const n = document.createElementNS(NS, tag);
+      for (const k in attrs) n.setAttribute(k, attrs[k]);
+      return n;
     };
-    for (let i = 0; i < 170; i++) {
-      // Two overlapping distributions give gentle clustering.
-      const x = (Math.random() * 100 + Math.random() * 100) / 2;
-      const y = (Math.random() * 100 + Math.random() * 100) / 2;
-      // Mostly dim pinpricks; occasionally brighter.
-      const mag = Math.pow(Math.random(), 2.2);
-      frag.appendChild(star(x, y, 0.4 + mag * 1.1, 0.12 + mag * 0.55));
-    }
-    for (let i = 0; i < 7; i++) {
-      const x = Math.random() * 100, y = Math.random() * 100;
-      const halo = star(x, y, 4.5, 0.10);          // soft glow
-      const core = star(x, y, 1.5, 0.95);          // bright core
-      frag.append(halo, core);
-    }
-    svg.appendChild(frag);
+    const svg = el('svg', { class: 'hero-stars', 'aria-hidden': 'true', focusable: 'false' });
     hero.prepend(svg);
+
+    // Small seeded PRNG (mulberry32): same numbers in, same sky out.
+    const seeded = seed => () => {
+      seed = (seed + 0x6D2B79F5) | 0;
+      let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+    const gauss = rnd => Math.sqrt(-2 * Math.log(1 - rnd())) * Math.cos(2 * Math.PI * rnd());
+    // Mostly neutral white; a few faintly blue-white or warm, as real stars are.
+    const tint = c => (c < 0.16 ? '#D3DDEF' : c < 0.27 ? '#F1DEC4' : '#EEEAE2');
+    // Stars per 10,000 px² of hero. The area is clamped so a phone still gets
+    // a full sky and a very wide screen doesn't draw thousands of nodes.
+    const DENSITY = { far: 1.9, mid: 0.58, near: 0.08 };
+    // Layout boxes relative to the hero, ignoring the .hero-fade entrance
+    // transform (offset* values are untransformed).
+    const origin = n => { let x = 0, y = 0; for (let e = n; e; e = e.offsetParent) { x += e.offsetLeft; y += e.offsetTop; } return [x, y]; };
+
+    let lastW = 0, lastH = 0;
+    function draw(force) {
+      const W = hero.clientWidth, H = hero.clientHeight;
+      if (!W || !H) return;
+      if (!force && W === lastW && Math.abs(H - lastH) < 2) return;
+      lastW = W; lastH = H;
+      const area = Math.min(Math.max(W * H, 550000), 2600000) / 10000;
+
+      const [hx, hy] = origin(hero);
+      const pad = 18;
+      const text = [...hero.querySelectorAll('.hero-intro .eyebrow, .hero-intro .display, .hero-body, .hero-actions')]
+        .map(n => { const [x, y] = origin(n); return { l: x - hx - pad, t: y - hy - pad, r: x - hx + n.offsetWidth + pad, b: y - hy + n.offsetHeight + pad }; });
+      const inText = (x, y) => text.some(b => x > b.l && x < b.r && y > b.t && y < b.b);
+      const orbitEl = hero.querySelector('.orbit');
+      let orbit = null;
+      if (orbitEl) {
+        const [ox, oy] = origin(orbitEl);
+        orbit = { x: ox - hx + orbitEl.offsetWidth / 2, y: oy - hy + orbitEl.offsetHeight / 2, r: orbitEl.offsetWidth * 0.42 };
+      }
+      const inOrbit = (x, y) => !!orbit && Math.hypot(x - orbit.x, y - orbit.y) < orbit.r;
+
+      // Milky Way band: a diagonal strip through the middle of the hero,
+      // steeper on portrait screens so it still crosses the width.
+      const deg = W < H ? -58 : -20, ang = deg * Math.PI / 180;
+      const dx = Math.cos(ang), dy = Math.sin(ang);
+      const cx = W / 2, cy = H / 2, len = Math.hypot(W, H);
+      const spread = Math.min(W, H) * 0.09;
+      const point = (rnd, banded) => {
+        if (!banded) return [rnd() * W, rnd() * H];
+        const t = (rnd() - 0.5) * len, o = gauss(rnd) * spread;
+        return [cx + dx * t - dy * o, cy + dy * t + dx * o];
+      };
+
+      const frag = document.createDocumentFragment();
+      const defs = el('defs', {});
+      const grad = (id, color, op) => {
+        const g = el('radialGradient', { id });
+        g.append(el('stop', { offset: '0%', 'stop-color': color, 'stop-opacity': op }),
+                 el('stop', { offset: '100%', 'stop-color': color, 'stop-opacity': '0' }));
+        defs.appendChild(g);
+      };
+      grad('starHalo', '#EEEAE2', '0.45');
+      grad('skyDust', '#C8D2E4', '1');
+      frag.appendChild(defs);
+
+      // A soft glow along the band, in three overlapping patches so it
+      // doesn't read as one neat stripe.
+      [[0.5, 0.42, 2.6, 0.045], [0.3, 0.16, 1.8, 0.035], [0.74, 0.14, 1.5, 0.03]].forEach(([at, rx, ry, op]) => {
+        const t = (at - 0.5) * len, x = cx + dx * t, y = cy + dy * t;
+        frag.appendChild(el('ellipse', {
+          cx: x.toFixed(1), cy: y.toFixed(1), rx: (len * rx).toFixed(1), ry: (spread * ry).toFixed(1),
+          transform: `rotate(${deg} ${x.toFixed(1)} ${y.toFixed(1)})`, fill: 'url(#skyDust)', opacity: op,
+        }));
+      });
+
+      const dot = (x, y, r, c, o) => el('circle', { cx: x.toFixed(1), cy: y.toFixed(1), r: r.toFixed(2), fill: tint(c), opacity: o.toFixed(2) });
+      const layer = (name, seed, bandShare, avoid, make) => {
+        const rnd = seeded(seed);
+        const n = Math.round(DENSITY[name] * area);
+        for (let i = 0, tries = 0; i < n && tries < n * 5; tries++) {
+          const banded = rnd() < bandShare;
+          const [x, y] = point(rnd, banded);
+          const m = rnd(), c = rnd();
+          if (x < 0 || x > W || y < 0 || y > H || (avoid && avoid(x, y))) continue;
+          make(x, y, m, c);
+          i++;
+        }
+      };
+      // Far: tiny and faint, the haze that gives the sky its depth.
+      layer('far', 11, 0.45, null, (x, y, m, c) => {
+        const k = Math.pow(m, 1.6);
+        frag.appendChild(dot(x, y, 0.5 + k * 0.35, c, 0.22 + k * 0.33));
+      });
+      // Mid: small, medium brightness.
+      layer('mid', 23, 0.25, inText, (x, y, m, c) => {
+        const k = Math.pow(m, 1.4);
+        frag.appendChild(dot(x, y, 0.75 + k * 0.45, c, 0.45 + k * 0.3));
+      });
+      // Near: a handful of bright stars, most with a soft halo.
+      layer('near', 37, 0, (x, y) => inText(x, y) || inOrbit(x, y), (x, y, m, c) => {
+        if (m > 0.3) frag.appendChild(el('circle', { cx: x.toFixed(1), cy: y.toFixed(1), r: (5 + m * 3).toFixed(1), fill: 'url(#starHalo)' }));
+        frag.appendChild(dot(x, y, 1.1 + m * 0.5, c, 0.85 + m * 0.15));
+      });
+
+      svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+      svg.replaceChildren(frag);
+    }
+
+    draw(true);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => draw(true));
+    if ('ResizeObserver' in window) {
+      let raf = 0;
+      new ResizeObserver(() => { cancelAnimationFrame(raf); raf = requestAnimationFrame(() => draw(false)); }).observe(hero);
+    }
   }
 
   function initOrbit() {

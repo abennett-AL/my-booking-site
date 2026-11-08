@@ -1325,8 +1325,18 @@ html[data-theme="dark"] .dash-screen {
   --orbit-track:  rgba(237,231,218,.12);
   --glow-core:    rgba(237,231,218,.22);
   --glow-mid:     rgba(159,191,164,.08);
-  background: var(--paper);
+  /* The sky itself is pure black, darker than the dark theme's paper, so the
+     stars read as depth. Only the band's background uses it: cards, tags and
+     the orbit keep the --paper family above. */
+  --sky:            #000;
+  background: var(--sky);
   color: var(--ink);
+}
+/* Dark theme: the page below is #14130F, so the black sky eases into it over
+   the last 10rem instead of ending in a hard line. The light theme keeps its
+   clean edge against the cream marquee. */
+html[data-theme="dark"] .hero-centered {
+  background: linear-gradient(to bottom, var(--sky) calc(100% - 10rem), #14130F);
 }
 /* Primary CTA carries the accent green in the hero, matching dark mode */
 .hero-centered .btn-primary { background: var(--evergreen); color: #14130F; }
