@@ -102,8 +102,22 @@
   force = true
 
 [[redirects]]
+  from = "/active-newsroom.html"
+  to = "/active-newsroom"
+  status = 301
+  force = true
+
+# active-updates.html was renamed to active-newsroom.html (Active Updates became
+# Active Newsroom). Keep the old paths alive for links, bookmarks and search results.
+[[redirects]]
+  from = "/active-updates"
+  to = "/active-newsroom"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/active-updates.html"
-  to = "/active-updates"
+  to = "/active-newsroom"
   status = 301
   force = true
 

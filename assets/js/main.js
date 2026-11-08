@@ -78,8 +78,12 @@
     ['/longevity-lab', 'Longevity Lab'],
     ['/membership', 'Membership'],
     ['/for-teams', 'For Teams'],
-    { label: 'Community', children: [['/recipes', 'Recipes'], ['/active-updates', 'Active Updates']] },
-    { label: 'Lifestyle', children: [['/activewear', 'Activewear'], ['/active-events', 'Active Events']] },
+    { label: 'Community', children: [
+      ['/recipes', 'Recipes'],
+      ['/active-newsroom', 'Active Newsroom'],
+      ['/active-events', 'Active Events'],
+      ['/activewear', 'Activewear'],
+    ] },
   ];
 
   const page = (document.body.getAttribute('data-page') || 'index').toLowerCase();
@@ -153,18 +157,17 @@
     });
 
     const toggle = header.querySelector('.nav-toggle');
-    toggle.addEventListener('click', () => {
-      const open = document.body.classList.toggle('nav-open');
+    const setMenu = (open) => {
+      document.body.classList.toggle('nav-open', open);
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       document.body.style.overflow = open ? 'hidden' : '';
+      if (headerSync) headerSync();  // the bar sits on the cream menu while it's open
+    };
+    toggle.addEventListener('click', () => setMenu(!document.body.classList.contains('nav-open')));
+    header.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && document.body.classList.contains('nav-open')) { setMenu(false); toggle.focus(); }
     });
-    header.querySelectorAll('.mobile-menu a').forEach(a =>
-      a.addEventListener('click', () => {
-        document.body.classList.remove('nav-open');
-        document.body.style.overflow = '';
-        toggle.setAttribute('aria-expanded', 'false');
-      })
-    );
 
     // Scroll condense + over-dark-hero chrome. While the header floats over
     // the (always-dark) hero band it renders light-on-dark; once it condenses
@@ -173,7 +176,8 @@
     const sync = () => {
       const scrolled = window.scrollY > 20;
       header.classList.toggle('scrolled', scrolled);
-      const overDark = hasDarkHero && !scrolled;
+      // An open mobile menu covers the hero, so the bar goes back to dark-on-light
+      const overDark = hasDarkHero && !scrolled && !document.body.classList.contains('nav-open');
       header.classList.toggle('on-dark', overDark);
       const logo = header.querySelector('.brand-logo');
       if (logo) logo.src = (overDark || currentTheme() === 'dark') ? LOGO_LIGHT : LOGO_DARK;
@@ -204,16 +208,16 @@
               <li><a href="/membership">Membership</a></li>
               <li><a href="/for-teams">For Teams</a></li>
               <li><a href="/recipes">Recipes</a></li>
-              <li><a href="/active-updates">Active Updates</a></li>
-              <li><a href="/activewear">Activewear</a></li>
+              <li><a href="/active-newsroom">Active Newsroom</a></li>
               <li><a href="/active-events">Active Events</a></li>
+              <li><a href="/activewear">Activewear</a></li>
               <li><a href="/about">About</a></li>
             </ul>
           </div>
           <div class="footer-col">
             <h4>Visit</h4>
             <ul>
-              <li>Central Brighton &amp; Hove — coming soon</li>
+              <li>Central Brighton &amp; Hove, coming soon</li>
               <li>Mon–Sat, by appointment</li>
               <li><a href="mailto:hello@activelabs.health">hello@activelabs.health</a></li>
               <li><a href="tel:+441273000000">+44 (0)1273 000 000</a></li>
@@ -223,7 +227,6 @@
             <h4>Follow</h4>
             <ul>
               <li><a href="#" rel="noopener">Instagram</a></li>
-              <li><a href="#" rel="noopener">The Active Labs Podcast</a></li>
               <li><a href="#" rel="noopener">Newsletter</a></li>
             </ul>
           </div>
@@ -235,18 +238,17 @@
           All pricing shown is indicative and for illustration only. Nothing on this site constitutes medical advice.
         </p>
         <div class="footer-bottom">
-          <!-- No "Ltd" until Companies House registration completes: using it before
-               incorporation is an offence under Companies Act 2006 s.1194. -->
-          <span>© <span data-year></span> Active Labs · Brighton &amp; Hove, UK</span>
-          <span style="display:flex;gap:1.5rem;flex-wrap:wrap">
-            <a href="/privacy">Privacy</a><a href="#">Terms</a><a href="#">Clinical governance</a>
+          <!-- Company details required on the website by the Company, LLP and Business
+               (Names and Trading Disclosures) Regulations 2015: registered name, number,
+               part of the UK where registered, and registered office address. -->
+          <p class="footer-legal">Active Labs Health Ltd · Registered in England and Wales No. 17490364 · Registered office: 71-75 Shelton Street, Covent Garden, London WC2H 9JQ</p>
+          <span class="footer-legal-links">
+            <a href="/privacy">Privacy</a><a href="mailto:hello@activelabs.health">hello@activelabs.health</a>
           </span>
         </div>
       </div>
     `;
     document.body.appendChild(footer);
-    const y = footer.querySelector('[data-year]');
-    if (y) y.textContent = new Date().getFullYear();
   }
 
   /* ---------- Scroll reveal ---------- */
@@ -476,22 +478,25 @@
 
   /* ---------- Longevity Orbit (hero visual) ---------- */
   // Nine biomarkers on three weighted rings (inner = highest weight).
-  // Placeholder data — the composite score is a weighted mean of the
-  // per-marker scores and lands on 86. Swap values freely later.
+  // Placeholder data: the composite score is a weighted mean of the
+  // per-marker scores and lands on 82. Every marker shown here must be in the
+  // Comprehensive panel (see /what-we-test), and the blurbs are visitor-facing
+  // copy, so they follow the house rules: no em dashes and no claims to
+  // diagnose, treat or prevent anything.
   const ORBIT_RINGS = { r: [230, 340, 410], w: [3, 2, 1], base: [-90, -30, -60] };
   const ORBIT_DATA = [
     // inner ring (weight 3)
-    { id: 'apob', label: 'ApoB', full: 'Apolipoprotein B', value: 65, unit: 'mg/dL', range: '< 90', ring: 0, status: 'in', score: 90, blurb: 'A count of every cholesterol particle capable of entering your artery walls. It predicts heart disease better than standard cholesterol tests, which is why we weight it so heavily — and why keeping it low buys you decades.' },
-    { id: 'hba1c', label: 'HbA1c', full: 'Glycated haemoglobin', value: 5.9, unit: '%', range: '4.8–5.6', ring: 0, status: 'act', score: 68, blurb: 'Sugar coats your red blood cells as they circulate, and this measures how much — a three-month average of your blood glucose. Rising levels flag insulin resistance years before diabetes, while it is still easy to reverse.' },
-    { id: 'crp', label: 'hs-CRP', full: 'High-sensitivity C-reactive protein', value: 2.4, unit: 'mg/L', range: '< 1.0', ring: 0, status: 'act', score: 62, blurb: 'A protein your liver releases when anything in the body is inflamed. Quiet, persistent inflammation accelerates ageing in arteries, joints and brain — finding the source and settling it is one of the highest-value moves in prevention.' },
+    { id: 'apob', label: 'ApoB', full: 'Apolipoprotein B', value: 65, unit: 'mg/dL', range: '< 90', ring: 0, status: 'in', score: 90, blurb: 'A count of the cholesterol-carrying particles in your blood that can enter artery walls. Many researchers see it as a clearer guide to cardiovascular risk than standard cholesterol alone, which is why we give it extra weight.' },
+    { id: 'hba1c', label: 'HbA1c', full: 'Glycated haemoglobin', value: 5.9, unit: '%', range: '4.8–5.6', ring: 0, status: 'act', score: 68, blurb: 'Sugar attaches to your red blood cells as they circulate, and this measures how much: a three-month average of your blood glucose. It shows how your blood sugar is trending over time, not just on the day of the test.' },
+    { id: 'crp', label: 'hs-CRP', full: 'High-sensitivity C-reactive protein', value: 2.4, unit: 'mg/L', range: '< 1.0', ring: 0, status: 'act', score: 62, blurb: 'A protein your liver releases when there is inflammation in the body. A low-level rise can reflect things like poor sleep, stress or a recent illness, so we always read it alongside your other results.' },
     // middle ring (weight 2)
-    { id: 'insulin', label: 'Insulin', full: 'Fasting insulin', value: 6, unit: 'µIU/mL', range: '2–8', ring: 1, status: 'in', score: 92, blurb: 'The hormone that shepherds sugar out of your blood. When cells stop listening, the pancreas quietly shouts — insulin climbs long before glucose does, making this one of the earliest warnings of metabolic trouble.' },
-    { id: 'vo2', label: 'VO₂ max', full: 'Maximal oxygen uptake', value: 42, unit: 'mL/kg/min', range: '> 38', ring: 1, status: 'in', score: 94, blurb: 'The most oxygen your heart, lungs and muscles can use flat-out — your engine size. Large studies rank it among the strongest single predictors of lifespan, and unlike your genes, training raises it at any age.' },
-    { id: 'testo', label: 'Testosterone', full: 'Total testosterone', value: 18, unit: 'nmol/L', range: '10–30', ring: 1, status: 'in', score: 90, blurb: 'Builds and maintains muscle, bone, red blood cells, mood and drive. Levels drift down with age, sleep debt and stress — tracking it separates normal ageing from a fixable deficiency.' },
+    { id: 'ferritin', label: 'Ferritin', full: 'Serum ferritin', value: 95, unit: 'µg/L', range: '30–300', ring: 1, status: 'in', score: 92, blurb: 'Your body\'s store of iron. Levels vary a lot from person to person, and inflammation can raise it as well as iron, so we read it alongside the rest of your iron profile.' },
+    { id: 'cortisol', label: 'Cortisol', full: 'Morning cortisol', value: 410, unit: 'nmol/L', range: '170–500', ring: 1, status: 'in', score: 94, blurb: 'Your main stress hormone, measured in the morning when it naturally peaks. It follows a daily rhythm shaped by sleep, training and stress, so a single reading is always read in context.' },
+    { id: 'testo', label: 'Testosterone', full: 'Total testosterone', value: 18, unit: 'nmol/L', range: '10–30', ring: 1, status: 'in', score: 90, blurb: 'Supports muscle, bone, red blood cells, mood and drive. Levels tend to drift with age, sleep and stress, and tracking them over time shows what is normal for you.' },
     // outer ring (weight 1)
-    { id: 'lpa', label: 'Lp(a)', full: 'Lipoprotein(a)', value: 40, unit: 'nmol/L', range: '< 75', ring: 2, status: 'in', score: 94, blurb: 'A cholesterol particle set almost entirely by your genes — diet barely moves it. One in five people carry high levels without knowing, which silently multiplies heart risk; everyone should measure it at least once.' },
-    { id: 'vitd', label: 'Vit D', full: 'Vitamin D (25-hydroxy)', value: 68, unit: 'nmol/L', range: '75–125', ring: 2, status: 'act', score: 68, blurb: 'Made in your skin from sunlight, and a hormone more than a vitamin — it steers immune defence, bone strength and muscle function. Most people at UK latitudes run low for half the year without feeling it.' },
-    { id: 'tsh', label: 'TSH', full: 'Thyroid-stimulating hormone', value: 2.1, unit: 'mIU/L', range: '0.4–4.0', ring: 2, status: 'in', score: 94, blurb: 'The signal your brain sends to your thyroid, which sets the tempo of every cell\'s metabolism. Drifting levels quietly reshape energy, weight, mood and heart rate — and are simple to correct once seen.' },
+    { id: 'lpa', label: 'Lp(a)', full: 'Lipoprotein(a)', value: 40, unit: 'nmol/L', range: '< 75', ring: 2, status: 'in', score: 94, blurb: 'A cholesterol particle largely set by your genes, so diet and exercise barely move it. Because it stays fairly stable through life, a single reading gives a useful long-term picture.' },
+    { id: 'vitd', label: 'Vit D', full: 'Vitamin D (25-hydroxy)', value: 68, unit: 'nmol/L', range: '75–125', ring: 2, status: 'act', score: 68, blurb: 'Made in your skin from sunlight, and closer to a hormone than a vitamin. It plays a part in bone, muscle and immune function, and many people in the UK run low through the winter months.' },
+    { id: 'tsh', label: 'TSH', full: 'Thyroid-stimulating hormone', value: 2.1, unit: 'mIU/L', range: '0.4–4.0', ring: 2, status: 'in', score: 94, blurb: 'The signal your brain sends to your thyroid, which sets the pace of your metabolism. Read with free T3 and T4, it shows how your thyroid is working, and changes can affect energy, weight, mood and heart rate.' },
   ];
 
   /* ---------- Starfield behind the hero (always-dark band) ---------- */
@@ -796,6 +801,153 @@
     }
   }
 
+  /* ---------- What We Test: biomarker explorer ---------- */
+  // Every marker card is already in the HTML. This filters the cards by panel,
+  // body system and search, and copies a card's hidden .mx-detail block into the
+  // side drawer (a <dialog>: Esc-to-close and a focus trap for free).
+  function initMarkers() {
+    const root = document.querySelector('[data-mx]');
+    if (!root) return;
+    const items = [...root.querySelectorAll('.mx-item')];
+    const groups = [...root.querySelectorAll('.mx-group')];
+    const panels = [...root.querySelectorAll('.mx-panel[data-panel]')];
+    const chips = [...root.querySelectorAll('.mx-chip')];
+    const input = root.querySelector('#mxSearch');
+    const clear = root.querySelector('.mx-clear');
+    const count = root.querySelector('.mx-count');
+    const empty = root.querySelector('.mx-empty');
+    const panelName = { foundation: 'Foundation Panel', comprehensive: 'Comprehensive Panel' };
+    const state = { panel: 'comprehensive', cat: 'all', q: '' };
+
+    // Same normalising as the data-search attributes: lower case, no accents,
+    // punctuation to spaces, so "lp(a)" finds Lipoprotein(a) and "b12" finds both B12s.
+    const norm = (s) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
+      .replace(/[^a-z0-9]+/g, ' ').trim();
+    const esc = (s) => s.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+    const names = items.map((it) => {
+      const el = it.querySelector('.mx-card-name');
+      return { el, text: el.textContent };
+    });
+    // Search matches the start of words, so "vit" finds vitamins but not "sensitivity"
+    const hay = items.map((it) => it.dataset.search.split(' '));
+    // Highlight the typed text in the marker name, when it appears there as typed
+    const mark = ({ el, text }, raw) => {
+      const i = raw ? text.toLowerCase().indexOf(raw.toLowerCase()) : -1;
+      if (i < 0) { if (el.childElementCount) el.textContent = text; return; }
+      el.innerHTML = esc(text.slice(0, i)) + '<mark>' + esc(text.slice(i, i + raw.length)) + '</mark>' + esc(text.slice(i + raw.length));
+    };
+
+    const apply = () => {
+      const raw = state.q.trim();
+      const words = norm(raw).split(' ').filter(Boolean);
+      const inPanel = {};
+      const matched = {};
+      let total = 0;
+      let shown = 0;
+      items.forEach((it, i) => {
+        const cat = it.dataset.cat;
+        const okPanel = it.dataset.panels.split(' ').includes(state.panel);
+        const okSearch = words.every((w) => hay[i].some((h) => h.startsWith(w)));
+        if (okPanel) inPanel[cat] = (inPanel[cat] || 0) + 1;
+        if (okPanel && okSearch) { matched[cat] = (matched[cat] || 0) + 1; total++; }
+        const hit = okPanel && okSearch && (state.cat === 'all' || cat === state.cat);
+        it.hidden = !hit;
+        if (hit) shown++;
+        mark(names[i], hit ? raw : '');
+      });
+      // A body system the chosen panel doesn't cover can't stay selected
+      if (state.cat !== 'all' && !inPanel[state.cat]) { setCat('all'); return; }
+
+      // Chips: hide systems the panel doesn't cover, grey out ones the search rules out
+      chips.forEach((chip) => {
+        const c = chip.dataset.cat;
+        const n = c === 'all' ? total : (matched[c] || 0);
+        chip.querySelector('.mx-chip-n').textContent = n;
+        chip.hidden = c !== 'all' && !inPanel[c];
+        chip.disabled = n === 0 && c !== state.cat;
+      });
+      groups.forEach((g) => {
+        const n = g.querySelectorAll('.mx-item:not([hidden])').length;
+        g.hidden = n === 0;
+        g.querySelector('.mx-group-n').textContent = n;
+      });
+      const catName = state.cat === 'all' ? '' : chips.find((c) => c.dataset.cat === state.cat).dataset.name;
+      const n = (k, one, many) => `${k} ${k === 1 ? one : many}`;
+      if (raw) count.textContent = `${n(shown, 'result', 'results')} for ‘${raw}’${catName ? ' in ' + catName : ''}`;
+      else if (catName) count.textContent = `${n(shown, 'marker', 'markers')} in ${catName}`;
+      else count.textContent = `${n(shown, 'marker', 'markers')} in the ${panelName[state.panel]}`;
+      empty.hidden = shown > 0;
+      root.dataset.panel = state.panel;
+    };
+    const setCat = (cat) => {
+      state.cat = cat;
+      chips.forEach((c) => {
+        const on = c.dataset.cat === cat;
+        c.classList.toggle('active', on);
+        c.setAttribute('aria-pressed', on);
+      });
+      apply();
+    };
+    const setQuery = (q) => {
+      input.value = state.q = q;
+      clear.hidden = !q;
+    };
+
+    panels.forEach((b) => b.addEventListener('click', () => {
+      state.panel = b.dataset.panel;
+      panels.forEach((p) => p.setAttribute('aria-pressed', p === b));
+      apply();
+    }));
+    chips.forEach((c) => c.addEventListener('click', () => setCat(c.dataset.cat)));
+    input.addEventListener('input', () => { setQuery(input.value); apply(); });
+    clear.addEventListener('click', () => { setQuery(''); apply(); input.focus(); });
+    root.querySelectorAll('.mx-pop').forEach((b) => b.addEventListener('click', () => {
+      setQuery(b.textContent);
+      setCat('all');
+    }));
+    root.querySelector('.mx-reset').addEventListener('click', () => {
+      setQuery('');
+      setCat('all');
+      input.focus();
+    });
+    apply();
+
+    // Detail drawer
+    const drawer = document.getElementById('mxDrawer');
+    if (!drawer) return;
+    const body = drawer.querySelector('.mx-drawer-body');
+    const open = (id) => {
+      const item = document.getElementById(id);
+      if (!item || !item.classList.contains('mx-item')) return;
+      body.innerHTML = item.querySelector('.mx-detail').innerHTML;
+      const title = body.querySelector('h2');
+      if (title) title.id = 'mxDrawerTitle';
+      if (!drawer.open) drawer.showModal();
+      body.scrollTop = 0;
+      // Deep-linkable: /what-we-test#ferritin reopens the same marker
+      history.replaceState(null, '', '#' + id);
+    };
+    drawer.addEventListener('close', () => {
+      // The close event is queued, so it can land after a quick reopen: leave that one alone
+      if (drawer.open) return;
+      history.replaceState(null, '', location.pathname + location.search);
+      body.innerHTML = '';
+    });
+    // A click on the backdrop lands on the dialog element itself
+    drawer.addEventListener('click', (e) => { if (e.target === drawer) drawer.close(); });
+    drawer.querySelector('.mx-drawer-close').addEventListener('click', () => drawer.close());
+    root.addEventListener('click', (e) => {
+      const card = e.target.closest('.mx-card');
+      if (card) open(card.closest('.mx-item').id);
+    });
+    const openFromHash = () => {
+      const id = decodeURIComponent(location.hash.slice(1));
+      if (id) open(id);
+    };
+    openFromHash();
+    window.addEventListener('hashchange', openFromHash);
+  }
+
   /* ---------- Init ---------- */
   function init() {
     buildHeader();
@@ -811,6 +963,7 @@
     initDashboard();
     initForm();
     initCommunity();
+    initMarkers();
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

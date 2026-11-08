@@ -3,21 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>What We Test — Active Labs</title>
-  <meta name="description" content="Explore Active Labs' diagnostic panels — from the comprehensive Foundation panel to advanced cardiovascular, hormone, metabolic and micronutrient testing. 70+ biomarkers, clinician-interpreted.">
+  <title>What We Test | Active Labs</title>
+  <meta name="description" content="Explore Active Labs' blood panels: the Foundation panel and the Comprehensive panel of 70+ biomarkers, covering heart, metabolic, hormone, thyroid, liver, kidney and nutrient markers. Every result is clinician-interpreted.">
   <link rel="icon" type="image/svg+xml" href="assets/img/activelabs-mark.svg">
   <link rel="apple-touch-icon" href="assets/img/activelabs-logo.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <script>(function(){try{if(localStorage.getItem("al-theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}})();</script>
-  <link rel="stylesheet" href="assets/css/styles.css?v=37">
+  <link rel="stylesheet" href="assets/css/styles.css?v=38">
 </head>
 <body data-page="what-we-test">
   <main>
     <section class="page-hero">
       <div class="container">
         <p class="breadcrumb hero-fade">Home / What We Test</p>
-        <h1 class="hero-fade">Every panel,<br><span class="serif-italic text-green">explained.</span></h1>
+        <h1 class="hero-fade">Our panel options<br><span class="serif-italic text-green">explained</span></h1>
         <p class="lead measure hero-fade mt-3">Explore the panels below. Testing is positioned as a recurring baseline-and-retest cycle, so you track trends over time rather than collecting snapshots.</p>
         <div class="hero-actions hero-fade mt-4">
           <a href="/book" class="btn btn-primary">Join the waitlist <span class="arrow" aria-hidden="true">→</span></a>
@@ -31,115 +29,2006 @@
       </div>
     </section>
 
-    <!-- PANELS ACCORDION -->
+    <!-- BIOMARKER EXPLORER
+         Every marker is a card with its drawer copy in a hidden .mx-detail block; initMarkers()
+         in main.js filters the cards and opens the drawer. Comprehensive (78 markers, marketed
+         as "70+") includes all 22 Foundation markers. Only list markers that are in a panel. -->
     <section class="section-tight" id="panels">
       <div class="container">
-        <div data-reveal>
-          <!-- Foundation -->
-          <div class="panel-row open">
-            <button class="panel-head" aria-expanded="true">
-              <span class="p-idx">01</span>
-              <span class="p-name">Foundation Panel</span>
-              <span class="p-count">70+ markers</span>
-              <span class="p-toggle" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></span>
-            </button>
-            <div class="panel-body"><div class="panel-body-inner">
-              <p class="measure" style="margin-bottom:1.2rem">Our comprehensive baseline — a whole-system view across metabolic, thyroid, hormonal, inflammatory and nutritional health. The starting point for every member.</p>
-              <div class="panel-markers">
-                <span class="marker-chip">Full Blood Count</span><span class="marker-chip">HbA1c</span><span class="marker-chip">Fasting Insulin</span>
-                <span class="marker-chip">Fasting Glucose</span><span class="marker-chip">Total / LDL / HDL</span><span class="marker-chip">Triglycerides</span>
-                <span class="marker-chip">TSH</span><span class="marker-chip">Free T3</span><span class="marker-chip">Free T4</span>
-                <span class="marker-chip">Liver Function</span><span class="marker-chip">Kidney Function</span><span class="marker-chip">hs-CRP</span>
-                <span class="marker-chip">Ferritin</span><span class="marker-chip">Vitamin D</span><span class="marker-chip">Vitamin B12</span>
-                <span class="marker-chip">Folate</span><span class="marker-chip">Magnesium</span><span class="marker-chip">Testosterone</span>
-                <span class="marker-chip">Oestradiol</span><span class="marker-chip">Cortisol</span>
-              </div>
-            </div></div>
+        <div class="mx" data-mx data-panel="comprehensive">
+          <svg class="mx-sprite" aria-hidden="true" focusable="false">
+            <symbol id="mxi-heart" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7a4.3 4.3 0 0 1 7.5 2.8C19.5 15.4 12 20 12 20z"/></symbol>
+            <symbol id="mxi-metabolic" viewBox="0 0 24 24"><path d="M12 21c-3.7 0-6.2-2.6-6.2-5.9 0-3.7 3.1-5.6 3.7-9.1 2.4 1.5 3.5 3.5 3.5 5.5 1-.6 1.8-1.8 2-3.1 2 1.7 3.2 4.1 3.2 6.7 0 3.3-2.5 5.9-6.2 5.9z"/></symbol>
+            <symbol id="mxi-liver" viewBox="0 0 24 24"><path d="M3.5 9.6C3.5 6.6 6 5 9.6 5h5.9c3.1 0 5 1.4 5 3.7 0 3.5-4.3 6.3-9.2 8.5-2.5 1.1-4.7.3-6-1.5-1.2-1.8-1.8-3.6-1.8-6.1z"/><path d="M12 5.2c-.6 2.7-.3 5.3 1.2 7.4"/></symbol>
+            <symbol id="mxi-kidney" viewBox="0 0 24 24"><path d="M12 3.5s6 6.4 6 10.6a6 6 0 0 1-12 0C6 9.9 12 3.5 12 3.5z"/><path d="M9.2 14.6a2.9 2.9 0 0 0 2.8 2.6"/></symbol>
+            <symbol id="mxi-iron" viewBox="0 0 24 24"><path d="M12 3l7.8 4.5v9L12 21l-7.8-4.5v-9z"/><circle cx="12" cy="12" r="2.8"/></symbol>
+            <symbol id="mxi-vitamins" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.8v2.1M12 19.1v2.1M2.8 12h2.1M19.1 12h2.1M5.5 5.5l1.5 1.5M17 17l1.5 1.5M5.5 18.5 7 17M17 7l1.5-1.5"/></symbol>
+            <symbol id="mxi-muscle" viewBox="0 0 24 24"><path d="M6.5 7v10M17.5 7v10M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/></symbol>
+            <symbol id="mxi-thyroid" viewBox="0 0 24 24"><path d="M12 8.5v8"/><path d="M12 10.5C11 7.4 8.6 5.8 6 5.8c-1.7 0-2.6 1.3-2.6 3 0 3.3 2.7 6.7 6.1 6.7 1.5 0 2.5-.9 2.5-2.1"/><path d="M12 10.5c1-3.1 3.4-4.7 6-4.7 1.7 0 2.6 1.3 2.6 3 0 3.3-2.7 6.7-6.1 6.7-1.5 0-2.5-.9-2.5-2.1"/></symbol>
+            <symbol id="mxi-hormones" viewBox="0 0 24 24"><path d="M2.8 12c1.5-4.3 3-6.5 4.6-6.5 3.1 0 3.1 13 6.2 13 1.6 0 3.1-2.2 4.6-6.5"/><circle cx="20.3" cy="9.6" r="1.1"/></symbol>
+            <symbol id="mxi-blood" viewBox="0 0 24 24"><circle cx="8" cy="9" r="3.6"/><circle cx="16.4" cy="7.6" r="2.4"/><circle cx="14.6" cy="16.2" r="3.6"/></symbol>
+            <symbol id="mxi-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.4-4.4"/></symbol>
+            <symbol id="mxi-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+            <symbol id="mxi-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+          </svg>
+
+          <div class="mx-head" data-reveal>
+            <h2>Explore your biomarkers</h2>
+            <p class="mx-sub">78 biomarkers across 10 body systems</p>
+            <p class="mx-intro">Choose a panel, search for a marker or filter by body system. Select any marker to see what it is and why we test it.</p>
           </div>
-          <!-- Cardiovascular -->
-          <div class="panel-row">
-            <button class="panel-head" aria-expanded="false">
-              <span class="p-idx">02</span>
-              <span class="p-name">Advanced Cardiovascular</span>
-              <span class="p-count">Add-on</span>
-              <span class="p-toggle" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></span>
+
+          <div class="mx-panels" role="group" aria-label="Choose a panel" data-reveal>
+            <button class="mx-panel" type="button" data-panel="foundation" aria-pressed="false">
+              <span class="mx-panel-top"><span class="mx-panel-name">Foundation Panel</span><span class="mx-radio" aria-hidden="true"></span></span>
+              <span class="mx-panel-count">22 markers</span>
+              <span class="mx-panel-desc">Our core blood panel, covering heart and lipids, iron, liver and kidney function, muscle, vitamins and thyroid.</span>
+              <span class="mx-panel-facts">
+                <span class="mx-fact"><span class="mx-fact-k">Included in</span>Baseline and Optimise</span>
+                <span class="mx-fact"><span class="mx-fact-k">Blood collection</span>At-home test kit</span>
+              </span>
             </button>
-            <div class="panel-body"><div class="panel-body-inner">
-              <p class="measure" style="margin-bottom:1.2rem">The markers that outperform standard cholesterol for predicting long-term cardiovascular risk — and reveal it decades before symptoms.</p>
-              <div class="panel-markers">
-                <span class="marker-chip">ApoB</span><span class="marker-chip">Lp(a)</span><span class="marker-chip">ApoA1</span>
-                <span class="marker-chip">Lipid Sub-fractionation</span><span class="marker-chip">Homocysteine</span><span class="marker-chip">hs-CRP</span>
-                <span class="marker-chip">NT-proBNP</span>
-              </div>
-            </div></div>
+            <button class="mx-panel" type="button" data-panel="comprehensive" aria-pressed="true">
+              <span class="mx-panel-top"><span class="mx-panel-name">Comprehensive Panel</span><span class="mx-radio" aria-hidden="true"></span></span>
+              <span class="mx-panel-count">78 markers</span>
+              <span class="mx-panel-desc">Our full spectrum blood panel. It includes everything in the Foundation panel, plus hormones, a full blood count, inflammation, blood sugar and advanced cardiovascular markers.</span>
+              <span class="mx-panel-facts">
+                <span class="mx-fact"><span class="mx-fact-k">Included in</span>Performance</span>
+                <span class="mx-fact"><span class="mx-fact-k">Blood collection</span>At-home phlebotomy</span>
+              </span>
+            </button>
+            <div class="mx-panel is-soon">
+              <span class="mx-panel-top"><span class="mx-panel-name">Add-ons</span></span>
+              <span class="mx-panel-count">Coming soon</span>
+              <span class="mx-panel-desc">Optional add-on tests, grouped by category, are coming soon. We'll list them here as soon as they're available.</span>
+            </div>
           </div>
-          <!-- Hormone -->
-          <div class="panel-row">
-            <button class="panel-head" aria-expanded="false">
-              <span class="p-idx">03</span>
-              <span class="p-name">Hormone &amp; Thyroid</span>
-              <span class="p-count">Add-on</span>
-              <span class="p-toggle" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></span>
-            </button>
-            <div class="panel-body"><div class="panel-body-inner">
-              <p class="measure" style="margin-bottom:1.2rem">A complete endocrine picture — including the thyroid antibodies and free hormones a standard TSH-only test misses entirely.</p>
-              <div class="panel-markers">
-                <span class="marker-chip">Free T3</span><span class="marker-chip">Free T4</span><span class="marker-chip">TPO Antibodies</span>
-                <span class="marker-chip">Thyroglobulin Ab</span><span class="marker-chip">Testosterone</span><span class="marker-chip">SHBG</span>
-                <span class="marker-chip">Free Androgen Index</span><span class="marker-chip">Oestradiol</span><span class="marker-chip">Progesterone</span>
-                <span class="marker-chip">DHEA-S</span><span class="marker-chip">Cortisol (AM)</span><span class="marker-chip">LH / FSH</span><span class="marker-chip">Prolactin</span>
-              </div>
-            </div></div>
+
+          <div class="mx-tools">
+            <div class="mx-search">
+              <label class="sr-only" for="mxSearch">Search biomarkers</label>
+              <svg class="mx-i mx-search-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-search"/></svg>
+              <input id="mxSearch" type="search" placeholder="Search biomarkers" autocomplete="off" spellcheck="false" aria-controls="mxResults">
+              <button class="mx-clear" type="button" aria-label="Clear search" hidden><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-close"/></svg></button>
+            </div>
+            <p class="mx-popular"><span class="mx-popular-k">Popular</span><button class="mx-pop" type="button">Vitamin D</button><button class="mx-pop" type="button">Ferritin</button><button class="mx-pop" type="button">Testosterone</button><button class="mx-pop" type="button">HbA1c</button><button class="mx-pop" type="button">Cholesterol</button></p>
+            <div class="mx-filters" role="group" aria-label="Filter by body system">
+              <button class="filter-chip mx-chip active" type="button" data-cat="all" data-name="All" aria-pressed="true">All <span class="mx-chip-n">78</span></button>
+              <button class="filter-chip mx-chip" type="button" data-cat="heart" data-name="Heart and lipids" aria-pressed="false"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-heart"/></svg>Heart and lipids <span class="mx-chip-n">11</span></button>
+              <button class="filter-chip mx-chip" type="button" data-cat="metabolic" data-name="Metabolic and inflammation" aria-pressed="false"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-metabolic"/></svg>Metabolic and inflammation <span class="mx-chip-n">4</span></button>
+              <button class="filter-chip mx-chip" type="button" data-cat="liver" data-name="Liver" aria-pressed="false"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-liver"/></svg>Liver <span class="mx-chip-n">9</span></button>
+              <button class="filter-chip mx-chip" type="button" data-cat="kidney" data-name="Kidney and electrolytes" aria-pressed="false"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-kidney"/></svg>Kidney and electrolytes <span class="mx-chip-n">6</span></button>
+              <button class="filter-chip mx-chip" type="button" data-cat="iron" data-name="Iron" aria-pressed="false"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-iron"/></svg>Iron <span class="mx-chip-n">5</span></button>
+              <button class="filter-chip mx-chip" type="button" data-cat="vitamins" data-name="Vitamins" aria-pressed="false"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-vitamins"/></svg>Vitamins <span class="mx-chip-n">4</span></button>
+              <button class="filter-chip mx-chip" type="button" data-cat="muscle" data-name="Muscle, bone and minerals" aria-pressed="false"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-muscle"/></svg>Muscle, bone and minerals <span class="mx-chip-n">4</span></button>
+              <button class="filter-chip mx-chip" type="button" data-cat="thyroid" data-name="Thyroid" aria-pressed="false"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-thyroid"/></svg>Thyroid <span class="mx-chip-n">6</span></button>
+              <button class="filter-chip mx-chip" type="button" data-cat="hormones" data-name="Hormones" aria-pressed="false"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones <span class="mx-chip-n">13</span></button>
+              <button class="filter-chip mx-chip" type="button" data-cat="blood" data-name="Full blood count" aria-pressed="false"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count <span class="mx-chip-n">16</span></button>
+            </div>
           </div>
-          <!-- Metabolic -->
-          <div class="panel-row">
-            <button class="panel-head" aria-expanded="false">
-              <span class="p-idx">04</span>
-              <span class="p-name">Metabolic &amp; Insulin</span>
-              <span class="p-count">Add-on</span>
-              <span class="p-toggle" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></span>
-            </button>
-            <div class="panel-body"><div class="panel-body-inner">
-              <p class="measure" style="margin-bottom:1.2rem">Insulin resistance develops silently for years. This panel catches metabolic drift long before it reaches the diagnostic threshold for diabetes.</p>
-              <div class="panel-markers">
-                <span class="marker-chip">HbA1c</span><span class="marker-chip">Fasting Insulin</span><span class="marker-chip">Fasting Glucose</span>
-                <span class="marker-chip">HOMA-IR</span><span class="marker-chip">Uric Acid</span><span class="marker-chip">Triglyceride:HDL</span>
-                <span class="marker-chip">GGT</span>
-              </div>
-            </div></div>
+
+          <p class="mx-count" role="status">78 markers in the Comprehensive Panel</p>
+
+          <div class="mx-results" id="mxResults">
+            <section class="mx-group" data-cat="heart" aria-labelledby="mxg-heart">
+              <h3 class="mx-group-head" id="mxg-heart"><span class="mx-icon"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-heart"/></svg></span>Heart and lipids <span class="mx-group-n">11</span></h3>
+              <ul class="mx-grid">
+                <li class="mx-item" id="total-cholesterol" data-cat="heart" data-panels="foundation comprehensive" data-search="total cholesterol heart and lipids cholesterol lipids fats lipid profile">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-heart"/></svg>Heart and lipids</span>
+                    <span class="mx-card-name">Total cholesterol</span>
+                    <span class="mx-card-desc">The overall amount of cholesterol carried in your blood.</span>
+                    <span class="mx-tag">Foundation</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-heart"/></svg>Heart and lipids</p>
+                    <h2>Total cholesterol</h2>
+                    <p class="mx-d-lead">The overall amount of cholesterol carried in your blood.</p>
+                    <h3>What it is</h3>
+                    <p>Cholesterol is a waxy fat your body uses to build cells and make hormones. Total cholesterol adds together the cholesterol carried by all the lipoproteins in your blood.</p>
+                    <h3>Why we test it</h3>
+                    <p>It is the starting point of a lipid profile. On its own it says little, so we read it alongside HDL, LDL and the ratios in this group.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Foundation Panel</strong><span>Baseline and Optimise memberships</span><span>At-home test kit</span></li>
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="hdl-cholesterol" data-cat="heart" data-panels="foundation comprehensive" data-search="hdl cholesterol high density lipoprotein cholesterol heart and lipids cholesterol lipids good cholesterol">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-heart"/></svg>Heart and lipids</span>
+                    <span class="mx-card-name">HDL cholesterol</span>
+                    <span class="mx-card-full">High-density lipoprotein cholesterol</span>
+                    <span class="mx-card-desc">Cholesterol carried by HDL, which moves cholesterol back to the liver.</span>
+                    <span class="mx-tag">Foundation</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-heart"/></svg>Heart and lipids</p>
+                    <h2>HDL cholesterol</h2>
+                    <p class="mx-d-full">High-density lipoprotein cholesterol</p>
+                    <p class="mx-d-lead">Cholesterol carried by HDL, which moves cholesterol back to the liver.</p>
+                    <h3>What it is</h3>
+                    <p>HDL particles collect cholesterol from the tissues and carry it back to the liver to be processed. This marker measures how much cholesterol HDL is carrying.</p>
+                    <h3>Why we test it</h3>
+                    <p>HDL is part of the balance of your lipid profile and is used to work out the ratios we report.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Foundation Panel</strong><span>Baseline and Optimise memberships</span><span>At-home test kit</span></li>
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="hdl-percentage" data-cat="heart" data-panels="foundation comprehensive" data-search="hdl percentage heart and lipids cholesterol lipids hdl ratio">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-heart"/></svg>Heart and lipids</span>
+                    <span class="mx-card-name">HDL percentage</span>
+                    <span class="mx-card-desc">The share of your total cholesterol that is HDL.</span>
+                    <span class="mx-tag">Foundation</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-heart"/></svg>Heart and lipids</p>
+                    <h2>HDL percentage</h2>
+                    <p class="mx-d-lead">The share of your total cholesterol that is HDL.</p>
+                    <h3>What it is</h3>
+                    <p>HDL percentage expresses your HDL cholesterol as a proportion of your total cholesterol.</p>
+                    <h3>Why we test it</h3>
+                    <p>It shows the balance of your lipid profile at a glance, which a single total figure can hide.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Foundation Panel</strong><span>Baseline and Optimise memberships</span><span>At-home test kit</span></li>
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="ldl-cholesterol" data-cat="heart" data-panels="foundation comprehensive" data-search="ldl cholesterol low density lipoprotein cholesterol heart and lipids cholesterol lipids">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-heart"/></svg>Heart and lipids</span>
+                    <span class="mx-card-name">LDL cholesterol</span>
+                    <span class="mx-card-full">Low-density lipoprotein cholesterol</span>
+                    <span class="mx-card-desc">Cholesterol carried by LDL, the main carrier out to your tissues.</span>
+                    <span class="mx-tag">Foundation</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-heart"/></svg>Heart and lipids</p>
+                    <h2>LDL cholesterol</h2>
+                    <p class="mx-d-full">Low-density lipoprotein cholesterol</p>
+                    <p class="mx-d-lead">Cholesterol carried by LDL, the main carrier out to your tissues.</p>
+                    <h3>What it is</h3>
+                    <p>LDL particles carry cholesterol from the liver out to the cells of the body. This marker measures the cholesterol those particles carry.</p>
+                    <h3>Why we test it</h3>
+                    <p>LDL is one of the most widely used lipid markers. In the Comprehensive panel we read it alongside ApoB, which counts the particles themselves.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Foundation Panel</strong><span>Baseline and Optimise memberships</span><span>At-home test kit</span></li>
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="non-hdl-cholesterol" data-cat="heart" data-panels="foundation comprehensive" data-search="non hdl cholesterol heart and lipids cholesterol lipids">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-heart"/></svg>Heart and lipids</span>
+                    <span class="mx-card-name">Non-HDL cholesterol</span>
+                    <span class="mx-card-desc">All the cholesterol in your blood that isn't carried by HDL.</span>
+                    <span class="mx-tag">Foundation</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-heart"/></svg>Heart and lipids</p>
+                    <h2>Non-HDL cholesterol</h2>
+                    <p class="mx-d-lead">All the cholesterol in your blood that isn't carried by HDL.</p>
+                    <h3>What it is</h3>
+                    <p>Non-HDL cholesterol is your total cholesterol minus your HDL cholesterol. It covers LDL and the other lipoproteins that carry cholesterol out to the tissues.</p>
+                    <h3>Why we test it</h3>
+                    <p>It gives a broader view than LDL alone, because it includes every cholesterol carrier other than HDL.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Foundation Panel</strong><span>Baseline and Optimise memberships</span><span>At-home test kit</span></li>
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="cholesterol-hdl-ratio" data-cat="heart" data-panels="foundation comprehensive" data-search="total cholesterol to hdl ratio heart and lipids cholesterol lipids ratio">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-heart"/></svg>Heart and lipids</span>
+                    <span class="mx-card-name">Total cholesterol to HDL ratio</span>
+                    <span class="mx-card-desc">Your total cholesterol divided by your HDL cholesterol.</span>
+                    <span class="mx-tag">Foundation</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-heart"/></svg>Heart and lipids</p>
+                    <h2>Total cholesterol to HDL ratio</h2>
+                    <p class="mx-d-lead">Your total cholesterol divided by your HDL cholesterol.</p>
+                    <h3>What it is</h3>
+                    <p>This ratio compares the overall cholesterol in your blood with the share carried back to the liver by HDL.</p>
+                    <h3>Why we test it</h3>
+                    <p>Ratios show the balance between markers, which can tell you more than any single number.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Foundation Panel</strong><span>Baseline and Optimise memberships</span><span>At-home test kit</span></li>
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="triglycerides" data-cat="heart" data-panels="foundation comprehensive" data-search="triglycerides heart and lipids fats lipids trigs">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-heart"/></svg>Heart and lipids</span>
+                    <span class="mx-card-name">Triglycerides</span>
+                    <span class="mx-card-desc">The main type of fat circulating in your blood.</span>
+                    <span class="mx-tag">Foundation</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-heart"/></svg>Heart and lipids</p>
+                    <h2>Triglycerides</h2>
+                    <p class="mx-d-lead">The main type of fat circulating in your blood.</p>
+                    <h3>What it is</h3>
+                    <p>Triglycerides store energy from the food you eat. Your body makes them from spare calories and releases them for energy between meals.</p>
+                    <h3>Why we test it</h3>
+                    <p>They respond to diet, alcohol and activity, so they are a useful marker to track from one test to the next.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Foundation Panel</strong><span>Baseline and Optimise memberships</span><span>At-home test kit</span></li>
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="apoa1" data-cat="heart" data-panels="comprehensive" data-search="apoa1 apolipoprotein a1 heart and lipids apolipoprotein apo a1 hdl">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-heart"/></svg>Heart and lipids</span>
+                    <span class="mx-card-name">ApoA1</span>
+                    <span class="mx-card-full">Apolipoprotein A1</span>
+                    <span class="mx-card-desc">The main protein found in HDL particles.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-heart"/></svg>Heart and lipids</p>
+                    <h2>ApoA1</h2>
+                    <p class="mx-d-full">Apolipoprotein A1</p>
+                    <p class="mx-d-lead">The main protein found in HDL particles.</p>
+                    <h3>What it is</h3>
+                    <p>Apolipoprotein A1 gives HDL particles their structure and helps them collect cholesterol from the tissues.</p>
+                    <h3>Why we test it</h3>
+                    <p>Read alongside ApoB, it shows both sides of cholesterol transport in one view.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="apob" data-cat="heart" data-panels="comprehensive" data-search="apob apolipoprotein b heart and lipids apolipoprotein apo b particles cholesterol">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-heart"/></svg>Heart and lipids</span>
+                    <span class="mx-card-name">ApoB</span>
+                    <span class="mx-card-full">Apolipoprotein B</span>
+                    <span class="mx-card-desc">Counts the particles that carry cholesterol out to your tissues.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-heart"/></svg>Heart and lipids</p>
+                    <h2>ApoB</h2>
+                    <p class="mx-d-full">Apolipoprotein B</p>
+                    <p class="mx-d-lead">Counts the particles that carry cholesterol out to your tissues.</p>
+                    <h3>What it is</h3>
+                    <p>Each LDL particle, and each of the related particles that carry cholesterol out to the body, has one molecule of apolipoprotein B. Measuring ApoB gives a count of those particles.</p>
+                    <h3>Why we test it</h3>
+                    <p>LDL cholesterol measures how much cholesterol the particles carry. ApoB counts the particles themselves, which adds detail to a standard lipid profile.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="lipoprotein-a" data-cat="heart" data-panels="comprehensive" data-search="lipoprotein a lp a heart and lipids lp a lpa lipoprotein little a cholesterol">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-heart"/></svg>Heart and lipids</span>
+                    <span class="mx-card-name">Lipoprotein(a)</span>
+                    <span class="mx-card-full">Lp(a)</span>
+                    <span class="mx-card-desc">A cholesterol-carrying particle whose level is largely inherited.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-heart"/></svg>Heart and lipids</p>
+                    <h2>Lipoprotein(a)</h2>
+                    <p class="mx-d-full">Lp(a)</p>
+                    <p class="mx-d-lead">A cholesterol-carrying particle whose level is largely inherited.</p>
+                    <h3>What it is</h3>
+                    <p>Lipoprotein(a) is an LDL-like particle with an extra protein attached. Your level is mostly set by your genes and stays fairly stable through life.</p>
+                    <h3>Why we test it</h3>
+                    <p>It doesn't show up in a standard cholesterol test, so it adds a piece of the picture that other lipid markers can't.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="nt-probnp" data-cat="heart" data-panels="comprehensive" data-search="nt probnp n terminal pro b type natriuretic peptide heart and lipids bnp natriuretic peptide heart">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-heart"/></svg>Heart and lipids</span>
+                    <span class="mx-card-name">NT-proBNP</span>
+                    <span class="mx-card-full">N-terminal pro B-type natriuretic peptide</span>
+                    <span class="mx-card-desc">A protein fragment released by the heart muscle.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-heart"/></svg>Heart and lipids</p>
+                    <h2>NT-proBNP</h2>
+                    <p class="mx-d-full">N-terminal pro B-type natriuretic peptide</p>
+                    <p class="mx-d-lead">A protein fragment released by the heart muscle.</p>
+                    <h3>What it is</h3>
+                    <p>NT-proBNP is released by the heart's muscle cells when the heart walls are stretched. It can be measured in the blood.</p>
+                    <h3>Why we test it</h3>
+                    <p>It adds a marker of the heart itself to the lipid markers in this group, which describe what is circulating in the blood.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+              </ul>
+            </section>
+            <section class="mx-group" data-cat="metabolic" aria-labelledby="mxg-metabolic">
+              <h3 class="mx-group-head" id="mxg-metabolic"><span class="mx-icon"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-metabolic"/></svg></span>Metabolic and inflammation <span class="mx-group-n">4</span></h3>
+              <ul class="mx-grid">
+                <li class="mx-item" id="glucose" data-cat="metabolic" data-panels="comprehensive" data-search="glucose blood glucose metabolic and inflammation blood sugar sugar energy">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-metabolic"/></svg>Metabolic and inflammation</span>
+                    <span class="mx-card-name">Glucose</span>
+                    <span class="mx-card-full">Blood glucose</span>
+                    <span class="mx-card-desc">The amount of sugar in your blood at the time of your test.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-metabolic"/></svg>Metabolic and inflammation</p>
+                    <h2>Glucose</h2>
+                    <p class="mx-d-full">Blood glucose</p>
+                    <p class="mx-d-lead">The amount of sugar in your blood at the time of your test.</p>
+                    <h3>What it is</h3>
+                    <p>Glucose is the main sugar your body uses for energy. Its level in the blood rises after meals and is kept within a range by insulin.</p>
+                    <h3>Why we test it</h3>
+                    <p>It is a snapshot of your blood sugar on the day. We read it alongside HbA1c, which reflects the longer-term picture.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="hba1c" data-cat="metabolic" data-panels="comprehensive" data-search="hba1c glycated haemoglobin metabolic and inflammation a1c blood sugar sugar glycated hemoglobin">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-metabolic"/></svg>Metabolic and inflammation</span>
+                    <span class="mx-card-name">HbA1c</span>
+                    <span class="mx-card-full">Glycated haemoglobin</span>
+                    <span class="mx-card-desc">Your average blood sugar over roughly the last two to three months.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-metabolic"/></svg>Metabolic and inflammation</p>
+                    <h2>HbA1c</h2>
+                    <p class="mx-d-full">Glycated haemoglobin</p>
+                    <p class="mx-d-lead">Your average blood sugar over roughly the last two to three months.</p>
+                    <h3>What it is</h3>
+                    <p>Sugar in the blood attaches to haemoglobin in your red blood cells. Red cells last around three months, so the share that is glycated reflects your average blood sugar over that time.</p>
+                    <h3>Why we test it</h3>
+                    <p>It smooths out day-to-day swings, which makes it one of the clearest markers to track between tests.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="uric-acid" data-cat="metabolic" data-panels="comprehensive" data-search="uric acid metabolic and inflammation urate purines">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-metabolic"/></svg>Metabolic and inflammation</span>
+                    <span class="mx-card-name">Uric acid</span>
+                    <span class="mx-card-desc">A waste product made when your body breaks down purines.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-metabolic"/></svg>Metabolic and inflammation</p>
+                    <h2>Uric acid</h2>
+                    <p class="mx-d-lead">A waste product made when your body breaks down purines.</p>
+                    <h3>What it is</h3>
+                    <p>Purines are found in your cells and in foods such as red meat, seafood and beer. Breaking them down produces uric acid, which the kidneys clear from the blood.</p>
+                    <h3>Why we test it</h3>
+                    <p>It is part of the metabolic picture and can reflect diet, alcohol, hydration and how the kidneys are clearing it.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="hs-crp" data-cat="metabolic" data-panels="comprehensive" data-search="hs crp high sensitivity c reactive protein metabolic and inflammation crp c reactive protein inflammation">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-metabolic"/></svg>Metabolic and inflammation</span>
+                    <span class="mx-card-name">hs-CRP</span>
+                    <span class="mx-card-full">High-sensitivity C-reactive protein</span>
+                    <span class="mx-card-desc">A sensitive measure of general inflammation in the body.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-metabolic"/></svg>Metabolic and inflammation</p>
+                    <h2>hs-CRP</h2>
+                    <p class="mx-d-full">High-sensitivity C-reactive protein</p>
+                    <p class="mx-d-lead">A sensitive measure of general inflammation in the body.</p>
+                    <h3>What it is</h3>
+                    <p>C-reactive protein is made by the liver in response to inflammation. The high-sensitivity test can measure it at the low levels found in everyday life.</p>
+                    <h3>Why we test it</h3>
+                    <p>Low-level inflammation can be shaped by sleep, training load, body composition and recent illness, so hs-CRP adds useful context to the rest of your results.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+              </ul>
+            </section>
+            <section class="mx-group" data-cat="liver" aria-labelledby="mxg-liver">
+              <h3 class="mx-group-head" id="mxg-liver"><span class="mx-icon"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-liver"/></svg></span>Liver <span class="mx-group-n">9</span></h3>
+              <ul class="mx-grid">
+                <li class="mx-item" id="alt" data-cat="liver" data-panels="foundation comprehensive" data-search="alt alanine aminotransferase liver alanine aminotransferase liver enzyme">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-liver"/></svg>Liver</span>
+                    <span class="mx-card-name">ALT</span>
+                    <span class="mx-card-full">Alanine aminotransferase</span>
+                    <span class="mx-card-desc">An enzyme found mainly in the liver.</span>
+                    <span class="mx-tag">Foundation</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-liver"/></svg>Liver</p>
+                    <h2>ALT</h2>
+                    <p class="mx-d-full">Alanine aminotransferase</p>
+                    <p class="mx-d-lead">An enzyme found mainly in the liver.</p>
+                    <h3>What it is</h3>
+                    <p>Alanine aminotransferase helps your cells turn food into energy. Most of it sits inside liver cells, with a small amount in the blood.</p>
+                    <h3>Why we test it</h3>
+                    <p>It is one of the core liver markers and is read with the other enzymes in this group.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Foundation Panel</strong><span>Baseline and Optimise memberships</span><span>At-home test kit</span></li>
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="ast" data-cat="liver" data-panels="comprehensive" data-search="ast aspartate aminotransferase liver aspartate aminotransferase liver enzyme muscle">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-liver"/></svg>Liver</span>
+                    <span class="mx-card-name">AST</span>
+                    <span class="mx-card-full">Aspartate aminotransferase</span>
+                    <span class="mx-card-desc">An enzyme found in the liver, heart and muscles.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-liver"/></svg>Liver</p>
+                    <h2>AST</h2>
+                    <p class="mx-d-full">Aspartate aminotransferase</p>
+                    <p class="mx-d-lead">An enzyme found in the liver, heart and muscles.</p>
+                    <h3>What it is</h3>
+                    <p>Aspartate aminotransferase is found in several tissues, including the liver, heart and skeletal muscle.</p>
+                    <h3>Why we test it</h3>
+                    <p>Because it comes from muscle as well as the liver, we read it alongside ALT and creatine kinase, especially if you've trained hard before your test.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="alp" data-cat="liver" data-panels="foundation comprehensive" data-search="alp alkaline phosphatase liver alkaline phosphatase liver bone enzyme">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-liver"/></svg>Liver</span>
+                    <span class="mx-card-name">ALP</span>
+                    <span class="mx-card-full">Alkaline phosphatase</span>
+                    <span class="mx-card-desc">An enzyme found mainly in the liver and bones.</span>
+                    <span class="mx-tag">Foundation</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-liver"/></svg>Liver</p>
+                    <h2>ALP</h2>
+                    <p class="mx-d-full">Alkaline phosphatase</p>
+                    <p class="mx-d-lead">An enzyme found mainly in the liver and bones.</p>
+                    <h3>What it is</h3>
+                    <p>Alkaline phosphatase is made in the liver, bile ducts and bones, with smaller amounts from other tissues.</p>
+                    <h3>Why we test it</h3>
+                    <p>It is part of a standard liver profile. As it also comes from bone, we read it in context with your other results.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Foundation Panel</strong><span>Baseline and Optimise memberships</span><span>At-home test kit</span></li>
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="ggt" data-cat="liver" data-panels="foundation comprehensive" data-search="ggt gamma glutamyl transferase liver gamma gt glutamyl liver enzyme alcohol">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-liver"/></svg>Liver</span>
+                    <span class="mx-card-name">GGT</span>
+                    <span class="mx-card-full">Gamma-glutamyl transferase</span>
+                    <span class="mx-card-desc">An enzyme found mainly in the liver and bile ducts.</span>
+                    <span class="mx-tag">Foundation</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-liver"/></svg>Liver</p>
+                    <h2>GGT</h2>
+                    <p class="mx-d-full">Gamma-glutamyl transferase</p>
+                    <p class="mx-d-lead">An enzyme found mainly in the liver and bile ducts.</p>
+                    <h3>What it is</h3>
+                    <p>Gamma-glutamyl transferase is found mainly in the liver and bile ducts, with smaller amounts in other tissues.</p>
+                    <h3>Why we test it</h3>
+                    <p>It is a sensitive liver marker that can respond to alcohol and some medicines, so it is useful to track over time.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Foundation Panel</strong><span>Baseline and Optimise memberships</span><span>At-home test kit</span></li>
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="bilirubin" data-cat="liver" data-panels="comprehensive" data-search="bilirubin total total bilirubin liver bilirubin pigment liver">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-liver"/></svg>Liver</span>
+                    <span class="mx-card-name">Bilirubin (total)</span>
+                    <span class="mx-card-full">Total bilirubin</span>
+                    <span class="mx-card-desc">A yellow pigment made when old red blood cells are broken down.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-liver"/></svg>Liver</p>
+                    <h2>Bilirubin (total)</h2>
+                    <p class="mx-d-full">Total bilirubin</p>
+                    <p class="mx-d-lead">A yellow pigment made when old red blood cells are broken down.</p>
+                    <h3>What it is</h3>
+                    <p>When red blood cells reach the end of their life, the haemoglobin inside them is broken down into bilirubin. The liver processes it so it can leave the body.</p>
+                    <h3>Why we test it</h3>
+                    <p>It reflects how the liver is processing this pigment, and links your liver markers to your full blood count.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="albumin" data-cat="liver" data-panels="foundation comprehensive" data-search="albumin liver protein liver">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-liver"/></svg>Liver</span>
+                    <span class="mx-card-name">Albumin</span>
+                    <span class="mx-card-desc">The main protein in your blood, made by the liver.</span>
+                    <span class="mx-tag">Foundation</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-liver"/></svg>Liver</p>
+                    <h2>Albumin</h2>
+                    <p class="mx-d-lead">The main protein in your blood, made by the liver.</p>
+                    <h3>What it is</h3>
+                    <p>Albumin is made in the liver. It helps keep fluid in your blood vessels and carries hormones, vitamins and other substances around the body.</p>
+                    <h3>Why we test it</h3>
+                    <p>It reflects the liver's role in making protein. In the Comprehensive panel it is also used to work out your adjusted calcium.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Foundation Panel</strong><span>Baseline and Optimise memberships</span><span>At-home test kit</span></li>
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="globulins" data-cat="liver" data-panels="comprehensive" data-search="globulins liver globulin protein antibodies">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-liver"/></svg>Liver</span>
+                    <span class="mx-card-name">Globulins</span>
+                    <span class="mx-card-desc">A group of blood proteins that includes antibodies.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-liver"/></svg>Liver</p>
+                    <h2>Globulins</h2>
+                    <p class="mx-d-lead">A group of blood proteins that includes antibodies.</p>
+                    <h3>What it is</h3>
+                    <p>Globulins are a mixed group of proteins. Some are made by the liver and others, including antibodies, by the immune system.</p>
+                    <h3>Why we test it</h3>
+                    <p>It is worked out from your total protein and albumin results, and rounds out the picture of the proteins in your blood.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="total-protein" data-cat="liver" data-panels="comprehensive" data-search="total protein liver protein albumin globulin">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-liver"/></svg>Liver</span>
+                    <span class="mx-card-name">Total protein</span>
+                    <span class="mx-card-desc">All the protein in your blood, mainly albumin and globulins.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-liver"/></svg>Liver</p>
+                    <h2>Total protein</h2>
+                    <p class="mx-d-lead">All the protein in your blood, mainly albumin and globulins.</p>
+                    <h3>What it is</h3>
+                    <p>Total protein measures the combined amount of albumin and globulins in the liquid part of your blood.</p>
+                    <h3>Why we test it</h3>
+                    <p>It is part of a full liver profile and is used with albumin to give your globulin result.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="ldh" data-cat="liver" data-panels="comprehensive" data-search="ldh lactate dehydrogenase liver lactate dehydrogenase enzyme">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-liver"/></svg>Liver</span>
+                    <span class="mx-card-name">LDH</span>
+                    <span class="mx-card-full">Lactate dehydrogenase</span>
+                    <span class="mx-card-desc">An enzyme found in almost every tissue in the body.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-liver"/></svg>Liver</p>
+                    <h2>LDH</h2>
+                    <p class="mx-d-full">Lactate dehydrogenase</p>
+                    <p class="mx-d-lead">An enzyme found in almost every tissue in the body.</p>
+                    <h3>What it is</h3>
+                    <p>Lactate dehydrogenase helps cells turn sugar into energy. It is found in many tissues, including the liver, muscles, heart and red blood cells.</p>
+                    <h3>Why we test it</h3>
+                    <p>Because it is so widespread, it isn't read on its own. It adds context to your liver, muscle and blood count results.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+              </ul>
+            </section>
+            <section class="mx-group" data-cat="kidney" aria-labelledby="mxg-kidney">
+              <h3 class="mx-group-head" id="mxg-kidney"><span class="mx-icon"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-kidney"/></svg></span>Kidney and electrolytes <span class="mx-group-n">6</span></h3>
+              <ul class="mx-grid">
+                <li class="mx-item" id="creatinine" data-cat="kidney" data-panels="foundation comprehensive" data-search="creatinine kidney and electrolytes kidney muscle">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-kidney"/></svg>Kidney and electrolytes</span>
+                    <span class="mx-card-name">Creatinine</span>
+                    <span class="mx-card-desc">A waste product from muscle that the kidneys filter out.</span>
+                    <span class="mx-tag">Foundation</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-kidney"/></svg>Kidney and electrolytes</p>
+                    <h2>Creatinine</h2>
+                    <p class="mx-d-lead">A waste product from muscle that the kidneys filter out.</p>
+                    <h3>What it is</h3>
+                    <p>Creatinine is made at a steady rate as your muscles use energy. The kidneys filter it from the blood.</p>
+                    <h3>Why we test it</h3>
+                    <p>It is used to estimate kidney filtration (eGFR). Levels also reflect muscle mass, which we take into account for people who train.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Foundation Panel</strong><span>Baseline and Optimise memberships</span><span>At-home test kit</span></li>
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="egfr" data-cat="kidney" data-panels="foundation comprehensive" data-search="egfr estimated glomerular filtration rate kidney and electrolytes gfr kidney filtration glomerular">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-kidney"/></svg>Kidney and electrolytes</span>
+                    <span class="mx-card-name">eGFR</span>
+                    <span class="mx-card-full">Estimated glomerular filtration rate</span>
+                    <span class="mx-card-desc">An estimate of how much blood your kidneys filter each minute.</span>
+                    <span class="mx-tag">Foundation</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-kidney"/></svg>Kidney and electrolytes</p>
+                    <h2>eGFR</h2>
+                    <p class="mx-d-full">Estimated glomerular filtration rate</p>
+                    <p class="mx-d-lead">An estimate of how much blood your kidneys filter each minute.</p>
+                    <h3>What it is</h3>
+                    <p>eGFR is calculated from your creatinine result, together with your age and sex.</p>
+                    <h3>Why we test it</h3>
+                    <p>It is the standard way to express kidney filtration. As it is based on creatinine, it is read in context for people with more muscle mass.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Foundation Panel</strong><span>Baseline and Optimise memberships</span><span>At-home test kit</span></li>
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="urea" data-cat="kidney" data-panels="comprehensive" data-search="urea kidney and electrolytes bun kidney protein">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-kidney"/></svg>Kidney and electrolytes</span>
+                    <span class="mx-card-name">Urea</span>
+                    <span class="mx-card-desc">A waste product made when your body breaks down protein.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-kidney"/></svg>Kidney and electrolytes</p>
+                    <h2>Urea</h2>
+                    <p class="mx-d-lead">A waste product made when your body breaks down protein.</p>
+                    <h3>What it is</h3>
+                    <p>The liver turns ammonia from protein breakdown into urea, which the kidneys then clear from the blood.</p>
+                    <h3>Why we test it</h3>
+                    <p>It adds to the kidney picture and can reflect hydration and how much protein you eat.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="sodium" data-cat="kidney" data-panels="comprehensive" data-search="sodium kidney and electrolytes salt electrolyte na hydration">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-kidney"/></svg>Kidney and electrolytes</span>
+                    <span class="mx-card-name">Sodium</span>
+                    <span class="mx-card-desc">A key electrolyte for fluid balance, nerves and muscles.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-kidney"/></svg>Kidney and electrolytes</p>
+                    <h2>Sodium</h2>
+                    <p class="mx-d-lead">A key electrolyte for fluid balance, nerves and muscles.</p>
+                    <h3>What it is</h3>
+                    <p>Sodium is the main salt in the fluid around your cells. Your kidneys and hormones keep it within a tight range.</p>
+                    <h3>Why we test it</h3>
+                    <p>It is a core electrolyte and can reflect hydration, which is worth knowing if you train hard or sweat a lot.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="potassium" data-cat="kidney" data-panels="comprehensive" data-search="potassium kidney and electrolytes electrolyte k">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-kidney"/></svg>Kidney and electrolytes</span>
+                    <span class="mx-card-name">Potassium</span>
+                    <span class="mx-card-desc">An electrolyte your muscles and nerves rely on.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-kidney"/></svg>Kidney and electrolytes</p>
+                    <h2>Potassium</h2>
+                    <p class="mx-d-lead">An electrolyte your muscles and nerves rely on.</p>
+                    <h3>What it is</h3>
+                    <p>Potassium is found mainly inside your cells. The kidneys keep the amount in your blood within a narrow range.</p>
+                    <h3>Why we test it</h3>
+                    <p>It is part of the standard electrolyte check and is read alongside your kidney markers.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="chloride" data-cat="kidney" data-panels="comprehensive" data-search="chloride kidney and electrolytes electrolyte salt cl">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-kidney"/></svg>Kidney and electrolytes</span>
+                    <span class="mx-card-name">Chloride</span>
+                    <span class="mx-card-desc">An electrolyte that works with sodium to balance your fluids.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-kidney"/></svg>Kidney and electrolytes</p>
+                    <h2>Chloride</h2>
+                    <p class="mx-d-lead">An electrolyte that works with sodium to balance your fluids.</p>
+                    <h3>What it is</h3>
+                    <p>Chloride is found with sodium in the fluid around your cells and helps keep your fluid and acid balance steady.</p>
+                    <h3>Why we test it</h3>
+                    <p>It completes the electrolyte picture alongside sodium and potassium.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+              </ul>
+            </section>
+            <section class="mx-group" data-cat="iron" aria-labelledby="mxg-iron">
+              <h3 class="mx-group-head" id="mxg-iron"><span class="mx-icon"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-iron"/></svg></span>Iron <span class="mx-group-n">5</span></h3>
+              <ul class="mx-grid">
+                <li class="mx-item" id="iron" data-cat="iron" data-panels="foundation comprehensive" data-search="iron serum iron iron fe serum iron">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-iron"/></svg>Iron</span>
+                    <span class="mx-card-name">Iron</span>
+                    <span class="mx-card-full">Serum iron</span>
+                    <span class="mx-card-desc">The amount of iron circulating in your blood.</span>
+                    <span class="mx-tag">Foundation</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-iron"/></svg>Iron</p>
+                    <h2>Iron</h2>
+                    <p class="mx-d-full">Serum iron</p>
+                    <p class="mx-d-lead">The amount of iron circulating in your blood.</p>
+                    <h3>What it is</h3>
+                    <p>Iron is needed to make haemoglobin, which carries oxygen in your red blood cells. This test measures the iron carried in your blood by transferrin.</p>
+                    <h3>Why we test it</h3>
+                    <p>Blood iron moves up and down through the day, so it is always read with the other iron markers rather than on its own.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Foundation Panel</strong><span>Baseline and Optimise memberships</span><span>At-home test kit</span></li>
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="ferritin" data-cat="iron" data-panels="comprehensive" data-search="ferritin serum ferritin iron iron stores">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-iron"/></svg>Iron</span>
+                    <span class="mx-card-name">Ferritin</span>
+                    <span class="mx-card-full">Serum ferritin</span>
+                    <span class="mx-card-desc">A protein that reflects how much iron your body has stored.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-iron"/></svg>Iron</p>
+                    <h2>Ferritin</h2>
+                    <p class="mx-d-full">Serum ferritin</p>
+                    <p class="mx-d-lead">A protein that reflects how much iron your body has stored.</p>
+                    <h3>What it is</h3>
+                    <p>Ferritin stores iron inside your cells, and a small amount circulates in the blood in proportion to those stores.</p>
+                    <h3>Why we test it</h3>
+                    <p>It is one of the most useful iron markers, particularly if you train regularly. As it also rises with inflammation, we read it alongside hs-CRP.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="tibc" data-cat="iron" data-panels="foundation comprehensive" data-search="tibc total iron binding capacity iron total iron binding capacity transferrin">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-iron"/></svg>Iron</span>
+                    <span class="mx-card-name">TIBC</span>
+                    <span class="mx-card-full">Total iron-binding capacity</span>
+                    <span class="mx-card-desc">How much iron your blood proteins are able to carry.</span>
+                    <span class="mx-tag">Foundation</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-iron"/></svg>Iron</p>
+                    <h2>TIBC</h2>
+                    <p class="mx-d-full">Total iron-binding capacity</p>
+                    <p class="mx-d-lead">How much iron your blood proteins are able to carry.</p>
+                    <h3>What it is</h3>
+                    <p>TIBC measures how much iron transferrin, the main iron-carrying protein in the blood, could carry if it were full.</p>
+                    <h3>Why we test it</h3>
+                    <p>It is used with your iron result to work out your transferrin saturation.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Foundation Panel</strong><span>Baseline and Optimise memberships</span><span>At-home test kit</span></li>
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="uibc" data-cat="iron" data-panels="comprehensive" data-search="uibc unsaturated iron binding capacity iron unsaturated iron binding capacity transferrin">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-iron"/></svg>Iron</span>
+                    <span class="mx-card-name">UIBC</span>
+                    <span class="mx-card-full">Unsaturated iron-binding capacity</span>
+                    <span class="mx-card-desc">The spare iron-carrying capacity in your blood.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-iron"/></svg>Iron</p>
+                    <h2>UIBC</h2>
+                    <p class="mx-d-full">Unsaturated iron-binding capacity</p>
+                    <p class="mx-d-lead">The spare iron-carrying capacity in your blood.</p>
+                    <h3>What it is</h3>
+                    <p>UIBC is the part of transferrin's carrying capacity that isn't currently holding iron.</p>
+                    <h3>Why we test it</h3>
+                    <p>With your iron result, it is used to calculate total iron-binding capacity and completes the iron picture.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="transferrin-saturation" data-cat="iron" data-panels="foundation comprehensive" data-search="transferrin saturation iron tsat iron saturation">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-iron"/></svg>Iron</span>
+                    <span class="mx-card-name">Transferrin saturation</span>
+                    <span class="mx-card-desc">The share of your iron-carrying protein that is holding iron.</span>
+                    <span class="mx-tag">Foundation</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-iron"/></svg>Iron</p>
+                    <h2>Transferrin saturation</h2>
+                    <p class="mx-d-lead">The share of your iron-carrying protein that is holding iron.</p>
+                    <h3>What it is</h3>
+                    <p>Transferrin saturation is your iron result as a percentage of your total iron-binding capacity.</p>
+                    <h3>Why we test it</h3>
+                    <p>It shows how much iron is available for use right now, alongside the markers that describe your stores.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Foundation Panel</strong><span>Baseline and Optimise memberships</span><span>At-home test kit</span></li>
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+              </ul>
+            </section>
+            <section class="mx-group" data-cat="vitamins" aria-labelledby="mxg-vitamins">
+              <h3 class="mx-group-head" id="mxg-vitamins"><span class="mx-icon"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-vitamins"/></svg></span>Vitamins <span class="mx-group-n">4</span></h3>
+              <ul class="mx-grid">
+                <li class="mx-item" id="vitamin-d" data-cat="vitamins" data-panels="foundation comprehensive" data-search="vitamin d 25 hydroxy vitamin d vitamins vit d 25 oh sunshine">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-vitamins"/></svg>Vitamins</span>
+                    <span class="mx-card-name">Vitamin D</span>
+                    <span class="mx-card-full">25-hydroxy vitamin D</span>
+                    <span class="mx-card-desc">The main form of vitamin D circulating in your blood.</span>
+                    <span class="mx-tag">Foundation</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-vitamins"/></svg>Vitamins</p>
+                    <h2>Vitamin D</h2>
+                    <p class="mx-d-full">25-hydroxy vitamin D</p>
+                    <p class="mx-d-lead">The main form of vitamin D circulating in your blood.</p>
+                    <h3>What it is</h3>
+                    <p>Your skin makes vitamin D in sunlight, and smaller amounts come from food. The test measures 25-hydroxy vitamin D, the form the body stores and circulates.</p>
+                    <h3>Why we test it</h3>
+                    <p>Levels often fall through the UK autumn and winter, so it is a useful marker to track across the seasons.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Foundation Panel</strong><span>Baseline and Optimise memberships</span><span>At-home test kit</span></li>
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="vitamin-b12" data-cat="vitamins" data-panels="foundation comprehensive" data-search="vitamin b12 total vitamin b12 vitamins b12 cobalamin total">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-vitamins"/></svg>Vitamins</span>
+                    <span class="mx-card-name">Vitamin B12</span>
+                    <span class="mx-card-full">Total vitamin B12</span>
+                    <span class="mx-card-desc">The total amount of vitamin B12 in your blood.</span>
+                    <span class="mx-tag">Foundation</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-vitamins"/></svg>Vitamins</p>
+                    <h2>Vitamin B12</h2>
+                    <p class="mx-d-full">Total vitamin B12</p>
+                    <p class="mx-d-lead">The total amount of vitamin B12 in your blood.</p>
+                    <h3>What it is</h3>
+                    <p>Vitamin B12 is needed to make red blood cells and for the normal working of the nervous system. It comes mainly from animal foods.</p>
+                    <h3>Why we test it</h3>
+                    <p>It is worth tracking if you eat little or no animal produce. In the Comprehensive panel it is read alongside active B12 and folate.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Foundation Panel</strong><span>Baseline and Optimise memberships</span><span>At-home test kit</span></li>
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="active-b12" data-cat="vitamins" data-panels="comprehensive" data-search="active vitamin b12 holotranscobalamin vitamins b12 active holotc holotranscobalamin">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-vitamins"/></svg>Vitamins</span>
+                    <span class="mx-card-name">Active vitamin B12</span>
+                    <span class="mx-card-full">Holotranscobalamin</span>
+                    <span class="mx-card-desc">The share of vitamin B12 that your cells can take up and use.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-vitamins"/></svg>Vitamins</p>
+                    <h2>Active vitamin B12</h2>
+                    <p class="mx-d-full">Holotranscobalamin</p>
+                    <p class="mx-d-lead">The share of vitamin B12 that your cells can take up and use.</p>
+                    <h3>What it is</h3>
+                    <p>Only some of the B12 in your blood is attached to transcobalamin, the protein that delivers it to your cells. This is the active form.</p>
+                    <h3>Why we test it</h3>
+                    <p>It gives a closer view of usable B12 than the total figure alone.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="folate" data-cat="vitamins" data-panels="comprehensive" data-search="folate serum folate vitamins folic acid b9 vitamin b9">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-vitamins"/></svg>Vitamins</span>
+                    <span class="mx-card-name">Folate</span>
+                    <span class="mx-card-full">Serum folate</span>
+                    <span class="mx-card-desc">A B vitamin your body needs to make new cells.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-vitamins"/></svg>Vitamins</p>
+                    <h2>Folate</h2>
+                    <p class="mx-d-full">Serum folate</p>
+                    <p class="mx-d-lead">A B vitamin your body needs to make new cells.</p>
+                    <h3>What it is</h3>
+                    <p>Folate, also known as vitamin B9, comes from leafy greens, pulses and fortified foods. It works closely with vitamin B12.</p>
+                    <h3>Why we test it</h3>
+                    <p>It is read alongside your B12 and red blood cell markers.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+              </ul>
+            </section>
+            <section class="mx-group" data-cat="muscle" aria-labelledby="mxg-muscle">
+              <h3 class="mx-group-head" id="mxg-muscle"><span class="mx-icon"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-muscle"/></svg></span>Muscle, bone and minerals <span class="mx-group-n">4</span></h3>
+              <ul class="mx-grid">
+                <li class="mx-item" id="calcium" data-cat="muscle" data-panels="comprehensive" data-search="calcium muscle bone and minerals bone mineral">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-muscle"/></svg>Muscle, bone and minerals</span>
+                    <span class="mx-card-name">Calcium</span>
+                    <span class="mx-card-desc">The mineral your bones, muscles and nerves rely on.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-muscle"/></svg>Muscle, bone and minerals</p>
+                    <h2>Calcium</h2>
+                    <p class="mx-d-lead">The mineral your bones, muscles and nerves rely on.</p>
+                    <h3>What it is</h3>
+                    <p>Most of your calcium is stored in your bones. The small amount in your blood is kept within a tight range by hormones.</p>
+                    <h3>Why we test it</h3>
+                    <p>It is part of a broad mineral check and is read with albumin, which carries much of the calcium in your blood.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="adjusted-calcium" data-cat="muscle" data-panels="comprehensive" data-search="adjusted calcium muscle bone and minerals corrected calcium bone mineral">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-muscle"/></svg>Muscle, bone and minerals</span>
+                    <span class="mx-card-name">Adjusted calcium</span>
+                    <span class="mx-card-desc">Your calcium result corrected for your albumin level.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-muscle"/></svg>Muscle, bone and minerals</p>
+                    <h2>Adjusted calcium</h2>
+                    <p class="mx-d-lead">Your calcium result corrected for your albumin level.</p>
+                    <h3>What it is</h3>
+                    <p>Around half the calcium in your blood is attached to albumin. Adjusted calcium corrects your result for your albumin level.</p>
+                    <h3>Why we test it</h3>
+                    <p>It gives a more accurate reading of your calcium than the raw figure alone.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="magnesium" data-cat="muscle" data-panels="comprehensive" data-search="magnesium muscle bone and minerals mineral mg">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-muscle"/></svg>Muscle, bone and minerals</span>
+                    <span class="mx-card-name">Magnesium</span>
+                    <span class="mx-card-desc">A mineral involved in muscle, nerve and energy processes.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-muscle"/></svg>Muscle, bone and minerals</p>
+                    <h2>Magnesium</h2>
+                    <p class="mx-d-lead">A mineral involved in muscle, nerve and energy processes.</p>
+                    <h3>What it is</h3>
+                    <p>Magnesium is involved in hundreds of processes in the body, including muscle contraction and energy production. Most of it is stored in bone and inside cells.</p>
+                    <h3>Why we test it</h3>
+                    <p>It rounds out the mineral picture alongside calcium and the electrolytes.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="creatine-kinase" data-cat="muscle" data-panels="foundation comprehensive" data-search="creatine kinase ck muscle bone and minerals ck cpk muscle training">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-muscle"/></svg>Muscle, bone and minerals</span>
+                    <span class="mx-card-name">Creatine kinase</span>
+                    <span class="mx-card-full">CK</span>
+                    <span class="mx-card-desc">An enzyme released from muscle, which rises after hard training.</span>
+                    <span class="mx-tag">Foundation</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-muscle"/></svg>Muscle, bone and minerals</p>
+                    <h2>Creatine kinase</h2>
+                    <p class="mx-d-full">CK</p>
+                    <p class="mx-d-lead">An enzyme released from muscle, which rises after hard training.</p>
+                    <h3>What it is</h3>
+                    <p>Creatine kinase helps your muscles produce energy. Small amounts pass into the blood, and more after strenuous exercise.</p>
+                    <h3>Why we test it</h3>
+                    <p>It shows how your muscles are responding to training load, and helps us read your liver enzymes in context.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Foundation Panel</strong><span>Baseline and Optimise memberships</span><span>At-home test kit</span></li>
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+              </ul>
+            </section>
+            <section class="mx-group" data-cat="thyroid" aria-labelledby="mxg-thyroid">
+              <h3 class="mx-group-head" id="mxg-thyroid"><span class="mx-icon"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-thyroid"/></svg></span>Thyroid <span class="mx-group-n">6</span></h3>
+              <ul class="mx-grid">
+                <li class="mx-item" id="tsh" data-cat="thyroid" data-panels="foundation comprehensive" data-search="tsh thyroid stimulating hormone thyroid thyroid stimulating hormone">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-thyroid"/></svg>Thyroid</span>
+                    <span class="mx-card-name">TSH</span>
+                    <span class="mx-card-full">Thyroid-stimulating hormone</span>
+                    <span class="mx-card-desc">The signal from your pituitary gland that tells your thyroid to work.</span>
+                    <span class="mx-tag">Foundation</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-thyroid"/></svg>Thyroid</p>
+                    <h2>TSH</h2>
+                    <p class="mx-d-full">Thyroid-stimulating hormone</p>
+                    <p class="mx-d-lead">The signal from your pituitary gland that tells your thyroid to work.</p>
+                    <h3>What it is</h3>
+                    <p>TSH is made by the pituitary gland in the brain. It rises and falls to keep your thyroid hormone levels steady.</p>
+                    <h3>Why we test it</h3>
+                    <p>It is the first marker in any thyroid check and is read with free T4 and free T3.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Foundation Panel</strong><span>Baseline and Optimise memberships</span><span>At-home test kit</span></li>
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="free-t4" data-cat="thyroid" data-panels="foundation comprehensive" data-search="free t4 free thyroxine thyroid thyroxine ft4 thyroid">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-thyroid"/></svg>Thyroid</span>
+                    <span class="mx-card-name">Free T4</span>
+                    <span class="mx-card-full">Free thyroxine</span>
+                    <span class="mx-card-desc">The main hormone your thyroid gland releases.</span>
+                    <span class="mx-tag">Foundation</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-thyroid"/></svg>Thyroid</p>
+                    <h2>Free T4</h2>
+                    <p class="mx-d-full">Free thyroxine</p>
+                    <p class="mx-d-lead">The main hormone your thyroid gland releases.</p>
+                    <h3>What it is</h3>
+                    <p>Thyroxine (T4) is made by the thyroid. The free fraction is the part not bound to proteins and available to your tissues.</p>
+                    <h3>Why we test it</h3>
+                    <p>Read with TSH, it shows how your thyroid is responding to the pituitary's signal.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Foundation Panel</strong><span>Baseline and Optimise memberships</span><span>At-home test kit</span></li>
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="total-t4" data-cat="thyroid" data-panels="comprehensive" data-search="total t4 total thyroxine thyroid thyroxine thyroid">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-thyroid"/></svg>Thyroid</span>
+                    <span class="mx-card-name">Total T4</span>
+                    <span class="mx-card-full">Total thyroxine</span>
+                    <span class="mx-card-desc">All the thyroxine in your blood, bound and free.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-thyroid"/></svg>Thyroid</p>
+                    <h2>Total T4</h2>
+                    <p class="mx-d-full">Total thyroxine</p>
+                    <p class="mx-d-lead">All the thyroxine in your blood, bound and free.</p>
+                    <h3>What it is</h3>
+                    <p>Most thyroxine travels attached to proteins. Total T4 measures both the bound and the free forms.</p>
+                    <h3>Why we test it</h3>
+                    <p>It adds context to free T4, as changes in binding proteins can affect the total.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="free-t3" data-cat="thyroid" data-panels="foundation comprehensive" data-search="free t3 free triiodothyronine thyroid triiodothyronine ft3 thyroid">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-thyroid"/></svg>Thyroid</span>
+                    <span class="mx-card-name">Free T3</span>
+                    <span class="mx-card-full">Free triiodothyronine</span>
+                    <span class="mx-card-desc">The active thyroid hormone your cells use.</span>
+                    <span class="mx-tag">Foundation</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-thyroid"/></svg>Thyroid</p>
+                    <h2>Free T3</h2>
+                    <p class="mx-d-full">Free triiodothyronine</p>
+                    <p class="mx-d-lead">The active thyroid hormone your cells use.</p>
+                    <h3>What it is</h3>
+                    <p>Most T3 is made in the body's tissues by converting T4. The free fraction is the part available to your cells.</p>
+                    <h3>Why we test it</h3>
+                    <p>It completes the thyroid picture by showing how much active hormone is available.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Foundation Panel</strong><span>Baseline and Optimise memberships</span><span>At-home test kit</span></li>
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="tpo-antibodies" data-cat="thyroid" data-panels="comprehensive" data-search="thyroid peroxidase antibodies tpo antibodies thyroid tpo anti tpo antibodies thyroid">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-thyroid"/></svg>Thyroid</span>
+                    <span class="mx-card-name">Thyroid peroxidase antibodies</span>
+                    <span class="mx-card-full">TPO antibodies</span>
+                    <span class="mx-card-desc">Antibodies directed at an enzyme the thyroid uses to make hormones.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-thyroid"/></svg>Thyroid</p>
+                    <h2>Thyroid peroxidase antibodies</h2>
+                    <p class="mx-d-full">TPO antibodies</p>
+                    <p class="mx-d-lead">Antibodies directed at an enzyme the thyroid uses to make hormones.</p>
+                    <h3>What it is</h3>
+                    <p>Thyroid peroxidase is an enzyme in the thyroid gland. This test measures antibodies the immune system has made against it.</p>
+                    <h3>Why we test it</h3>
+                    <p>It shows whether the immune system is involved in how your thyroid is working, which TSH and thyroid hormones can't show on their own.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="thyroglobulin-antibodies" data-cat="thyroid" data-panels="comprehensive" data-search="thyroglobulin antibodies tgab thyroid tg tgab anti thyroglobulin antibodies thyroid">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-thyroid"/></svg>Thyroid</span>
+                    <span class="mx-card-name">Thyroglobulin antibodies</span>
+                    <span class="mx-card-full">TgAb</span>
+                    <span class="mx-card-desc">Antibodies directed at a protein the thyroid uses to store hormone.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-thyroid"/></svg>Thyroid</p>
+                    <h2>Thyroglobulin antibodies</h2>
+                    <p class="mx-d-full">TgAb</p>
+                    <p class="mx-d-lead">Antibodies directed at a protein the thyroid uses to store hormone.</p>
+                    <h3>What it is</h3>
+                    <p>Thyroglobulin is a protein the thyroid uses to make and store its hormones. This test measures antibodies against it.</p>
+                    <h3>Why we test it</h3>
+                    <p>Read with TPO antibodies, it gives a fuller picture of immune activity around the thyroid.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+              </ul>
+            </section>
+            <section class="mx-group" data-cat="hormones" aria-labelledby="mxg-hormones">
+              <h3 class="mx-group-head" id="mxg-hormones"><span class="mx-icon"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg></span>Hormones <span class="mx-group-n">13</span></h3>
+              <p class="mx-group-note">Some hormone markers differ for men and women.</p>
+              <ul class="mx-grid">
+                <li class="mx-item" id="testosterone" data-cat="hormones" data-panels="comprehensive" data-search="testosterone total testosterone hormones androgen total testosterone">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</span>
+                    <span class="mx-card-name">Testosterone</span>
+                    <span class="mx-card-full">Total testosterone</span>
+                    <span class="mx-card-desc">The main androgen hormone, measured in both men and women.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</p>
+                    <h2>Testosterone</h2>
+                    <p class="mx-d-full">Total testosterone</p>
+                    <p class="mx-d-lead">The main androgen hormone, measured in both men and women.</p>
+                    <h3>What it is</h3>
+                    <p>Testosterone is made mainly in the testes in men, and in smaller amounts by the ovaries and adrenal glands in women. This test measures the total amount in your blood.</p>
+                    <h3>Why we test it</h3>
+                    <p>It is read with SHBG and free testosterone, because how much is available to your tissues depends on how much is bound.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="free-testosterone" data-cat="hormones" data-panels="comprehensive" data-search="free testosterone hormones calculated free testosterone androgen">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</span>
+                    <span class="mx-card-name">Free testosterone</span>
+                    <span class="mx-card-desc">The testosterone not bound to proteins and available to your tissues.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</p>
+                    <h2>Free testosterone</h2>
+                    <p class="mx-d-lead">The testosterone not bound to proteins and available to your tissues.</p>
+                    <h3>What it is</h3>
+                    <p>Most testosterone is attached to SHBG or albumin. Free testosterone is the small share that isn't bound.</p>
+                    <h3>Why we test it</h3>
+                    <p>It gives a closer view of available testosterone than the total figure, especially when SHBG is high or low.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="free-androgen-index" data-cat="hormones" data-panels="comprehensive" data-search="free androgen index fai hormones fai testosterone androgen">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</span>
+                    <span class="mx-card-name">Free androgen index</span>
+                    <span class="mx-card-full">FAI</span>
+                    <span class="mx-card-desc">A ratio of total testosterone to SHBG.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</p>
+                    <h2>Free androgen index</h2>
+                    <p class="mx-d-full">FAI</p>
+                    <p class="mx-d-lead">A ratio of total testosterone to SHBG.</p>
+                    <h3>What it is</h3>
+                    <p>The free androgen index compares your total testosterone with your SHBG level.</p>
+                    <h3>Why we test it</h3>
+                    <p>It is another way of estimating how much testosterone is available, and is often used for women.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="shbg" data-cat="hormones" data-panels="comprehensive" data-search="shbg sex hormone binding globulin hormones sex hormone binding globulin">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</span>
+                    <span class="mx-card-name">SHBG</span>
+                    <span class="mx-card-full">Sex hormone-binding globulin</span>
+                    <span class="mx-card-desc">A protein that binds sex hormones and controls how much is available.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</p>
+                    <h2>SHBG</h2>
+                    <p class="mx-d-full">Sex hormone-binding globulin</p>
+                    <p class="mx-d-lead">A protein that binds sex hormones and controls how much is available.</p>
+                    <h3>What it is</h3>
+                    <p>SHBG is made mainly by the liver. It binds testosterone and oestradiol in the blood.</p>
+                    <h3>Why we test it</h3>
+                    <p>It is needed to read your testosterone and oestradiol results properly, as bound hormone isn't available to your tissues.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="oestradiol" data-cat="hormones" data-panels="comprehensive" data-search="oestradiol hormones estradiol oestrogen estrogen e2">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</span>
+                    <span class="mx-card-name">Oestradiol</span>
+                    <span class="mx-card-desc">The main form of oestrogen, measured in both men and women.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</p>
+                    <h2>Oestradiol</h2>
+                    <p class="mx-d-lead">The main form of oestrogen, measured in both men and women.</p>
+                    <h3>What it is</h3>
+                    <p>Oestradiol is made mainly by the ovaries in women. Men make smaller amounts, largely from testosterone.</p>
+                    <h3>Why we test it</h3>
+                    <p>In women it changes across the menstrual cycle, so we read it with the timing of your test. In men it is read alongside testosterone.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="progesterone" data-cat="hormones" data-panels="comprehensive" data-search="progesterone hormones menstrual cycle ovulation">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</span>
+                    <span class="mx-card-name">Progesterone</span>
+                    <span class="mx-card-desc">A hormone that rises after ovulation in the menstrual cycle.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</p>
+                    <h2>Progesterone</h2>
+                    <p class="mx-d-lead">A hormone that rises after ovulation in the menstrual cycle.</p>
+                    <h3>What it is</h3>
+                    <p>Progesterone is made mainly by the ovaries after ovulation, and in smaller amounts by the adrenal glands.</p>
+                    <h3>Why we test it</h3>
+                    <p>It is read with the timing of your cycle and alongside oestradiol, LH and FSH.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="lh" data-cat="hormones" data-panels="comprehensive" data-search="lh luteinising hormone hormones luteinising luteinizing hormone pituitary">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</span>
+                    <span class="mx-card-name">LH</span>
+                    <span class="mx-card-full">Luteinising hormone</span>
+                    <span class="mx-card-desc">A pituitary hormone that signals to the ovaries or testes.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</p>
+                    <h2>LH</h2>
+                    <p class="mx-d-full">Luteinising hormone</p>
+                    <p class="mx-d-lead">A pituitary hormone that signals to the ovaries or testes.</p>
+                    <h3>What it is</h3>
+                    <p>Luteinising hormone is made by the pituitary gland. In men it signals the testes to make testosterone, and in women it triggers ovulation.</p>
+                    <h3>Why we test it</h3>
+                    <p>Read with FSH and your sex hormones, it shows how the signals from the brain and the hormones they control fit together.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="fsh" data-cat="hormones" data-panels="comprehensive" data-search="fsh follicle stimulating hormone hormones follicle stimulating hormone pituitary">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</span>
+                    <span class="mx-card-name">FSH</span>
+                    <span class="mx-card-full">Follicle-stimulating hormone</span>
+                    <span class="mx-card-desc">A pituitary hormone involved in egg and sperm production.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</p>
+                    <h2>FSH</h2>
+                    <p class="mx-d-full">Follicle-stimulating hormone</p>
+                    <p class="mx-d-lead">A pituitary hormone involved in egg and sperm production.</p>
+                    <h3>What it is</h3>
+                    <p>Follicle-stimulating hormone is made by the pituitary gland. It supports egg development in women and sperm production in men.</p>
+                    <h3>Why we test it</h3>
+                    <p>It is read alongside LH and your sex hormones to complete the picture of how they work together.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="prolactin" data-cat="hormones" data-panels="comprehensive" data-search="prolactin hormones pituitary">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</span>
+                    <span class="mx-card-name">Prolactin</span>
+                    <span class="mx-card-desc">A pituitary hormone best known for its role in milk production.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</p>
+                    <h2>Prolactin</h2>
+                    <p class="mx-d-lead">A pituitary hormone best known for its role in milk production.</p>
+                    <h3>What it is</h3>
+                    <p>Prolactin is made by the pituitary gland. Levels can rise for a short time with stress, exercise or sleep.</p>
+                    <h3>Why we test it</h3>
+                    <p>It is part of a full hormone profile, as it can affect your other sex hormones.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="dhea-s" data-cat="hormones" data-panels="comprehensive" data-search="dhea s dehydroepiandrosterone sulphate hormones dhea dheas adrenal">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</span>
+                    <span class="mx-card-name">DHEA-S</span>
+                    <span class="mx-card-full">Dehydroepiandrosterone sulphate</span>
+                    <span class="mx-card-desc">An adrenal hormone that the body can turn into sex hormones.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</p>
+                    <h2>DHEA-S</h2>
+                    <p class="mx-d-full">Dehydroepiandrosterone sulphate</p>
+                    <p class="mx-d-lead">An adrenal hormone that the body can turn into sex hormones.</p>
+                    <h3>What it is</h3>
+                    <p>DHEA-S is made mainly by the adrenal glands. The body can convert it into testosterone and oestrogens.</p>
+                    <h3>Why we test it</h3>
+                    <p>It adds the adrenal side to your hormone picture. Levels naturally change with age.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="cortisol" data-cat="hormones" data-panels="comprehensive" data-search="cortisol morning cortisol hormones stress hormone adrenal">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</span>
+                    <span class="mx-card-name">Cortisol</span>
+                    <span class="mx-card-full">Morning cortisol</span>
+                    <span class="mx-card-desc">The main stress hormone, which follows a daily rhythm.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</p>
+                    <h2>Cortisol</h2>
+                    <p class="mx-d-full">Morning cortisol</p>
+                    <p class="mx-d-lead">The main stress hormone, which follows a daily rhythm.</p>
+                    <h3>What it is</h3>
+                    <p>Cortisol is made by the adrenal glands. It is highest shortly after waking and falls through the day.</p>
+                    <h3>Why we test it</h3>
+                    <p>Because it follows a daily rhythm, it is measured in the morning and read with the time of your sample.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="amh" data-cat="hormones" data-panels="comprehensive" data-search="amh anti mullerian hormone hormones anti mullerian hormone ovarian reserve ovaries">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</span>
+                    <span class="mx-card-name">AMH</span>
+                    <span class="mx-card-full">Anti-Müllerian hormone</span>
+                    <span class="mx-card-desc">A hormone made by the ovaries, measured in women.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</p>
+                    <h2>AMH</h2>
+                    <p class="mx-d-full">Anti-Müllerian hormone</p>
+                    <p class="mx-d-lead">A hormone made by the ovaries, measured in women.</p>
+                    <h3>What it is</h3>
+                    <p>Anti-Müllerian hormone is made by cells in the developing follicles of the ovaries. Levels fall gradually with age.</p>
+                    <h3>Why we test it</h3>
+                    <p>It is part of the hormone profile for women.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="psa" data-cat="hormones" data-panels="comprehensive" data-search="psa prostate specific antigen hormones prostate specific antigen">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</span>
+                    <span class="mx-card-name">PSA</span>
+                    <span class="mx-card-full">Prostate-specific antigen</span>
+                    <span class="mx-card-desc">A protein made by the prostate gland, measured in men.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-hormones"/></svg>Hormones</p>
+                    <h2>PSA</h2>
+                    <p class="mx-d-full">Prostate-specific antigen</p>
+                    <p class="mx-d-lead">A protein made by the prostate gland, measured in men.</p>
+                    <h3>What it is</h3>
+                    <p>Prostate-specific antigen is made by cells in the prostate, and a small amount passes into the blood. Levels can rise for a short time after vigorous cycling or ejaculation.</p>
+                    <h3>Why we test it</h3>
+                    <p>It is part of the hormone profile for men, and is always read alongside your age and history.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+              </ul>
+            </section>
+            <section class="mx-group" data-cat="blood" aria-labelledby="mxg-blood">
+              <h3 class="mx-group-head" id="mxg-blood"><span class="mx-icon"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg></span>Full blood count <span class="mx-group-n">16</span></h3>
+              <ul class="mx-grid">
+                <li class="mx-item" id="haemoglobin" data-cat="blood" data-panels="comprehensive" data-search="haemoglobin hb full blood count hemoglobin hb red cells oxygen">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</span>
+                    <span class="mx-card-name">Haemoglobin</span>
+                    <span class="mx-card-full">Hb</span>
+                    <span class="mx-card-desc">The protein in red blood cells that carries oxygen.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</p>
+                    <h2>Haemoglobin</h2>
+                    <p class="mx-d-full">Hb</p>
+                    <p class="mx-d-lead">The protein in red blood cells that carries oxygen.</p>
+                    <h3>What it is</h3>
+                    <p>Haemoglobin is an iron-rich protein that picks up oxygen in the lungs and delivers it around the body.</p>
+                    <h3>Why we test it</h3>
+                    <p>It is central to the full blood count and is read with your iron markers.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="haematocrit" data-cat="blood" data-panels="comprehensive" data-search="haematocrit hct full blood count hematocrit hct pcv packed cell volume">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</span>
+                    <span class="mx-card-name">Haematocrit</span>
+                    <span class="mx-card-full">Hct</span>
+                    <span class="mx-card-desc">The share of your blood made up of red blood cells.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</p>
+                    <h2>Haematocrit</h2>
+                    <p class="mx-d-full">Hct</p>
+                    <p class="mx-d-lead">The share of your blood made up of red blood cells.</p>
+                    <h3>What it is</h3>
+                    <p>Haematocrit measures the proportion of your blood volume taken up by red blood cells.</p>
+                    <h3>Why we test it</h3>
+                    <p>It is read with haemoglobin and can also reflect how hydrated you are at the time of your test.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="red-blood-cells" data-cat="blood" data-panels="comprehensive" data-search="red blood cells rbc full blood count rbc erythrocytes red cell count">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</span>
+                    <span class="mx-card-name">Red blood cells</span>
+                    <span class="mx-card-full">RBC</span>
+                    <span class="mx-card-desc">The number of oxygen-carrying cells in your blood.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</p>
+                    <h2>Red blood cells</h2>
+                    <p class="mx-d-full">RBC</p>
+                    <p class="mx-d-lead">The number of oxygen-carrying cells in your blood.</p>
+                    <h3>What it is</h3>
+                    <p>Red blood cells carry oxygen from the lungs to your tissues. This is a count of how many there are in a set volume of blood.</p>
+                    <h3>Why we test it</h3>
+                    <p>With haemoglobin and the red cell indices (MCV, MCH and MCHC), it describes your red cells in detail.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="mcv" data-cat="blood" data-panels="comprehensive" data-search="mcv mean corpuscular volume full blood count mean corpuscular volume red cell size">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</span>
+                    <span class="mx-card-name">MCV</span>
+                    <span class="mx-card-full">Mean corpuscular volume</span>
+                    <span class="mx-card-desc">The average size of your red blood cells.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</p>
+                    <h2>MCV</h2>
+                    <p class="mx-d-full">Mean corpuscular volume</p>
+                    <p class="mx-d-lead">The average size of your red blood cells.</p>
+                    <h3>What it is</h3>
+                    <p>Mean corpuscular volume measures the average volume of a single red blood cell.</p>
+                    <h3>Why we test it</h3>
+                    <p>Red cell size is linked to iron, B12 and folate, so it ties your blood count to your nutrient markers.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="mch" data-cat="blood" data-panels="comprehensive" data-search="mch mean corpuscular haemoglobin full blood count mean corpuscular haemoglobin hemoglobin">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</span>
+                    <span class="mx-card-name">MCH</span>
+                    <span class="mx-card-full">Mean corpuscular haemoglobin</span>
+                    <span class="mx-card-desc">The average amount of haemoglobin in each red blood cell.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</p>
+                    <h2>MCH</h2>
+                    <p class="mx-d-full">Mean corpuscular haemoglobin</p>
+                    <p class="mx-d-lead">The average amount of haemoglobin in each red blood cell.</p>
+                    <h3>What it is</h3>
+                    <p>Mean corpuscular haemoglobin is the average amount of haemoglobin carried by one red blood cell.</p>
+                    <h3>Why we test it</h3>
+                    <p>It is one of the red cell indices, which describe your red cells in more detail than a count alone.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="mchc" data-cat="blood" data-panels="comprehensive" data-search="mchc mean corpuscular haemoglobin concentration full blood count mean corpuscular haemoglobin concentration hemoglobin">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</span>
+                    <span class="mx-card-name">MCHC</span>
+                    <span class="mx-card-full">Mean corpuscular haemoglobin concentration</span>
+                    <span class="mx-card-desc">How concentrated the haemoglobin is inside your red blood cells.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</p>
+                    <h2>MCHC</h2>
+                    <p class="mx-d-full">Mean corpuscular haemoglobin concentration</p>
+                    <p class="mx-d-lead">How concentrated the haemoglobin is inside your red blood cells.</p>
+                    <h3>What it is</h3>
+                    <p>MCHC compares the amount of haemoglobin in your red cells with their size.</p>
+                    <h3>Why we test it</h3>
+                    <p>Read with MCV and MCH, it completes the picture of your red cells.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="rdw-cv" data-cat="blood" data-panels="comprehensive" data-search="rdw cv red cell distribution width full blood count rdw red cell distribution width">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</span>
+                    <span class="mx-card-name">RDW-CV</span>
+                    <span class="mx-card-full">Red cell distribution width</span>
+                    <span class="mx-card-desc">How much your red blood cells vary in size.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</p>
+                    <h2>RDW-CV</h2>
+                    <p class="mx-d-full">Red cell distribution width</p>
+                    <p class="mx-d-lead">How much your red blood cells vary in size.</p>
+                    <h3>What it is</h3>
+                    <p>Red cell distribution width measures the spread of red cell sizes. CV means it is expressed as a percentage of the average size.</p>
+                    <h3>Why we test it</h3>
+                    <p>It adds detail that an average size can miss, and is read with MCV.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="white-blood-cells" data-cat="blood" data-panels="comprehensive" data-search="white blood cells wbc full blood count wbc leukocytes leucocytes immune">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</span>
+                    <span class="mx-card-name">White blood cells</span>
+                    <span class="mx-card-full">WBC</span>
+                    <span class="mx-card-desc">The total number of immune cells in your blood.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</p>
+                    <h2>White blood cells</h2>
+                    <p class="mx-d-full">WBC</p>
+                    <p class="mx-d-lead">The total number of immune cells in your blood.</p>
+                    <h3>What it is</h3>
+                    <p>White blood cells are part of your immune system. This is a count of all the types combined.</p>
+                    <h3>Why we test it</h3>
+                    <p>It is broken down into five types: neutrophils, lymphocytes, monocytes, eosinophils and basophils.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="neutrophils" data-cat="blood" data-panels="comprehensive" data-search="neutrophils full blood count white cells immune">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</span>
+                    <span class="mx-card-name">Neutrophils</span>
+                    <span class="mx-card-desc">The most common white blood cell, quick to respond to infection.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</p>
+                    <h2>Neutrophils</h2>
+                    <p class="mx-d-lead">The most common white blood cell, quick to respond to infection.</p>
+                    <h3>What it is</h3>
+                    <p>Neutrophils make up the largest share of your white cells and respond quickly to infection and injury.</p>
+                    <h3>Why we test it</h3>
+                    <p>They are part of the white cell breakdown, and can shift after hard training or a recent illness.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="lymphocytes" data-cat="blood" data-panels="comprehensive" data-search="lymphocytes full blood count white cells immune t cells b cells">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</span>
+                    <span class="mx-card-name">Lymphocytes</span>
+                    <span class="mx-card-desc">White blood cells that include T cells and B cells.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</p>
+                    <h2>Lymphocytes</h2>
+                    <p class="mx-d-lead">White blood cells that include T cells and B cells.</p>
+                    <h3>What it is</h3>
+                    <p>Lymphocytes include T cells and B cells, which recognise specific threats and make antibodies.</p>
+                    <h3>Why we test it</h3>
+                    <p>They are part of the five-way white cell breakdown, read together rather than one at a time.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="monocytes" data-cat="blood" data-panels="comprehensive" data-search="monocytes full blood count white cells immune">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</span>
+                    <span class="mx-card-name">Monocytes</span>
+                    <span class="mx-card-desc">White blood cells that clear debris and help with repair.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</p>
+                    <h2>Monocytes</h2>
+                    <p class="mx-d-lead">White blood cells that clear debris and help with repair.</p>
+                    <h3>What it is</h3>
+                    <p>Monocytes circulate in the blood before moving into the tissues, where they clear debris and support repair.</p>
+                    <h3>Why we test it</h3>
+                    <p>They are part of the five-way white cell breakdown, read together rather than one at a time.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="eosinophils" data-cat="blood" data-panels="comprehensive" data-search="eosinophils full blood count white cells immune allergy">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</span>
+                    <span class="mx-card-name">Eosinophils</span>
+                    <span class="mx-card-desc">White blood cells involved in allergic responses.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</p>
+                    <h2>Eosinophils</h2>
+                    <p class="mx-d-lead">White blood cells involved in allergic responses.</p>
+                    <h3>What it is</h3>
+                    <p>Eosinophils are a small share of your white cells. They are involved in allergic responses and the response to some parasites.</p>
+                    <h3>Why we test it</h3>
+                    <p>They are part of the five-way white cell breakdown, read together rather than one at a time.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="basophils" data-cat="blood" data-panels="comprehensive" data-search="basophils full blood count white cells immune allergy histamine">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</span>
+                    <span class="mx-card-name">Basophils</span>
+                    <span class="mx-card-desc">The least common white blood cell, involved in allergic responses.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</p>
+                    <h2>Basophils</h2>
+                    <p class="mx-d-lead">The least common white blood cell, involved in allergic responses.</p>
+                    <h3>What it is</h3>
+                    <p>Basophils make up a very small share of your white cells. They release histamine during allergic responses.</p>
+                    <h3>Why we test it</h3>
+                    <p>They are part of the five-way white cell breakdown, read together rather than one at a time.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="platelets" data-cat="blood" data-panels="comprehensive" data-search="platelets plt full blood count plt thrombocytes clotting">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</span>
+                    <span class="mx-card-name">Platelets</span>
+                    <span class="mx-card-full">PLT</span>
+                    <span class="mx-card-desc">Small cell fragments that help your blood to clot.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</p>
+                    <h2>Platelets</h2>
+                    <p class="mx-d-full">PLT</p>
+                    <p class="mx-d-lead">Small cell fragments that help your blood to clot.</p>
+                    <h3>What it is</h3>
+                    <p>Platelets are made in the bone marrow. They gather at the site of an injury to help form a clot.</p>
+                    <h3>Why we test it</h3>
+                    <p>The count is a standard part of the full blood count and is read with MPV and PDW.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="mpv" data-cat="blood" data-panels="comprehensive" data-search="mpv mean platelet volume full blood count mean platelet volume platelets">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</span>
+                    <span class="mx-card-name">MPV</span>
+                    <span class="mx-card-full">Mean platelet volume</span>
+                    <span class="mx-card-desc">The average size of your platelets.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</p>
+                    <h2>MPV</h2>
+                    <p class="mx-d-full">Mean platelet volume</p>
+                    <p class="mx-d-lead">The average size of your platelets.</p>
+                    <h3>What it is</h3>
+                    <p>Mean platelet volume measures the average size of your platelets. Newer platelets tend to be larger.</p>
+                    <h3>Why we test it</h3>
+                    <p>It adds detail to your platelet count.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+                <li class="mx-item" id="pdw" data-cat="blood" data-panels="comprehensive" data-search="pdw platelet distribution width full blood count platelet distribution width platelets">
+                  <button class="mx-card" type="button" aria-haspopup="dialog">
+                    <span class="mx-card-label"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</span>
+                    <span class="mx-card-name">PDW</span>
+                    <span class="mx-card-full">Platelet distribution width</span>
+                    <span class="mx-card-desc">How much your platelets vary in size.</span>
+                    <span class="mx-arrow" aria-hidden="true"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-arrow"/></svg></span>
+                  </button>
+                  <div class="mx-detail" hidden>
+                    <p class="mx-d-kicker"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-blood"/></svg>Full blood count</p>
+                    <h2>PDW</h2>
+                    <p class="mx-d-full">Platelet distribution width</p>
+                    <p class="mx-d-lead">How much your platelets vary in size.</p>
+                    <h3>What it is</h3>
+                    <p>Platelet distribution width measures the spread of platelet sizes in your blood.</p>
+                    <h3>Why we test it</h3>
+                    <p>Read with your platelet count and MPV, it completes the platelet picture.</p>
+                    <h3>Included in</h3>
+                    <ul class="mx-d-panels">
+                      <li><strong>Comprehensive Panel</strong><span>Performance membership</span><span>At-home phlebotomy</span></li>
+                    </ul>
+                    <p class="mx-d-note">Every result is interpreted by a clinician alongside your other markers and your history. No single marker is read on its own.</p>
+                  </div>
+                </li>
+              </ul>
+            </section>
           </div>
-          <!-- Micronutrient -->
-          <div class="panel-row">
-            <button class="panel-head" aria-expanded="false">
-              <span class="p-idx">05</span>
-              <span class="p-name">Micronutrient &amp; Iron</span>
-              <span class="p-count">Add-on</span>
-              <span class="p-toggle" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></span>
-            </button>
-            <div class="panel-body"><div class="panel-body-inner">
-              <p class="measure" style="margin-bottom:1.2rem">The deficiencies that quietly drive fatigue, low mood and poor recovery — and are among the most correctable findings we see.</p>
-              <div class="panel-markers">
-                <span class="marker-chip">Ferritin</span><span class="marker-chip">Transferrin Saturation</span><span class="marker-chip">Iron</span>
-                <span class="marker-chip">Vitamin D</span><span class="marker-chip">Vitamin B12 (Active)</span><span class="marker-chip">Folate</span>
-                <span class="marker-chip">Magnesium</span><span class="marker-chip">Zinc</span><span class="marker-chip">Copper</span><span class="marker-chip">Selenium</span>
-              </div>
-            </div></div>
-          </div>
-          <!-- Optional profiling -->
-          <div class="panel-row">
-            <button class="panel-head" aria-expanded="false">
-              <span class="p-idx">06</span>
-              <span class="p-name">Optional Deep Profiling</span>
-              <span class="p-count">Speciality</span>
-              <span class="p-toggle" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></span>
-            </button>
-            <div class="panel-body"><div class="panel-body-inner">
-              <p class="measure" style="margin-bottom:1.2rem">Where clinically warranted, we can go deeper. We'll only recommend these when there's a specific question they can answer for you.</p>
-              <div class="panel-markers">
-                <span class="marker-chip">Genetic Risk Profiling</span><span class="marker-chip">Gut Microbiome</span><span class="marker-chip">Cardiovascular Imaging Referral</span>
-                <span class="marker-chip">Omega-3 Index</span><span class="marker-chip">Advanced Inflammation</span>
-              </div>
-            </div></div>
+
+          <div class="mx-empty" hidden>
+            <h3>No matching markers</h3>
+            <p>Try another search, or browse the body systems above.</p>
+            <button class="mx-reset" type="button">Reset search</button>
           </div>
         </div>
       </div>
@@ -154,8 +2043,8 @@
           <p class="lead">Three areas where a full panel changes what you can actually act on.</p>
         </div>
         <div class="grid cols-3 mt-6" data-reveal-stagger data-stagger="110">
-          <article class="card" style="background:var(--ink-bg-2);border-color:rgba(237,231,218,.12)"><h3 style="color:var(--on-ink)">Hormone optimisation</h3><p style="color:var(--on-ink-muted)">Thyroid, sex and adrenal hormones read together rather than in isolation — so fatigue, mood and body composition are traced to a cause instead of guessed at.</p></article>
-          <article class="card" style="background:var(--ink-bg-2);border-color:rgba(237,231,218,.12)"><h3 style="color:var(--on-ink)">Cardiovascular health</h3><p style="color:var(--on-ink-muted)">ApoB, Lp(a) and lipid sub-fractionation give a far sharper picture of long-term heart risk than standard cholesterol — often decades before symptoms.</p></article>
+          <article class="card" style="background:var(--ink-bg-2);border-color:rgba(237,231,218,.12)"><h3 style="color:var(--on-ink)">Hormone optimisation</h3><p style="color:var(--on-ink-muted)">Thyroid, sex and adrenal hormones read together rather than in isolation, so fatigue, mood and body composition are traced to a cause instead of guessed at.</p></article>
+          <article class="card" style="background:var(--ink-bg-2);border-color:rgba(237,231,218,.12)"><h3 style="color:var(--on-ink)">Cardiovascular health</h3><p style="color:var(--on-ink-muted)">ApoB and Lp(a) give a far sharper picture of long-term heart risk than standard cholesterol, often decades before symptoms.</p></article>
           <article class="card" style="background:var(--ink-bg-2);border-color:rgba(237,231,218,.12)"><h3 style="color:var(--on-ink)">Risk markers</h3><p style="color:var(--on-ink-muted)">Inflammation, insulin resistance and micronutrient status flag the early drift that precedes chronic disease, while it is still straightforward to reverse.</p></article>
         </div>
       </div>
@@ -168,13 +2057,17 @@
           <span class="ring" style="width:340px;height:340px;top:-120px;left:-80px"></span>
           <div style="position:relative">
             <h2>Not sure which membership is right for you?</h2>
-            <p>That's exactly what a first conversation is for. We'll design the testing around your history and goals — and nothing you don't need.</p>
+            <p>That's exactly what a first conversation is for. We'll design the testing around your history and goals, and nothing you don't need.</p>
             <a href="/book" class="btn btn-primary btn-lg">Book in to speak to one of our longevity experts <span class="arrow" aria-hidden="true">→</span></a>
           </div>
         </div>
       </div>
     </section>
   </main>
-  <script src="assets/js/main.js?v=37"></script>
+  <dialog class="mx-drawer" id="mxDrawer" aria-labelledby="mxDrawerTitle">
+    <button class="mx-drawer-close" type="button" aria-label="Close"><svg class="mx-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#mxi-close"/></svg></button>
+    <div class="mx-drawer-body"></div>
+  </dialog>
+  <script src="assets/js/main.js?v=38"></script>
 </body>
 </html>
