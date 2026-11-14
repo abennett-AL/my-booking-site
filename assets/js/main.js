@@ -204,12 +204,12 @@
             <h4>Explore</h4>
             <ul>
               <li><a href="/longevity-lab">Longevity Lab</a></li>
-              <li><a href="/what-we-test">What We Test</a></li>
+              <li><a href="/what-we-test">What we test</a></li>
               <li><a href="/membership">Membership</a></li>
-              <li><a href="/for-teams">For Teams</a></li>
+              <li><a href="/for-teams">For teams</a></li>
               <li><a href="/recipes">Recipes</a></li>
-              <li><a href="/active-newsroom">Active Newsroom</a></li>
-              <li><a href="/active-events">Active Events</a></li>
+              <li><a href="/active-newsroom">Active newsroom</a></li>
+              <li><a href="/active-events">Active events</a></li>
               <li><a href="/activewear">Activewear</a></li>
               <li><a href="/about">About</a></li>
             </ul>
