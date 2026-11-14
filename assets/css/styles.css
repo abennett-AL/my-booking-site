@@ -358,7 +358,7 @@ p { color: var(--ink-soft); }
 /* Menu bar text uses --ink: near-black in light mode, off-white in dark mode,
    and cream over the dark home hero (.site-header.on-dark re-tints --ink) */
 .nav-links a {
-  font-size: 0.92rem; font-weight: 500; color: var(--ink);
+  font-size: 0.92rem; font-weight: 400; color: var(--ink);
   position: relative; transition: color .25s var(--ease); padding-block: 4px; white-space: nowrap;
 }
 .nav-links a::after {
@@ -370,7 +370,7 @@ p { color: var(--ink-soft); }
 .nav-links a.active { color: var(--ink); }
 .nav-cta { display: flex; align-items: center; gap: 1.1rem; }
 .nav-login {
-  font-size: 0.92rem; font-weight: 500; color: var(--ink);
+  font-size: 0.92rem; font-weight: 400; color: var(--ink);
   white-space: nowrap; transition: opacity .25s var(--ease);
 }
 .nav-login:hover { opacity: .7; }
@@ -933,7 +933,9 @@ button.mx-panel:hover { border-color: var(--line-strong); box-shadow: var(--shad
 /* ============================================================
    PAGE HERO (interior)
    ============================================================ */
-.page-hero { padding-top: clamp(8rem, 15vh, 11rem); padding-bottom: clamp(2.5rem, 5vw, 4rem); }
+/* Sits just under the floating header (~85px): the breadcrumb that used to
+   fill this gap was removed, so the heading starts close to the top bar. */
+.page-hero { padding-top: 5.25rem; padding-bottom: clamp(2.5rem, 5vw, 4rem); }
 .page-hero h1 { font-size: clamp(2.6rem, 6vw, 5rem); letter-spacing: -0.03em; margin-block: 1.2rem; }
 .breadcrumb { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
 
@@ -1393,7 +1395,7 @@ html[data-theme="dark"] .site-header.on-dark .nav-drop-panel {
 .nav-drop > button {
   display: inline-flex; align-items: center; gap: .35rem;
   background: none; border: 0; cursor: pointer;
-  font: inherit; font-size: .92rem; font-weight: 500; color: var(--ink);
+  font: inherit; font-size: .92rem; font-weight: 400; color: var(--ink);
   position: relative; transition: color .25s var(--ease); padding: 4px 0; white-space: nowrap;
 }
 .nav-drop > button::after {
@@ -1424,10 +1426,10 @@ html[data-theme="dark"] .site-header.on-dark .nav-drop-panel {
 }
 .nav-drop-panel a {
   display: block; padding: .55rem .8rem; border-radius: calc(var(--radius) - 4px);
-  font-size: .9rem; color: var(--ink); white-space: nowrap;
+  font-size: .9rem; font-weight: 400; color: var(--ink); white-space: nowrap;
 }
 .nav-drop-panel a:hover { background: var(--paper-2); color: var(--ink); }
-.nav-drop-panel a.active { color: var(--ink); font-weight: 600; }
+.nav-drop-panel a.active { color: var(--ink); }
 /* The header underline animation must not apply inside the panel */
 .nav-links .nav-drop-panel a::after { display: none; }
 

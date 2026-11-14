@@ -73,15 +73,15 @@
   // A plain [href, label] pair renders as a link; an entry with `children`
   // renders as a dropdown (desktop) and as flat links in the mobile menu.
   const NAV = [
-    ['/', 'How it Works'],
-    ['/what-we-test', 'What We Test'],
+    ['/', 'How it works'],
+    ['/what-we-test', 'What we test'],
     ['/longevity-lab', 'Longevity Lab'],
     ['/membership', 'Membership'],
-    ['/for-teams', 'For Teams'],
+    ['/for-teams', 'For teams'],
     { label: 'Community', children: [
       ['/recipes', 'Recipes'],
-      ['/active-newsroom', 'Active Newsroom'],
-      ['/active-events', 'Active Events'],
+      ['/active-newsroom', 'Active newsroom'],
+      ['/active-events', 'Active events'],
       ['/activewear', 'Activewear'],
     ] },
   ];
