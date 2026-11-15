@@ -220,7 +220,6 @@
               <li>Central Brighton &amp; Hove, coming soon</li>
               <li>Mon–Sat, by appointment</li>
               <li><a href="mailto:hello@activelabs.health">hello@activelabs.health</a></li>
-              <li><a href="tel:+441273000000">+44 (0)1273 000 000</a></li>
             </ul>
           </div>
           <div class="footer-col">
